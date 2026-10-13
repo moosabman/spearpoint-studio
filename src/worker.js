@@ -157,7 +157,12 @@ function cleanLine(s) {
 
 function cleanTitle(content) {
   const line = String(content || '').split('\n').map(cleanLine).find(s => /[A-Za-z]/.test(s)) || '';
-  return line.slice(0, 90) || 'New on Spearpoint';
+  if (line) return line.slice(0, 90);
+  // Caption is only emoji/hashtags: name the series instead.
+  const tags = String(content || '').toLowerCase();
+  if (tags.includes('#pineridgepest')) return 'New from Pine Ridge Pest Co.';
+  if (tags.includes('#cavebase')) return 'New from Cave Base';
+  return 'New on Spearpoint';
 }
 
 function postId(url) {
