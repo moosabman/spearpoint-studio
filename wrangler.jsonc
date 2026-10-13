@@ -8,5 +8,6 @@
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"]
   },
+  "keep_vars": true,
   "observability": { "enabled": true }
 }
