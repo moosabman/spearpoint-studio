@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="canonical" href="https://spearpointpro.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spearpointpro.com/">
+<meta property="og:title" content="Spearpoint Studio">
+<meta property="og:description" content="Original comedy and branded films built to be shared. Home of Cave Base: product launches, 10,000 years early.">
+<meta property="og:image" content="https://spearpointpro.com/assets/video/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0D0B09">
+<title>Spearpoint Studio</title>
+<meta name="description" content="Spearpoint Studio makes original comedy and branded films built to be shared. Home of Cave Base: product launches, 10,000 years early.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Prehistoric keynote: near-black cave stage, bone-cream type, ember-orange accent.
+   Condensed trailer display, clean sans body, mono for labels and data.
+   Single committed dark look (cream bands are deliberate inversions). */
+:root{
+  color-scheme:dark;
+  --stage:#0D0B09;        /* page ground */
+  --stage-2:#14110E;      /* alternate band */
+  --stage-3:#171410;      /* raised surface */
+  --line:#221E19;
+  --line-2:#2C2721;
+  --edge:#3A332B;
+  --bone:#FAF6EF;         /* primary text / cream band */
+  --bone-2:#E6DDCC;       /* cream band rules */
+  --ash:#C9BFAD;          /* secondary text */
+  --ash-2:#A89E8C;        /* labels */
+  --ash-3:#8C8272;        /* footnotes */
+  --ink-2:#4A4238;        /* body text on cream */
+  --ink-3:#5E554A;        /* labels on cream */
+  --ember:#FF5A1F;        /* fills */
+  --ember-text:#FF6A2B;   /* accent text on dark */
+  --ember-deep:#D2400C;   /* accent text on cream */
+  --display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;
+  --body:Figtree,"Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--stage);color:var(--bone);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+main{overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:var(--bone)}a:hover{color:var(--ember-text)}
+:focus-visible{outline:2px solid var(--ember-text);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(16px,4vw,48px)}
+.disp{font-family:var(--display);text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;text-wrap:balance;margin:0}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:12px}
+.eyebrow{color:var(--ember-text)}
+.lede{margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:var(--ash);max-width:30em}
+p{text-wrap:pretty}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:600 15px/1 var(--body);text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--bone);color:var(--stage)}.btn-solid:hover{background:#fff;color:var(--stage)}
+.btn-ghost{background:transparent;border:1px solid #5A5046;color:var(--bone)}.btn-ghost:hover{border-color:var(--bone);color:var(--bone)}
+.btn-hot{background:var(--ember);color:var(--stage);box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 14px 36px -12px rgba(255,90,31,.65)}
+.btn-hot:hover{color:var(--stage);box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 18px 44px -10px rgba(255,90,31,.85)}
+.btn-dark{background:var(--stage);color:var(--bone)}.btn-dark:hover{color:var(--bone)}
+
+/* Nav */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(13,11,9,.72);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid rgba(255,255,255,.07)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--bone)}
+.brand img{height:40px;width:auto;margin-block:-4px}
+.brand span{font-family:var(--mono);text-transform:uppercase;font-size:13px;letter-spacing:.22em}
+.nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.nav-links a:not(.btn){text-decoration:none;font-size:15px}
+@media (max-width:860px){.nav-links a:not(.btn){display:none}}
+
+/* Ember glow under accent words */
+.ember{position:relative;display:inline-block;isolation:isolate;color:var(--ember-text);text-shadow:0 .06em .18em rgba(255,90,31,.22),0 .16em .4em rgba(255,90,31,.14)}
+.ember::after{content:"";position:absolute;z-index:-1;pointer-events:none;left:4%;right:4%;bottom:-.32em;height:.42em;border-radius:50%;background:radial-gradient(closest-side,rgba(255,90,31,.42),rgba(255,90,31,.14) 55%,rgba(255,90,31,0));filter:blur(.12em)}
+@keyframes flicker{0%,100%{opacity:.85;transform:scaleX(1)}50%{opacity:1;transform:scaleX(1.06)}}
+
+/* Torchlight pools behind sections */
+.glow{position:relative;isolation:isolate}
+.glow::before{content:"";position:absolute;z-index:-1;pointer-events:none;width:min(900px,90vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,90,31,.20),rgba(255,90,31,.06) 55%,rgba(255,90,31,0));filter:blur(10px)}
+#top.glow::before{right:-12%;top:-18%}
+#cave-base.glow::before{left:-20%;top:-10%;width:min(760px,80vw);opacity:.8}
+
+/* Film stills */
+.still{position:relative;overflow:hidden;background:var(--stage-3);border:1px solid var(--edge);border-radius:11px;box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 18px 36px -22px rgba(0,0,0,.85),0 6px 12px -8px rgba(0,0,0,.55)}
+.still img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.still::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 -90px 90px -60px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.06)}
+.still .tag{position:absolute;z-index:1;top:12px;left:12px;background:var(--ember);color:var(--stage);padding:5px 10px;border-radius:999px;font-weight:500;font-size:11px}
+.ep{text-decoration:none;color:var(--bone);display:flex;flex-direction:column;gap:18px;min-width:0}
+.ep>div:not(.still){position:relative;z-index:1}
+.ep:hover{color:var(--bone)}
+.ep .still{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .2s}
+.ep:hover .still{transform:translateY(-8px);border-color:var(--ember);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 40px 70px -24px rgba(0,0,0,.95),0 0 0 1px rgba(255,90,31,.5),0 18px 50px -20px rgba(255,90,31,.45)}
+.ep:hover .still img{transform:scale(1.045)}
+.ep-title{font-family:var(--display);text-transform:uppercase;font-weight:800;font-size:30px;line-height:1.05}
+.ep-line{font-size:14px;color:var(--ash);line-height:1.45}
+.ep-meta{color:var(--ash-2)}
+
+/* Hero */
+.hero{display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(48px,7vw,96px)}
+.hero-copy{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
+.hero h1{font-size:clamp(64px,10vw,148px);font-weight:900}
+.hero-film{flex:0 1 360px;min-width:0}
+.play{position:absolute;z-index:1;inset:0;display:flex;align-items:center;justify-content:center}
+.play span{width:72px;height:72px;border-radius:50%;background:rgba(13,11,9,.45);border:2px solid var(--bone);display:flex;align-items:center;justify-content:center;transition:transform .25s}
+.ep:hover .play span{transform:scale(1.08)}
+
+/* Proof band (cream) */
+.proof{background:var(--bone);color:var(--stage);position:relative;z-index:1;box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.proof-grid{display:flex;flex-wrap:wrap;gap:1px;background:var(--bone-2)}
+.proof-cell{flex:1 1 220px;min-width:0;background:var(--bone);padding:28px clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:8px}
+.proof-num{font-family:var(--display);font-weight:900;font-size:64px;line-height:.9;font-variant-numeric:tabular-nums}
+.proof-cell span:last-child{font-size:15px;color:var(--ink-2);line-height:1.4}
+.proof-note{padding:14px clamp(20px,2.4vw,32px) 18px;color:var(--ink-3);font-size:11px;border-top:1px solid var(--bone-2)}
+
+/* Sections */
+.section{padding-block:clamp(64px,8vw,112px)}
+.band{background:var(--stage-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section-head{display:flex;flex-wrap:wrap;gap:24px 64px;align-items:flex-end;justify-content:space-between}
+.row{display:flex;flex-wrap:wrap;gap:20px}
+.row>.ep{flex:1 1 210px}
+
+/* What's new side card */
+.side-card{flex:1 1 300px;min-width:0;border:1px solid var(--line-2);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01)),var(--stage-3);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 40px 80px -30px rgba(0,0,0,.9)}
+.social{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line-2);border-radius:10px;text-decoration:none;color:var(--bone);transition:border-color .2s,transform .2s}
+.social:hover{border-color:var(--ember);color:var(--bone);transform:translateY(-2px)}
+.social svg{flex:none}
+.social b{display:block;font-weight:600;font-size:15px}
+.social small{color:var(--ash-2);font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+
+/* Woof case (cream) */
+.case{background:var(--bone);color:var(--stage)}
+.case .wrap{display:flex;flex-wrap:wrap;gap:48px 72px;align-items:flex-start}
+.meter{display:flex;height:22px;border-radius:999px;overflow:hidden;background:#EAE2D3}
+.meter div{width:96%;background:var(--stage)}
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--bone-2);border:1px solid var(--bone-2);border-radius:11px;overflow:hidden;box-shadow:0 24px 50px -28px rgba(60,30,10,.45),0 2px 6px rgba(60,30,10,.08)}
+.case-grid div{background:var(--bone);padding:20px;display:flex;flex-direction:column;gap:4px}
+.case-grid .proof-num{font-size:44px}
+
+/* Services */
+.svc-row{display:flex;flex-wrap:wrap;gap:20px}
+.svc{flex:1 1 280px;min-width:0;border:1px solid var(--edge);border-radius:16px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:14px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0) 60%);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 30px 60px -28px rgba(0,0,0,.9);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.svc:hover{transform:translateY(-6px)}
+.svc h3{font-size:40px;font-weight:800}
+.svc p{margin:0;font-size:16px;line-height:1.55;color:var(--ash)}
+.svc-hot{flex:1.4 1 360px;background:var(--ember);color:var(--stage);border:0;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 30px 70px -24px rgba(255,90,31,.55),0 12px 24px -12px rgba(0,0,0,.8)}
+.svc-hot h3{font-size:clamp(40px,4vw,60px);font-weight:900;color:var(--stage)}
+.svc-hot p{color:#2A1A12;font-size:17px}
+
+/* Studio */
+.person{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:12px}
+.portrait{aspect-ratio:3/4;border-radius:13px;display:flex;align-items:flex-end;padding:16px;color:var(--ash-2)}
+
+/* Contact */
+.contact{display:flex;flex-wrap:wrap;gap:48px 72px;align-items:flex-start}
+.form{flex:1 1 480px;min-width:0;background:var(--stage-3);border:1px solid var(--edge);border-radius:18px;padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:20px;box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 40px 80px -30px rgba(0,0,0,.9)}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field-row{display:flex;flex-wrap:wrap;gap:16px}
+.field-row>.field{flex:1 1 200px}
+.field label,.legend{font-size:14px;font-weight:600}
+.field label em,.legend em{font-style:normal;font-weight:400;color:var(--ash-2)}
+.field input,.field textarea{background:var(--stage);border:1px solid #4A4238;color:var(--bone);border-radius:8px;padding:14px;font:inherit;font-size:16px;width:100%}
+.field textarea{resize:vertical;min-height:120px}
+.field input:focus,.field textarea:focus{outline:2px solid var(--ember-text);outline-offset:1px;border-color:transparent}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:var(--ember-text)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid #4A4238;border-radius:999px;font-size:14px;cursor:pointer}
+.chip:has(input:checked){border-color:var(--ember);background:rgba(255,90,31,.08)}
+.chip:has(input:focus-visible){outline:2px solid var(--ember-text);outline-offset:2px}
+.chip input{accent-color:var(--ember);margin:0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.status{border-radius:10px;padding:16px;font-size:15px;line-height:1.5}
+.status.ok{background:rgba(255,90,31,.1);border:1px solid rgba(255,90,31,.45)}
+.status.err{background:var(--stage);border:1px solid #4A4238}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.email{font-family:var(--mono);font-size:14px;letter-spacing:.02em;user-select:all;color:var(--bone)}
+
+/* Footer */
+.footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding-block:32px;align-items:center}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:14px;text-decoration:none}
+
+
+/* Logo reveal film: silent loop with sound and pause controls */
+.film{background:#000;position:relative}
+.film-frame{position:relative;max-width:1600px;margin:0 auto;aspect-ratio:16/9;max-height:86vh;max-height:86svh;width:100%}
+.film-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.film-ctrls{position:absolute;right:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);display:flex;gap:8px;z-index:2}
+.film-btn{display:inline-flex;align-items:center;gap:8px;min-width:44px;min-height:44px;padding:0 14px;justify-content:center;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font:600 13px/1 var(--body);cursor:pointer;transition:background .2s,border-color .2s}
+.film-btn:hover{background:rgba(255,90,31,.6);border-color:#fff}
+.film-btn:focus-visible{outline:2px solid var(--ember-text);outline-offset:2px}
+.film-btn .i-on,.film-btn[aria-pressed="true"] .i-off{display:none}
+.film-btn[aria-pressed="true"] .i-on{display:block}
+#film-pause .i-play,#film-pause[aria-pressed="true"] .i-pause{display:none}
+#film-pause[aria-pressed="true"] .i-play{display:block}
+@media (max-width:520px){.film-btn .t{display:none}.film-btn{padding:0}}
+
+
+/* ===== Torch wall ===== */
+/* The wall */
+.wall{position:relative;height:clamp(520px,52vw,640px);overflow:hidden;cursor:none;touch-action:pan-y;user-select:none;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#2A1D14}
+.wall:focus-visible{outline:2px solid var(--ember-text);outline-offset:-2px}
+.stone,.dark,.tw-glow{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stone{z-index:0}
+.paint{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;padding-inline:clamp(12px,3vw,40px)}
+.paint svg.wide,.paint svg.tall{width:100%;height:auto;max-height:100%;overflow:visible}
+.paint svg.wide{max-width:1300px}
+.paint svg.tall{display:none;max-width:520px}
+@media (max-width:720px){.paint svg.wide{display:none}.paint svg.tall{display:block}.wall{height:clamp(620px,170vw,760px)}}
+.paint text{font-family:"Amatic SC","Big Shoulders Display",Impact,sans-serif;font-weight:700;text-transform:uppercase}
+.dark{z-index:2;pointer-events:none}
+.tw-glow{z-index:3;pointer-events:none;mix-blend-mode:screen}
+.torchc{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:4;pointer-events:none}
+
+.hint{position:absolute;z-index:5;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:rgba(13,11,9,.6);border:1px solid rgba(255,255,255,.08);color:var(--ash);font-size:11px;transition:opacity .6s}
+.hint.gone{opacity:0}
+.ctrls{position:absolute;z-index:5;right:16px;top:16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.lightall{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(13,11,9,.55);color:var(--bone);font:500 13px/1 var(--body);cursor:pointer}
+.lightall:hover{border-color:var(--ember)}
+.lightall:focus-visible{outline:2px solid var(--ember-text);outline-offset:2px}
+
+/* Real text for screen readers and no-JS */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+
+/* Scroll-in reveals (progressive: Chrome/Edge; elsewhere content simply sits in place) */
+@keyframes rise{from{opacity:.35;transform:translateY(48px) scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .ember::after{animation:flicker 3.2s ease-in-out infinite}
+  @supports (animation-timeline:view()){
+    .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+    .reveal:nth-child(2){animation-range:entry 6% cover 32%}
+    .reveal:nth-child(3){animation-range:entry 12% cover 36%}
+    .reveal:nth-child(4){animation-range:entry 18% cover 40%}
+  }
+}
+@media (prefers-reduced-motion:reduce){.btn:hover,.svc:hover,.social:hover,.ep:hover .still,.ep:hover .still img{transform:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Spearpoint Studio, back to top">
+      <img src="assets/mark-stone.png" alt="" width="17" height="46">
+      <span>Spearpoint Studio</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#cave-base">Cave Base</a>
+      <a href="#whats-new">What’s new</a>
+      <a href="#results">Results</a>
+      <a href="#process">Process</a>
+      <a href="#studio">Studio</a>
+      <a class="btn btn-solid" href="#contact" style="min-height:44px;padding:0 20px">Let’s talk</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- LOGO REVEAL FILM: loops silently; sound and pause in the corner -->
+  <section class="film" id="film" aria-label="Spearpoint Studio logo reveal film">
+    <div class="film-frame">
+      <video id="film-video" muted loop playsinline preload="none" poster="assets/video/poster.jpg" aria-label="Spearpoint Studio logo reveal: a flight over a frozen river ends on a stone spearpoint in the snow"></video>
+      <div class="film-ctrls">
+        <button class="film-btn" id="film-sound" type="button" aria-pressed="false" aria-label="Turn sound on">
+          <svg class="i-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+          <svg class="i-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          <span class="t">Sound</span>
+        </button>
+        <button class="film-btn" id="film-pause" type="button" aria-pressed="false" aria-label="Pause the film">
+          <svg class="i-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="i-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5 20 12 7 19.5z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO -->
+  <section id="top" class="wrap hero glow">
+    <div class="hero-copy">
+      <div class="mono eyebrow">Original comedy · Branded films · Austin, TX</div>
+      <h1 class="disp">Funny films.<br><span class="ember">Serious</span> impact.</h1>
+      <p class="lede">Original comedy and branded films built to be shared. Home of <strong style="color:var(--bone)">Cave Base</strong>, the Stone Age product keynote that pulled 960K+ views in its first month.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-solid" href="#cave-base">Watch Cave Base</a>
+        <a class="btn btn-ghost" href="#contact">Start a project</a>
+      </div>
+    </div>
+    <a class="ep hero-film" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
+      <div class="still" style="aspect-ratio:9/16;border-radius:14px">
+        <img src="assets/woof.jpg" alt="Cave Base presenter beside a golden retriever on the cave stage" style="object-position:center 60%">
+        <span class="tag mono">Now playing</span>
+        <div class="play" aria-hidden="true"><span><svg width="22" height="24" viewBox="0 0 22 24"><path d="M3 2 L20 12 L3 22 Z" fill="#FAF6EF"/></svg></span></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+        <span class="ep-title" style="font-size:34px">Woof</span>
+        <span class="mono ep-meta">Cave Base · 459K views</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- PROOF -->
+  <section id="results" class="proof" aria-label="Results">
+    <div class="wrap">
+      <div class="proof-grid">
+        <div class="proof-cell"><span class="proof-num" style="color:var(--ember-deep)">96%</span><span>of Woof’s audience didn’t follow us yet</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="views">960K+</span><span>views across Instagram &amp; TikTok</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="shares">54K+</span><span>shares</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="followers">6.3K</span><span data-stat="followersNote">followers, up 27% in two weeks</span></div>
+      </div>
+      <div class="proof-note mono" data-stat="asOf">Instagram + TikTok · all posts through Oct 13, 2026</div>
+    </div>
+  </section>
+
+  <!-- CAVE BASE -->
+  <section id="cave-base" class="wrap section glow" style="display:flex;flex-direction:column;gap:48px">
+    <div class="section-head">
+      <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:18px">
+        <div class="mono eyebrow">The series</div>
+        <h2 class="disp" style="font-size:clamp(72px,11vw,160px);font-weight:900">Cave Base</h2>
+        <p class="disp" style="font-size:clamp(28px,3.2vw,44px);font-weight:700;color:var(--ash);line-height:1.12">Product launches, 10,000 years early.</p>
+      </div>
+      <p style="flex:1 1 340px;min-width:0;margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:28em">One stage. One very confident presenter. Every episode is a keynote you’ve seen a hundred times, for a product humanity hasn’t quite earned yet.</p>
+    </div>
+    <div class="row">
+      <a class="ep reveal" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
+        <div class="still" style="aspect-ratio:4/5"><img src="assets/woof.jpg" alt="Woof: presenter and golden retriever" style="object-position:center 55%" loading="lazy"></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">Woof</span><span class="ep-line">The product launch for man’s best friend.</span><span class="mono ep-meta" data-post="DdnM3osz2s-" style="margin-top:4px">459K views · 32K shares</span></div>
+      </a>
+      <a class="ep reveal" href="https://www.instagram.com/reel/DdcoZOAPKnf/" target="_blank" rel="noopener">
+        <div class="still" style="aspect-ratio:4/5"><img src="assets/fire-mini.jpg" alt="Fire Mini: presenter holding a candle in a stone holder" style="object-position:center 35%" loading="lazy"></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">Fire Mini</span><span class="ep-line">Small flame. Big announcement.</span><span class="mono ep-meta" data-post="DdcoZOAPKnf" style="margin-top:4px">167K views · 10.8K shares</span></div>
+      </a>
+      <a class="ep reveal" href="https://www.instagram.com/reel/Ddks5cyTrXc/" target="_blank" rel="noopener">
+        <div class="still" style="aspect-ratio:4/5"><img src="assets/bow.jpg" alt="BOW: presenter gesturing to a bow on a draped pedestal" style="object-position:center 40%" loading="lazy"></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">BOW</span><span class="ep-line">The Branch Operated Weapon. Extremely accurate. Conditions apply.</span><span class="mono ep-meta" data-post="Ddks5cyTrXc" style="margin-top:4px">44K views · 1.3K shares</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- WHAT'S NEW
+       Today: latest posts are listed by hand and the side card links to the channels.
+       Next: replace the posts and the side card with Spearpoint Studio analytics (via Zernio). -->
+  <section id="whats-new" class="band">
+    <div class="wrap section" style="display:flex;flex-direction:column;gap:40px">
+      <div class="section-head" style="gap:16px 40px">
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div class="mono eyebrow">What’s new</div>
+          <h2 class="disp" style="font-size:clamp(52px,6.5vw,92px);font-weight:900">Fresh off the stage.</h2>
+        </div>
+        <a class="btn btn-ghost" href="https://www.instagram.com/spearpointpro/" target="_blank" rel="noopener" style="min-height:44px">See everything on Instagram</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:stretch">
+        <div class="row" id="latest-posts" style="flex:999 1 620px;min-width:0">
+          <a class="ep reveal" href="https://www.instagram.com/reel/DdO0sZmv2U-/" target="_blank" rel="noopener" style="flex:1 1 180px">
+            <div class="still" style="aspect-ratio:4/5"><img src="assets/wheel.jpg" alt="Latest post: Wheel" style="object-position:center 45%" loading="lazy"><span class="tag mono">Latest</span></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><span class="mono ep-meta" style="font-size:11px">Instagram · Cave Base</span><span style="font-size:15px;line-height:1.4">Wheel. It rolls. That’s the whole pitch.</span></div>
+          </a>
+          <a class="ep reveal" href="https://www.instagram.com/reel/Ddks5cyTrXc/" target="_blank" rel="noopener" style="flex:1 1 180px">
+            <div class="still" style="aspect-ratio:4/5"><img src="assets/bow.jpg" alt="BOW" style="object-position:center 40%" loading="lazy"></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><span class="mono ep-meta" style="font-size:11px">Instagram · Cave Base</span><span style="font-size:15px;line-height:1.4">BOW. Precision, with a few caveats.</span></div>
+          </a>
+        </div>
+        <aside class="side-card reveal" aria-label="Follow Spearpoint">
+          <span class="mono" style="color:var(--bone)">Follow the cave</span>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ash)">New Cave Base episodes land on Instagram and TikTok first.</p>
+          <a class="social" href="https://www.instagram.com/spearpointpro/" target="_blank" rel="noopener">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+            <span><b>Instagram</b><small>@spearpointpro</small></span>
+          </a>
+          <a class="social" href="https://www.tiktok.com/@spearpointpro" target="_blank" rel="noopener">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg>
+            <span><b>TikTok</b><small>@spearpointpro</small></span>
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- WOOF CASE -->
+  <section class="case">
+    <div class="wrap section">
+      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:20px">
+        <div class="mono" style="color:var(--ember-deep)">Case file · Woof</div>
+        <h2 class="disp" style="font-size:clamp(56px,7vw,104px);font-weight:900">People watched. Then they shared.</h2>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-2);max-width:30em">Woof reached people who had never heard of Spearpoint. That’s the job a brand hires us for: content that travels past the audience you already have.</p>
+      </div>
+      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span class="mono" style="color:var(--ink-2)">Who saw it</span><span class="proof-num" style="font-size:44px;color:var(--ember-deep)">96% new</span></div>
+          <div class="meter" role="img" aria-label="96 percent non-followers, 4 percent followers"><div></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)"><span>Non-followers · 96%</span><span>Followers · 4%</span></div>
+        </div>
+        <div class="case-grid reveal">
+          <div><span class="mono" style="color:var(--ink-3)">Views</span><span class="proof-num" data-woof="views">459K</span></div>
+          <div><span class="mono" style="color:var(--ink-3)">Shares</span><span class="proof-num" data-woof="shares">32,492</span></div>
+          <div><span class="mono" style="color:var(--ink-3)">Likes</span><span class="proof-num" data-woof="likes">24,389</span></div>
+          <div><span class="mono" style="color:var(--ink-3)">Saves</span><span class="proof-num" data-woof="saves">3,821</span></div>
+        </div>
+        <span class="mono" style="color:var(--ink-3);font-size:11px;line-height:1.6">Instagram · as of Oct 13, 2026 · audience split from Instagram insights at launch · interaction counts are not unique viewers</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW A PROJECT WORKS: the torch wall -->
+  <section id="process" aria-labelledby="process-h">
+    <div class="wrap section-head" style="padding-block:clamp(64px,8vw,104px) 32px">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="mono eyebrow">How a project works</div>
+        <h2 class="disp" id="process-h" style="font-size:clamp(52px,7vw,104px);font-weight:900">Written on the wall.</h2>
+      </div>
+      <p style="flex:1 1 340px;min-width:0;margin:0;max-width:30em;font-size:17px;line-height:1.6;color:var(--ash)">Grab the torch. Our whole process has been documented using the latest technology available.</p>
+    </div>
+    <span aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;font-family:'Amatic SC';font-weight:700">Concept Agree Crafting Share 0123456789</span>
+    <section class="wall" id="wall" tabindex="0" aria-label="Cave wall showing the four steps of a Spearpoint project. Move your pointer to light it.">
+  <canvas class="stone" id="stone" aria-hidden="true"></canvas>
+
+  <div class="paint" aria-hidden="true">
+    <svg width="0" height="0" style="position:absolute"><defs><filter id="scrawl" x="-4%" y="-20%" width="108%" height="140%">
+<feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="2" seed="3" result="wob"/>
+<feDisplacementMap in="SourceGraphic" in2="wob" scale="4.5" result="w1"/>
+<feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="8" result="edge"/>
+<feDisplacementMap in="w1" in2="edge" scale="2.6" result="w2"/>
+<feTurbulence type="fractalNoise" baseFrequency="1.3" numOctaves="2" seed="12" result="grain"/>
+<feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.75" result="holes"/>
+<feComposite in="w2" in2="holes" operator="in"/>
+</filter><g id="p1"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">01</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Concept</text><image href="art/concept.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="360" fill="#F1E6D2" font-size="31" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">We pitch the bit.</text></g><g id="p2"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">02</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Agree</text><image href="art/agree.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="360" fill="#F1E6D2" font-size="31" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">We agree on the idea.</text></g><g id="p3"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">03</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Crafting</text><image href="art/crafting.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="360" fill="#F1E6D2" font-size="31" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">We build every</tspan><tspan x="0" dy="32">piece by hand.</tspan></text></g><g id="p4"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">04</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Share</text><image href="art/share.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="360" fill="#F1E6D2" font-size="31" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">Get feedback for</tspan><tspan x="0" dy="32">the next round.</tspan></text></g></defs></svg>
+    <svg class="wide" viewBox="0 0 1400 450" role="presentation">
+      <use href="#p1" x="20" y="70"/><use href="#p2" x="370" y="70"/><use href="#p3" x="720" y="70"/><use href="#p4" x="1070" y="70"/>
+    </svg>
+    <svg class="tall" viewBox="0 0 700 930" role="presentation">
+      <use href="#p1" x="15" y="80"/><use href="#p2" x="365" y="80"/><use href="#p3" x="15" y="520"/><use href="#p4" x="365" y="520"/>
+    </svg>
+  </div>
+
+  <canvas class="dark" id="dark" aria-hidden="true"></canvas>
+  <canvas class="tw-glow" id="glow" aria-hidden="true"></canvas>
+  <canvas class="torchc" id="torchc" aria-hidden="true"></canvas>
+
+  <div class="ctrls"><button class="lightall" id="flamemode" type="button">Flame: realistic</button><button class="lightall" id="lightall" type="button">Light the whole wall</button></div>
+  <div class="hint mono" id="hint" aria-hidden="true">
+    <svg width="12" height="16" viewBox="0 0 12 16" aria-hidden="true"><path d="M6 1c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8z" fill="#FF6A2B"/></svg>
+    <span id="hint-text">Move to light the wall</span>
+  </div>
+
+  <ol class="sr">
+    <li>01 Concept: We pitch the bit.</li>
+    <li>02 Agree: We agree on the idea.</li>
+    <li>03 Crafting: We build every piece by hand.</li>
+    <li>04 Share: Get feedback for the next round.</li>
+  </ol>
+</section>
+  </section>
+
+  <!-- LABS -->
+  <section class="wrap section" style="display:flex;flex-wrap:wrap;gap:40px 72px;align-items:center">
+    <div class="still reveal" style="flex:1 1 480px;min-width:0;aspect-ratio:16/9;border-radius:14px"><img src="assets/love-sucks.jpg" alt="Love Sucks: a man on the couch with popcorn beside a robot vacuum" style="object-position:center 38%" loading="lazy"></div>
+    <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px">
+      <div class="mono eyebrow">Spearpoint Labs</div>
+      <h2 class="disp" style="font-size:clamp(52px,6vw,88px);font-weight:900">Love Sucks</h2>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ash)">A romantic comedy trailer. A man. A robot vacuum. It’s time to come clean.</p>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:var(--ash-2)">Labs is where we test new formats before they become series.</p>
+    </div>
+  </section>
+
+  <!-- STUDIO -->
+  <section id="studio" class="band">
+    <div class="wrap section" style="display:flex;flex-wrap:wrap;gap:48px 72px;align-items:center">
+      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:20px">
+        <div class="mono eyebrow">The studio</div>
+        <h2 class="disp" style="font-size:clamp(52px,6vw,88px);font-weight:900">We take the craft seriously.</h2>
+        <p class="disp" style="font-size:clamp(28px,3vw,40px);font-weight:700;color:var(--ash);line-height:1.12">The subject matter? That’s another story.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:30em">Spearpoint is two creators, Jordan and Kevin. You work with us directly, from the first conversation to the final cut. No account managers, no hand-offs.</p>
+      </div>
+      <div style="flex:1 1 440px;min-width:0;display:flex;flex-wrap:wrap;gap:20px">
+        <div class="person reveal">
+          <div class="still portrait"><img src="assets/jordan.webp" alt="Jordan, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
+          <div style="display:flex;flex-direction:column;gap:2px"><span class="ep-title" style="font-size:28px">Jordan</span><span class="mono ep-meta">Chief Cave Illustrationist</span></div>
+        </div>
+        <div class="person reveal">
+          <div class="still portrait"><img src="assets/kevin.webp" alt="Kevin, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
+          <div style="display:flex;flex-direction:column;gap:2px"><span class="ep-title" style="font-size:28px">Kevin</span><span class="mono ep-meta">Senior Thinking Maker</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="wrap section contact">
+    <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:20px">
+      <div class="mono eyebrow">Let’s make something worth watching</div>
+      <h2 class="disp" style="font-size:clamp(64px,8vw,120px);font-weight:900">Got a good <span class="ember">bad</span> idea?</h2>
+      <p class="lede" style="max-width:26em">Tell us what you’re working on. Your message goes straight to Jordan and Kevin.</p>
+      <p style="margin:0;font-size:15px;color:var(--ash-2)">Prefer email? <span class="email">spearpointcontent@gmail.com</span></p>
+    </div>
+
+    <form class="form" id="inquiry" novalidate>
+      <div class="field-row">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="field"><label for="f-brand">Brand or website <em>(optional)</em></label><input id="f-brand" name="brand" type="text" autocomplete="organization"></div>
+      <div class="field"><label for="f-message">What are you working on?</label><textarea id="f-message" name="message" rows="4" required placeholder="A product launch, a campaign, a good bad idea…"></textarea></div>
+      <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+        <legend class="legend" style="margin-bottom:10px">Approximate budget <em>(optional)</em></legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="budget" id="b-0" value="Not sure yet" checked> Not sure yet</label>
+          <label class="chip"><input type="radio" name="budget" id="b-1" value="Under $5K"> Under $5K</label>
+          <label class="chip"><input type="radio" name="budget" id="b-2" value="$5K–$10K"> $5K–$10K</label>
+          <label class="chip"><input type="radio" name="budget" id="b-3" value="$10K–$20K"> $10K–$20K</label>
+          <label class="chip"><input type="radio" name="budget" id="b-4" value="$20K+"> $20K+</label>
+        </div>
+      </fieldset>
+      <div class="field"><label for="f-timing">Timing <em>(optional)</em></label><input id="f-timing" name="timing" type="text" placeholder="e.g. Launching in Q1"></div>
+      <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+      <div id="form-status" role="status" aria-live="polite"></div>
+      <button type="submit" class="btn btn-hot" id="f-submit" style="align-self:flex-start;font-size:16px">Start a conversation</button>
+    </form>
+  </section>
+</main>
+
+<footer class="footer" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Spearpoint Studio, back to top"><img src="assets/mark-stone.png" alt="" width="17" height="46"><span>Spearpoint Studio</span></a>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/spearpointpro/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@spearpointpro" target="_blank" rel="noopener">TikTok</a>
+      <a href="#cave-base">Cave Base</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <span class="mono" style="color:var(--ash-3)">© 2026 Spearpoint Studio</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Inquiries are emailed through FormSubmit. The first submission sends a one-time
+  // activation email to this address; after that, every inquiry arrives as a normal email.
+  var INBOX = 'spearpointcontent@gmail.com';
+  var ENDPOINT = 'https://formsubmit.co/ajax/' + INBOX;
+
+  var form = document.getElementById('inquiry');
+  var statusEl = document.getElementById('form-status');
+  var submitBtn = document.getElementById('f-submit');
+
+  function val(id){ return (document.getElementById(id).value || '').trim(); }
+  function setInvalid(el, bad){ el.setAttribute('aria-invalid', bad ? 'true' : 'false'); }
+
+  function compose(d){
+    return 'Name: ' + d.name + '\nEmail: ' + d.email + (d.brand ? '\nBrand: ' + d.brand : '') +
+      '\nBudget: ' + d.budget + (d.timing ? '\nTiming: ' + d.timing : '') + '\n\n' + d.message;
+  }
+
+  function showSent(){
+    statusEl.className = 'status ok';
+    statusEl.textContent = 'Sent. Jordan and Kevin will get back to you soon.';
+  }
+
+  function showFallback(d){
+    statusEl.className = 'status err';
+    statusEl.innerHTML = '';
+    var p = document.createElement('p');
+    p.style.margin = '0';
+    p.textContent = 'Your message didn’t go through from this page. Copy it and email us directly at:';
+    var row = document.createElement('div'); row.className = 'copyrow';
+    var addr = document.createElement('span'); addr.className = 'email'; addr.textContent = INBOX;
+    var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'btn btn-ghost';
+    btn.style.minHeight = '40px'; btn.textContent = 'Copy my message';
+    btn.addEventListener('click', function(){
+      var text = compose(d);
+      var done = function(){ btn.textContent = 'Copied'; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function(){ selectFallback(text); });
+      } else { selectFallback(text); }
+    });
+    row.appendChild(addr); row.appendChild(btn);
+    statusEl.appendChild(p); statusEl.appendChild(row);
+  }
+
+  function selectFallback(text){
+    var ta = document.getElementById('f-message');
+    ta.value = text; ta.focus(); ta.select();
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var nameEl = document.getElementById('f-name'), emailEl = document.getElementById('f-email'), msgEl = document.getElementById('f-message');
+    var d = {
+      name: val('f-name'), email: val('f-email'), brand: val('f-brand'), message: val('f-message'), timing: val('f-timing'),
+      budget: (form.querySelector('input[name="budget"]:checked') || {}).value || 'Not sure yet'
+    };
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
+    setInvalid(nameEl, !d.name); setInvalid(emailEl, !emailOk); setInvalid(msgEl, !d.message);
+    if (!d.name || !emailOk || !d.message) {
+      statusEl.className = 'status err';
+      statusEl.textContent = !d.name ? 'Add your name so we know who to reply to.' : !emailOk ? 'Add a valid email address so we can reply.' : 'Tell us a little about the project.';
+      (!d.name ? nameEl : !emailOk ? emailEl : msgEl).focus();
+      return;
+    }
+    if (val('f-hp')) { showSent(); form.reset(); return; }
+
+    submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+    statusEl.className = ''; statusEl.textContent = '';
+
+    var payload = {
+      name: d.name, email: d.email, brand: d.brand || '—', budget: d.budget, timing: d.timing || '—', message: d.message,
+      _subject: 'New Spearpoint inquiry from ' + d.name, _replyto: d.email, _template: 'table', _captcha: 'false'
+    };
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 12000);
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { ok: r.ok, j: j }; }); })
+      .then(function(res){
+        if (res.ok && String(res.j.success) !== 'false') { showSent(); form.reset(); }
+        else { showFallback(d); }
+      })
+      .catch(function(){ showFallback(d); })
+      .then(function(){ clearTimeout(timer); submitBtn.disabled = false; submitBtn.textContent = 'Start a conversation'; });
+  });
+})();
+</script>
+
+<script>
+// Live numbers from Spearpoint's Zernio analytics, served by the site's own /api/stats.
+// The numbers already on the page are the fallback: if the API is unavailable, nothing changes.
+(function(){
+  function fmt(n){
+    if (n >= 1e6) return (Math.floor(n/1e5)/10) + 'M+';
+    if (n >= 1e5) return (Math.floor(n/1e4)*10) + 'K+';
+    if (n >= 1e4) return Math.floor(n/1e3) + 'K+';
+    if (n >= 1e3) return (Math.floor(n/100)/10) + 'K';
+    return String(n);
+  }
+  function short(n){ // 451234 -> 451K, 32066 -> 32K, 1456 -> 1.4K
+    if (n >= 1e6) return (Math.floor(n/1e5)/10) + 'M';
+    if (n >= 1e4) return Math.floor(n/1e3) + 'K';
+    if (n >= 1e3) return (Math.floor(n/100)/10) + 'K';
+    return String(n);
+  }
+  function comma(n){ return Number(n).toLocaleString('en-US'); }
+  function ago(iso){
+    var d = (Date.now() - new Date(iso).getTime()) / 864e5;
+    if (d < 1) return 'today'; if (d < 2) return 'yesterday';
+    if (d < 14) return Math.floor(d) + ' days ago';
+    return Math.floor(d/7) + ' weeks ago';
+  }
+  function set(sel, text){ var el = document.querySelector(sel); if (el && text) el.textContent = text; }
+
+  fetch('/api/stats', { headers: { 'Accept': 'application/json' } })
+    .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(d){
+      if (!d || !d.totals) return;
+      set('[data-stat="views"]', fmt(d.totals.views));
+      set('[data-stat="shares"]', fmt(d.totals.shares));
+      set('[data-stat="followers"]', short(d.totals.followers));
+      if (d.totals.followerGrowthPct > 0) set('[data-stat="followersNote"]', 'followers, up ' + Math.round(d.totals.followerGrowthPct) + '% in two weeks');
+      else set('[data-stat="followersNote"]', 'followers across Instagram & TikTok');
+      set('[data-stat="asOf"]', 'Instagram + TikTok · all posts · live from our analytics, updated ' + new Date(d.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+
+      var by = d.byShortcode || {};
+      document.querySelectorAll('[data-post]').forEach(function(el){
+        var p = by[el.getAttribute('data-post')];
+        if (p) el.textContent = short(p.views) + ' views · ' + short(p.shares) + ' shares';
+      });
+      var woof = by['DdnM3osz2s-'];
+      if (woof) {
+        set('[data-woof="views"]', short(woof.views));
+        set('[data-woof="shares"]', comma(woof.shares));
+        set('[data-woof="likes"]', comma(woof.likes));
+        set('[data-woof="saves"]', comma(woof.saves));
+      }
+
+      var list = document.getElementById('latest-posts');
+      if (list && d.latest && d.latest.length >= 2) {
+        var frag = document.createDocumentFragment();
+        d.latest.slice(0, 2).forEach(function(p, i){
+          var a = document.createElement('a');
+          a.className = 'ep'; a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; a.style.flex = '1 1 180px';
+          var still = document.createElement('div'); still.className = 'still'; still.style.aspectRatio = '4/5';
+          if (p.thumb) { var img = document.createElement('img'); img.src = p.thumb; img.alt = p.title; img.loading = 'lazy'; still.appendChild(img); }
+          if (i === 0) { var tag = document.createElement('span'); tag.className = 'tag mono'; tag.textContent = 'Latest'; still.appendChild(tag); }
+          var meta = document.createElement('div'); meta.style.cssText = 'display:flex;flex-direction:column;gap:6px';
+          var m1 = document.createElement('span'); m1.className = 'mono ep-meta'; m1.style.fontSize = '11px'; m1.textContent = p.platforms.join(' + ') + ' · ' + ago(p.publishedAt);
+          var m2 = document.createElement('span'); m2.style.cssText = 'font-size:15px;line-height:1.4'; m2.textContent = p.title;
+          var m3 = document.createElement('span'); m3.className = 'mono ep-meta'; m3.style.fontSize = '11px'; m3.textContent = short(p.views) + ' views · ' + short(p.shares) + ' shares';
+          meta.appendChild(m1); meta.appendChild(m2); meta.appendChild(m3);
+          a.appendChild(still); a.appendChild(meta); frag.appendChild(a);
+        });
+        list.innerHTML = ''; list.appendChild(frag);
+      }
+    })
+    .catch(function(){ /* keep the built-in numbers */ });
+})();
+</script>
+
+<script>
+// Logo reveal film: plays muted on a loop; visitors can turn sound on or pause it.
+(function(){
+  var v = document.getElementById('film-video'), snd = document.getElementById('film-sound'), pz = document.getElementById('film-pause');
+  if (!v) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var userPaused = reduce; // reduced motion: start paused on the poster
+  v.src = 'assets/video/logo-reveal-' + (window.innerWidth >= 1100 && (window.devicePixelRatio || 1) * window.innerWidth > 1300 ? '1080' : '720') + '.mp4';
+  v.muted = true;
+  function syncPause(){ var p = v.paused; pz.setAttribute('aria-pressed', String(p)); pz.setAttribute('aria-label', p ? 'Play the film' : 'Pause the film'); }
+  function tryPlay(){ var p = v.play(); if (p && p.catch) p.catch(function(){ syncPause(); }); }
+  if (!reduce){ v.preload = 'auto'; tryPlay(); }
+  v.addEventListener('play', syncPause); v.addEventListener('pause', syncPause);
+  pz.addEventListener('click', function(){ if (v.paused){ userPaused = false; tryPlay(); } else { userPaused = true; v.pause(); } });
+  snd.addEventListener('click', function(){
+    v.muted = !v.muted;
+    snd.setAttribute('aria-pressed', String(!v.muted)); snd.setAttribute('aria-label', v.muted ? 'Turn sound on' : 'Turn sound off');
+    if (!v.muted && v.paused){ userPaused = false; tryPlay(); }
+  });
+  // stop playing (and stop using data) while it's scrolled out of view
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting){ if (!userPaused) tryPlay(); }
+      else if (!v.paused){ v.pause(); }
+    }, { threshold: .15 }).observe(v);
+  }
+  syncPause();
+})();
+</script>
+<script>
+(function(){
+  var wall = document.getElementById('wall');
+  var stone = document.getElementById('stone'), dark = document.getElementById('dark'), glow = document.getElementById('glow'), tc = document.getElementById('torchc');
+  var dctx = dark.getContext('2d'), gctx = glow.getContext('2d'), tctx = tc.getContext('2d');
+  var hint = document.getElementById('hint'), hintText = document.getElementById('hint-text');
+  var lightAllBtn = document.getElementById('lightall');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var coarse = window.matchMedia('(hover: none)').matches;
+  if (coarse) hintText.textContent = 'Grab the torch to light the wall';
+
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+  // torch.x/y = top of the torch head, where the flame sits
+  var torch = { x: 0, y: 0, tx: 0, ty: 0, vx: 0, tilt: .34, active: false, lastMove: 0 };
+  var GRIP = 128; // distance from the hand to the torch head, along the stick
+  var sparks = [], fire = [], realFlame = !reduce;
+  var flameBtn = document.getElementById('flamemode');
+  if (reduce) flameBtn.textContent = 'Flame: classic';
+  flameBtn.addEventListener('click', function(){ realFlame = !realFlame; flameBtn.textContent = 'Flame: ' + (realFlame ? 'realistic' : 'classic'); fire.length = 0; });
+  // soft glowing sprites, one per stage of the fire's colour as it cools
+  function sprite(rgb){
+    var c = document.createElement('canvas'); c.width = c.height = 64;
+    var x = c.getContext('2d'), g = x.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0,'rgba(' + rgb + ',1)'); g.addColorStop(.35,'rgba(' + rgb + ',.55)'); g.addColorStop(1,'rgba(' + rgb + ',0)');
+    x.fillStyle = g; x.fillRect(0,0,64,64); return c;
+  }
+  var fireRamp = [sprite('255,222,160'), sprite('255,184,92'), sprite('248,132,48'), sprite('214,82,24'), sprite('130,36,12')];
+  var lit = 0, litTarget = 0;
+  var visible = true, raf = 0, t0 = performance.now(), last = t0;
+
+  // ----- stone: colour and height maps are generated once, then lit live by the torch on the GPU -----
+  var albedoC = document.createElement('canvas'), heightC = document.createElement('canvas');
+  var sctx = albedoC.getContext('2d'), hctx = heightC.getContext('2d');
+  var TS = 1; // texture scale (CSS px per texel)
+  var gl = null, prog = null, texA = null, texH = null, U = {};
+  var fallback2d = null;
+  function rand(seed){ return function(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  function paintStone(){
+    var r = rand(7);
+    sctx.setTransform(TS,0,0,TS,0,0);
+    var g = sctx.createLinearGradient(0,0,W,H);
+    g.addColorStop(0,'#6A4C36'); g.addColorStop(.5,'#5A412E'); g.addColorStop(1,'#4A3524');
+    sctx.fillStyle = g; sctx.fillRect(0,0,W,H);
+    for (var i=0;i<140;i++){
+      var x=r()*W, y=r()*H, rad=40+r()*220, light=r()>.5;
+      var rg=sctx.createRadialGradient(x,y,0,x,y,rad);
+      rg.addColorStop(0, light ? 'rgba(120,88,60,.16)' : 'rgba(18,12,8,.22)');
+      rg.addColorStop(1,'rgba(0,0,0,0)');
+      sctx.fillStyle=rg; sctx.fillRect(x-rad,y-rad,rad*2,rad*2);
+    }
+    sctx.lineCap='round';
+    for (var c=0;c<26;c++){
+      var cx=r()*W, cy=r()*H, ang=r()*Math.PI*2;
+      sctx.beginPath(); sctx.moveTo(cx,cy);
+      for (var s=0;s<8+r()*14;s++){ ang+=(r()-.5)*.9; cx+=Math.cos(ang)*(8+r()*18); cy+=Math.sin(ang)*(8+r()*18); sctx.lineTo(cx,cy); }
+      sctx.strokeStyle='rgba(14,9,6,'+(.25+r()*.35)+')'; sctx.lineWidth=.6+r()*1.6; sctx.stroke();
+      sctx.strokeStyle='rgba(160,120,84,.10)'; sctx.lineWidth=.6; sctx.translate(.8,.8); sctx.stroke(); sctx.translate(-.8,-.8);
+    }
+    var img = sctx.getImageData(0,0,albedoC.width,albedoC.height), d = img.data;
+    for (var p=0;p<d.length;p+=4){ var n=(r()-.5)*26; d[p]+=n; d[p+1]+=n; d[p+2]+=n*.8; }
+    sctx.putImageData(img,0,0);
+  }
+
+  // Height map: R = surface height (light = raised), G = mineral flecks that glint
+  function paintHeight(){
+    var r = rand(11);
+    hctx.setTransform(TS,0,0,TS,0,0);
+    hctx.fillStyle = 'rgb(128,128,128)'; hctx.fillRect(0,0,W,H);
+    // broad swells and hollows, then smaller lumps, then chisel facets
+    var passes = [[30, 160, 340, .34], [200, 26, 110, .32], [900, 5, 26, .3]];
+    passes.forEach(function(pz){
+      for (var i=0;i<pz[0];i++){
+        var x=r()*W, y=r()*H, rad=pz[1]+r()*(pz[2]-pz[1]), up=r()>.5;
+        var g=hctx.createRadialGradient(x,y,0,x,y,rad);
+        g.addColorStop(0, up ? 'rgba(255,255,255,'+pz[3]+')' : 'rgba(0,0,0,'+pz[3]+')');
+        g.addColorStop(1,'rgba(128,128,128,0)');
+        hctx.fillStyle=g; hctx.fillRect(x-rad,y-rad,rad*2,rad*2);
+      }
+    });
+    // flat-ish knapped facets: hard-edged polygons, slightly raised or sunk
+    for (var f=0; f<160; f++){
+      var cx=r()*W, cy=r()*H, n=5+Math.floor(r()*3), rr=18+r()*60, up2=r()>.5;
+      hctx.beginPath();
+      for (var k=0;k<n;k++){ var an=k/n*Math.PI*2 + r()*.5, q=rr*(.6+r()*.5); hctx[k?'lineTo':'moveTo'](cx+Math.cos(an)*q, cy+Math.sin(an)*q); }
+      hctx.closePath(); hctx.fillStyle = up2 ? 'rgba(255,255,255,.13)' : 'rgba(0,0,0,.13)'; hctx.fill();
+    }
+    // cracks: deep grooves (same seed as the colour cracks so they line up)
+    var r2 = rand(7); for (var skip=0; skip<140*5; skip++) r2();
+    hctx.lineCap='round';
+    for (var c=0;c<26;c++){
+      var x0=r2()*W, y0=r2()*H, ang=r2()*Math.PI*2;
+      hctx.beginPath(); hctx.moveTo(x0,y0);
+      for (var s2=0;s2<8+r2()*14;s2++){ ang+=(r2()-.5)*.9; x0+=Math.cos(ang)*(8+r2()*18); y0+=Math.sin(ang)*(8+r2()*18); hctx.lineTo(x0,y0); }
+      var lw=.6+r2()*1.6; r2();
+      hctx.strokeStyle='rgba(0,0,0,.55)'; hctx.lineWidth=lw+1.5; hctx.stroke();
+    }
+    // grain + flecks
+    var img = hctx.getImageData(0,0,heightC.width,heightC.height), d = img.data;
+    for (var p=0;p<d.length;p+=4){
+      var v = d[p] + (r()-.5)*18;
+      d[p] = v; d[p+1] = 0; d[p+2] = 0; d[p+3] = 255;
+    }
+    hctx.putImageData(img,0,0);
+  }
+
+  // ----- WebGL relighting -----
+  var VS = 'attribute vec2 p; varying vec2 uv; void main(){ uv = vec2(p.x*.5+.5, .5-p.y*.5); gl_Position = vec4(p,0.,1.); }';
+  var FS = [
+    'precision mediump float;',
+    'uniform sampler2D albedo, height; uniform vec2 res, light; uniform float reach, power, lit;',
+    'varying vec2 uv;',
+    'float h(vec2 o){ return texture2D(height, uv + o).r; }',
+    'void main(){',
+    '  vec2 px = 1.0 / res;',
+    '  float dx = h(vec2(px.x,0.)) - h(vec2(-px.x,0.));',
+    '  float dy = h(vec2(0.,px.y)) - h(vec2(0.,-px.y));',
+    '  vec3 N = normalize(vec3(-dx*16.0, -dy*16.0, 1.0));',
+    '  vec3 base = texture2D(albedo, uv).rgb;',
+    '  float fleck = texture2D(height, uv).g;',
+    '  vec2 frag = uv * res;',
+    '  vec3 Lv = vec3(light - frag, 80.0); float d = length(Lv); vec3 L = Lv / d;',
+    '  float att = 1.0 / (1.0 + (d*d) / (reach*reach));',
+    '  float diff = max(dot(N, L), 0.0);',
+    '  vec3 Hh = normalize(L + vec3(0.,0.,1.));',
+    '  float nh = max(dot(N, Hh), 0.0);',
+    '  float sheen = pow(nh, 18.0) * .22;',
+    '  float glint = 0.0;',
+    '  vec3 fire = vec3(1.0, .62, .32);',
+    '  vec3 amb = base * (.42 + .25*lit);',
+    '  vec3 col = amb * mix(.75, 1.15, diff) + base * fire * diff * att * 1.6 * power + fire * (sheen + glint) * att * power;',
+    '  col *= mix(.78, 1.0, smoothstep(.0, 1.0, N.z*1.2 - .2));',
+    '  gl_FragColor = vec4(col, 1.0);',
+    '}'
+  ].join('\n');
+  function initGL(){
+    try { gl = stone.getContext('webgl', { premultipliedAlpha: false, antialias: false }); } catch(e){ gl = null; }
+    if (!gl){ fallback2d = stone.getContext('2d'); return; }
+    function sh(type, src){ var x = gl.createShader(type); gl.shaderSource(x, src); gl.compileShader(x); if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(x)); return x; }
+    try {
+      prog = gl.createProgram();
+      gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
+      gl.linkProgram(prog); gl.useProgram(prog);
+    } catch(e){ gl = null; fallback2d = stone.getContext('2d'); return; }
+    var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(prog, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    ['albedo','height','res','light','reach','power','lit'].forEach(function(n){ U[n] = gl.getUniformLocation(prog, n); });
+    texA = gl.createTexture(); texH = gl.createTexture();
+  }
+  function upload(tex, unit, src){
+    gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, src);
+  }
+  function drawStone(lx, ly, reach, power){
+    if (!gl){ if (fallback2d){ fallback2d.setTransform(1,0,0,1,0,0); fallback2d.drawImage(albedoC, 0, 0, stone.width, stone.height); } return; }
+    gl.viewport(0, 0, stone.width, stone.height);
+    gl.uniform1i(U.albedo, 0); gl.uniform1i(U.height, 1);
+    gl.uniform2f(U.res, W, H); gl.uniform2f(U.light, lx, ly);
+    gl.uniform1f(U.reach, reach); gl.uniform1f(U.power, power); gl.uniform1f(U.lit, lit);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+
+  function resize(){
+    var rect = wall.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    [stone,dark,glow,tc].forEach(function(c){ c.width = Math.round(W*DPR); c.height = Math.round(H*DPR); });
+    albedoC.width = heightC.width = Math.round(W*TS); albedoC.height = heightC.height = Math.round(H*TS);
+    paintStone(); paintHeight();
+    if (gl){ upload(texA, 0, albedoC); upload(texH, 1, heightC); }
+    [dctx,gctx,tctx].forEach(function(x){ x.setTransform(DPR,0,0,DPR,0,0); });
+    dctx.globalCompositeOperation='source-over';
+    dctx.fillStyle='rgba(6,4,3,1)'; dctx.fillRect(0,0,W,H);
+    if (!torch.active){ torch.x = torch.tx = W*.5; torch.y = torch.ty = H*.5; }
+  }
+
+
+  // Make sure the hand-drawn font is downloaded (fonts used only inside SVG drawings are often skipped),
+  // then nudge the drawing to re-render with it.
+  if (document.fonts && document.fonts.load){
+    document.fonts.load('700 48px "Amatic SC"').then(function(){
+      document.querySelectorAll('.paint svg').forEach(function(sv){ sv.style.display = 'none'; void sv.offsetWidth; sv.style.display = ''; });
+    }).catch(function(){});
+  }
+
+  // ----- input -----
+  function setTarget(clientX, clientY){
+    var rect = wall.getBoundingClientRect();
+    torch.gx = clientX - rect.left; torch.gy = clientY - rect.top;
+    torch.active = true; torch.lastMove = performance.now();
+    hint.classList.add('gone');
+  }
+  // Mouse and pen: the torch simply follows the pointer.
+  wall.addEventListener('pointermove', function(e){ if (e.pointerType !== 'touch') setTarget(e.clientX, e.clientY); });
+  wall.addEventListener('pointerdown', function(e){ if (e.pointerType !== 'touch') setTarget(e.clientX, e.clientY); });
+  wall.addEventListener('pointerleave', function(e){ if (e.pointerType !== 'touch') torch.lastMove = 0; });
+
+  // Touch: a finger that lands on or near the torch picks it up (and the page stays put);
+  // a finger anywhere else scrolls the page as normal. A quick tap elsewhere moves the torch there.
+  var dragging = false, tapStart = null;
+  function nearTorch(x, y){
+    // distance from the touch to the stick, from the flame down to the hand
+    var hx = torch.x, hy = torch.y - 40, gx = torch.x - Math.sin(torch.tilt)*GRIP, gy = torch.y + Math.cos(torch.tilt)*GRIP + 20;
+    var dx = gx - hx, dy = gy - hy, len2 = dx*dx + dy*dy, k = Math.max(0, Math.min(1, ((x-hx)*dx + (y-hy)*dy) / len2));
+    var px = hx + k*dx, py = hy + k*dy;
+    return Math.hypot(x - px, y - py) < 56;
+  }
+  wall.addEventListener('touchstart', function(e){
+    if (e.touches.length !== 1) return;
+    var t0 = e.touches[0], r = wall.getBoundingClientRect(), x = t0.clientX - r.left, y = t0.clientY - r.top;
+    if (nearTorch(x, y)){
+      dragging = true; e.preventDefault();
+      // keep the stick where the finger grabbed it
+      torch.gx = x; torch.gy = y; torch.active = true; torch.lastMove = performance.now(); hint.classList.add('gone');
+    } else {
+      tapStart = { x: x, y: y, t: performance.now() };
+    }
+  }, { passive: false });
+  wall.addEventListener('touchmove', function(e){
+    if (!dragging) { tapStart = null; return; }
+    e.preventDefault();
+    setTarget(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: false });
+  wall.addEventListener('touchend', function(e){
+    if (!dragging && tapStart && performance.now() - tapStart.t < 300){
+      var r = wall.getBoundingClientRect();
+      setTarget(tapStart.x + r.left, tapStart.y + r.top);
+    }
+    dragging = false; tapStart = null;
+  });
+  wall.addEventListener('touchcancel', function(){ dragging = false; tapStart = null; });
+  wall.addEventListener('keydown', function(e){
+    var step = 40, k = e.key;
+    if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].indexOf(k) < 0) return;
+    e.preventDefault();
+    if (!torch.active || torch.gx == null){ torch.gx = torch.x - Math.sin(torch.tilt)*GRIP; torch.gy = torch.y + Math.cos(torch.tilt)*GRIP; }
+    if (k==='ArrowLeft') torch.gx -= step; if (k==='ArrowRight') torch.gx += step;
+    if (k==='ArrowUp') torch.gy -= step; if (k==='ArrowDown') torch.gy += step;
+    torch.gx = Math.max(0,Math.min(W,torch.gx)); torch.gy = Math.max(0,Math.min(H+GRIP,torch.gy));
+    torch.active = true; torch.lastMove = performance.now(); hint.classList.add('gone');
+  });
+  lightAllBtn.addEventListener('click', function(){
+    litTarget = litTarget ? 0 : 1;
+    lightAllBtn.textContent = litTarget ? 'Back to torchlight' : 'Light the whole wall';
+    hint.classList.add('gone');
+  });
+
+  // ----- light shape: three overlapping, independently flickering lobes, taller than wide,
+  // centred a little above the torch head, so the edge is ragged like real firelight -----
+  function lobes(t, R){
+    // all three pools start at the flame (just above the torch head) and lean upward: egg-shaped light
+    var fx = torch.x, fy = torch.y - 30;
+    return [
+      { x: fx + 4*Math.sin(t*1.7),              y: fy,                        r: R,       sy: 1.12, up: .38 },
+      { x: fx + R*.14*Math.sin(t*.9+1),         y: fy - 8 + 6*Math.sin(t*2.3), r: R*.78,  sy: 1.2,  up: .48 },
+      { x: fx - R*.12 + 8*Math.sin(t*1.3+2),    y: fy + 4,                    r: R*.66,   sy: 1.0,  up: .28 }
+    ];
+  }
+  // Two-circle radial gradient: inner point at the flame, outer circle shifted up,
+  // so light reaches far above the flame and stops short below it.
+  function blob(ctx, L, stops){
+    ctx.save(); ctx.translate(L.x, L.y); ctx.scale(1, L.sy);
+    var oy = -L.r * L.up;
+    var g = ctx.createRadialGradient(0, 0, 0, 0, oy, L.r);
+    for (var i=0;i<stops.length;i++) g.addColorStop(stops[i][0], stops[i][1]);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, oy, L.r, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+
+  // ----- the torch itself -----
+  function drawTorch(ctx, t, f){
+    var hx = torch.x, hy = torch.y, ang = torch.tilt;
+    ctx.save(); ctx.translate(hx, hy); ctx.rotate(ang);
+    // stick (lit on the flame side)
+    var len = 150;
+    var sg = ctx.createLinearGradient(-7, 0, 7, 0);
+    sg.addColorStop(0,'#8A5A34'); sg.addColorStop(.45,'#5C3A22'); sg.addColorStop(1,'#2C1B10');
+    ctx.fillStyle = sg;
+    ctx.beginPath(); ctx.moveTo(-6, 14); ctx.lineTo(6, 14); ctx.lineTo(4.5, len); ctx.quadraticCurveTo(0, len+5, -4.5, len); ctx.closePath(); ctx.fill();
+    // knots
+    ctx.fillStyle = 'rgba(30,18,10,.6)';
+    ctx.beginPath(); ctx.ellipse(1, 70, 2.2, 3.4, 0, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(-1.5, 112, 1.8, 3, 0, 0, Math.PI*2); ctx.fill();
+    // fade the grip end into the dark
+    var fade = ctx.createLinearGradient(0, 90, 0, len+6);
+    fade.addColorStop(0,'rgba(6,4,3,0)'); fade.addColorStop(1,'rgba(6,4,3,.85)');
+    ctx.fillStyle = fade; ctx.fillRect(-8, 90, 16, len-84);
+    // cloth-wrapped head
+    var hg = ctx.createLinearGradient(-11, 0, 11, 0);
+    hg.addColorStop(0,'#7A4A2A'); hg.addColorStop(.5,'#4A2E1C'); hg.addColorStop(1,'#24160D');
+    ctx.fillStyle = hg;
+    ctx.beginPath(); ctx.moveTo(-10, -2); ctx.quadraticCurveTo(0, -8, 10, -2); ctx.lineTo(8, 24); ctx.quadraticCurveTo(0, 28, -8, 24); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = 'rgba(20,12,7,.75)'; ctx.lineWidth = 1.6;
+    for (var b=0;b<4;b++){ var y=2+b*6; ctx.beginPath(); ctx.moveTo(-9.5, y+3); ctx.quadraticCurveTo(0, y-1, 9.5, y+2); ctx.stroke(); }
+    // ember glow on the cloth top
+    var eg = ctx.createRadialGradient(0, -2, 0, 0, -2, 14);
+    eg.addColorStop(0,'rgba(255,170,80,.9)'); eg.addColorStop(1,'rgba(255,90,31,0)');
+    ctx.fillStyle = eg; ctx.beginPath(); ctx.arc(0, -2, 14, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+
+    if (realFlame){
+      drawFire(ctx, torch.dt || .016);
+    } else {
+    // classic flame: stays upright regardless of the stick's tilt; it leans against the motion
+    var lean = Math.max(-.6, Math.min(.6, -torch.vx * .04));
+    ctx.save(); ctx.translate(hx + Math.sin(ang)*-2, hy - 4);
+    ctx.globalCompositeOperation = 'lighter';
+    tongue(ctx, t, 0,    62*f, 17, lean,      'rgba(255,70,20,.55)');
+    tongue(ctx, t, 1.7,  50*f, 13.5, lean*1.1,  'rgba(255,120,30,.7)');
+    tongue(ctx, t, 3.1,  36*f, 10,  lean*1.2,  'rgba(255,190,80,.85)');
+    tongue(ctx, t, 4.4,  20*f, 6,lean*1.3,  'rgba(255,245,210,.95)');
+    ctx.restore();
+    }
+
+    // sparks
+    ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    for (var i=sparks.length-1;i>=0;i--){
+      var s = sparks[i]; s.life -= .016; s.x += s.vx; s.y += s.vy; s.vy -= .02;
+      if (s.life <= 0){ sparks.splice(i,1); continue; }
+      ctx.fillStyle = 'rgba(255,' + (150+Math.round(90*s.life)) + ',80,' + s.life + ')';
+      ctx.beginPath(); ctx.arc(s.x, s.y, 1.4, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
+  }
+  function tongue(ctx, t, phase, h, w, lean, color){
+    var wob = Math.sin(t*9 + phase)*w*.18, tip = Math.sin(t*6.5 + phase*1.3)*w*.5 + lean*h*.5;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(-w, 0);
+    ctx.bezierCurveTo(-w*1.05, -h*.45 + wob, -w*.2 + tip*.4, -h*.75, tip, -h);
+    ctx.bezierCurveTo(w*.2 + tip*.4, -h*.7, w*1.05, -h*.45 - wob, w, 0);
+    ctx.quadraticCurveTo(0, w*.6, -w, 0);
+    ctx.fill();
+  }
+
+  // ----- realistic flame: many short-lived glowing particles -----
+  // Particles live in the torch's own space, so a fast swing bends the flame instead of scattering it.
+  var lean = 0, fireCap = 300, slowFrames = 0;
+  function drawFire(ctx, dt){
+    var bx = torch.x, by = torch.y - 3;
+    var step = dt / .016;
+    // the whole flame leans away from motion, but only so far
+    var leanTarget = Math.max(-1, Math.min(1, -torch.vx / 14));
+    lean += (leanTarget - lean) * Math.min(1, .18 * step);
+    var n = Math.round(10 * step);
+    for (var i=0;i<n && fire.length < fireCap;i++){
+      var a = (Math.random()-.5) * 2;
+      fire.push({ x: a*6, y: Math.random()*3, vx: a*.22, vy: -(1.15 + Math.random()*1.4),
+                  size: 11 + Math.random()*9, age: 0, life: .36 + Math.random()*.4, seed: Math.random()*100 });
+    }
+    var tt = performance.now() / 1000;
+    ctx.save(); ctx.globalCompositeOperation = 'screen';
+    for (var j = fire.length - 1; j >= 0; j--){
+      var p = fire[j]; p.age += dt;
+      var k = p.age / p.life;
+      if (k >= 1){ fire.splice(j,1); continue; }
+      var turb = Math.sin(tt*21 + p.seed + p.y*.09) * .55 + Math.sin(tt*9.3 + p.seed*1.7) * .35;
+      p.vx += turb * .11 * (.4 + k);
+      p.vx += -p.x * .02 * (1 - k);          // taper toward the centre line
+      p.vx *= .92; p.vy *= .985; p.vy -= .045;
+      p.x += p.vx * step; p.y += p.vy * step;
+      // lean grows with height, capped at about 45 px at the tip
+      var ox = p.x + lean * Math.min(45, -p.y * .9);
+      var sz = p.size * (1 - k*.72);
+      var stage = Math.min(4, Math.floor(.9 + k * 4.4));
+      ctx.globalAlpha = Math.max(0, (1 - k) * (k < .1 ? k/.1 : 1)) * .3;
+      ctx.drawImage(fireRamp[stage], bx + ox - sz, by + p.y - sz*1.25, sz*2, sz*2.5);
+    }
+    ctx.globalAlpha = .28;
+    ctx.drawImage(fireRamp[1], bx - 9, by - 18, 18, 24);
+    ctx.restore();
+    // if the device is struggling, use fewer particles
+    if (dt > .024){ if (++slowFrames > 45){ fireCap = Math.max(120, fireCap - 40); slowFrames = 0; } } else slowFrames = Math.max(0, slowFrames - 1);
+  }
+
+  // ----- render loop -----
+  function frame(now){
+    raf = 0;
+    if (!visible) return;
+    var t = (now - t0) / 1000, dt = Math.min(.05, (now - last)/1000); last = now; torch.dt = dt;
+
+    var idle = !torch.lastMove || now - torch.lastMove > 2600;
+    if (idle){
+      torch.tx = W*(.5 + .36*Math.sin(t*.37)); torch.ty = H*(.5 + .22*Math.sin(t*.53 + 1.3));
+    } else if (torch.gx != null){
+      // the visitor holds the base of the stick; the flame end sits up the stick from there
+      torch.tx = torch.gx + Math.sin(torch.tilt) * GRIP; torch.ty = torch.gy - Math.cos(torch.tilt) * GRIP;
+    }
+    var ease = reduce ? 1 : (idle ? .03 : .3);
+    var px = torch.x;
+    torch.x += (torch.tx - torch.x) * ease; torch.y += (torch.ty - torch.y) * ease;
+    torch.vx += ((torch.x - px) - torch.vx) * .25;
+    // the stick swings a little with movement, then settles
+    var tiltTarget = .34 + Math.max(-.45, Math.min(.45, torch.vx * .03));
+    torch.tilt += (tiltTarget - torch.tilt) * .12;
+    lit += (litTarget - lit) * .06;
+
+    var f = reduce ? 1 : 1 + .05*Math.sin(t*11.3) + .035*Math.sin(t*23.7+1) + .02*Math.sin(t*4.1);
+    var R = Math.max(190, Math.min(W, H) * .46) * f;
+    var L = lobes(reduce ? 0 : t, R);
+    drawStone(torch.x, torch.y - 30, R * .55, f);
+
+    // darkness slowly returns where the light has been
+    dctx.globalCompositeOperation = 'source-over';
+    dctx.fillStyle = 'rgba(6,4,3,' + (reduce ? .2 : .045) + ')';
+    dctx.fillRect(0,0,W,H);
+    // cut ragged firelight out of the dark
+    dctx.globalCompositeOperation = 'destination-out';
+    var cut = [[0,'rgba(0,0,0,1)'],[.18,'rgba(0,0,0,.94)'],[.36,'rgba(0,0,0,.76)'],[.54,'rgba(0,0,0,.5)'],[.7,'rgba(0,0,0,.27)'],[.84,'rgba(0,0,0,.11)'],[.94,'rgba(0,0,0,.03)'],[1,'rgba(0,0,0,0)']];
+    for (var i=0;i<L.length;i++) blob(dctx, L[i], cut);
+    if (lit > .01){ dctx.fillStyle = 'rgba(0,0,0,' + (lit*.25) + ')'; dctx.fillRect(0,0,W,H); }
+    // the stick's shadow falls away from the flame, down the wall
+    if (true){
+      dctx.globalCompositeOperation = 'source-over';
+      dctx.save(); dctx.translate(torch.x, torch.y + 10); dctx.rotate(torch.tilt * .55);
+      var sh = dctx.createLinearGradient(0, 0, 0, R*1.2);
+      sh.addColorStop(0,'rgba(6,4,3,0)'); sh.addColorStop(.25,'rgba(6,4,3,.35)'); sh.addColorStop(1,'rgba(6,4,3,0)');
+      dctx.fillStyle = sh;
+      dctx.beginPath(); dctx.moveTo(-5, 0); dctx.lineTo(5, 0); dctx.lineTo(22, R*1.2); dctx.lineTo(-22, R*1.2); dctx.closePath(); dctx.fill();
+      dctx.restore();
+    }
+
+    // warm firelight, same ragged shape
+    gctx.clearRect(0,0,W,H);
+    var a = .30 * f;
+    var warm = [[0,'rgba(255,160,80,' + a + ')'],[.3,'rgba(255,120,50,' + (a*.7) + ')'],[.6,'rgba(255,96,31,' + (a*.32) + ')'],[.85,'rgba(255,90,31,' + (a*.08) + ')'],[1,'rgba(255,90,31,0)']];
+    for (var j=0;j<L.length;j++){ var LL = { x: L[j].x, y: L[j].y, r: L[j].r*1.12, sy: L[j].sy, up: L[j].up }; blob(gctx, LL, j ? warm.map(function(s){ return [s[0], s[1].replace(/,([0-9.]+)\)$/, function(m,v){ return ',' + (v*.5).toFixed(3) + ')'; })]; }) : warm); }
+    if (lit > .01){ gctx.fillStyle = 'rgba(255,120,50,' + (lit*.08) + ')'; gctx.fillRect(0,0,W,H); }
+
+    // the torch
+    tctx.clearRect(0,0,W,H);
+    if (true){
+      if (!reduce && Math.random() < .18) sparks.push({ x: torch.x + (Math.random()-.5)*10, y: torch.y - 20, vx: (Math.random()-.5)*.6 - torch.vx*.05, vy: -.6 - Math.random()*.8, life: .6 + Math.random()*.4 });
+      drawTorch(tctx, reduce ? 0 : t, f);
+    }
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      visible = es[0].isIntersecting;
+      if (visible && !raf){ last = performance.now(); raf = requestAnimationFrame(frame); }
+    }, { rootMargin: '100px' }).observe(wall);
+  }
+  initGL();
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(resize, 150); });
+  resize();
+  raf = requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
