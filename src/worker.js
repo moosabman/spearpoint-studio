@@ -30,7 +30,11 @@ async function statsResponse(env, ctx) {
     return json(body, 200, { 'Cache-Control': 'public, max-age=300' });
   } catch (err) {
     if (memo) return json(memo.body, 200, { 'Cache-Control': 'public, max-age=60' });
-    return json({ error: 'Stats are unavailable right now.' }, 503, { 'Cache-Control': 'no-store' });
+    // Safe to show: says which step failed, never the key.
+    const reason = /ZERNIO_API_KEY/.test(err.message) ? 'missing-key'
+      : (/-> (\d+)/.exec(err.message) || [])[1] ? 'zernio-' + /-> (\d+)/.exec(err.message)[1]
+      : 'fetch-failed';
+    return json({ error: 'Stats are unavailable right now.', reason }, 503, { 'Cache-Control': 'no-store' });
   }
 }
 
@@ -58,7 +62,7 @@ async function getStats(env, ctx) {
 
 async function zernio(path, apiKey) {
   const res = await fetch(ZERNIO + path, {
-    headers: { Authorization: `Bearer ${apiKey}`, Accept: 'application/json' },
+    headers: { Authorization: `Bearer ${apiKey}`, Accept: 'application/json', 'User-Agent': 'spearpointpro.com site' },
   });
   if (!res.ok) throw new Error(`Zernio ${path} -> ${res.status}`);
   return res.json();
