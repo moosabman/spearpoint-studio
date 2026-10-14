@@ -1,7 +1,0 @@
-{
-  "name": "spearpoint-studio",
-  "private": true,
-  "scripts": {
-    "deploy": "npx wrangler deploy && if [ -n \"$ZERNIO_API_KEY\" ]; then printf %s \"$ZERNIO_API_KEY\" | npx wrangler secret put ZERNIO_API_KEY; fi"
-  }
-}
