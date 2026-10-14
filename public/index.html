@@ -110,6 +110,10 @@ p{text-wrap:pretty}
 .hero-copy{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
 .hero h1{font-size:clamp(64px,10vw,148px);font-weight:900}
 .hero-film{flex:0 1 360px;min-width:0}
+.still video.loop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ep:hover .still video.loop{transform:scale(1.045)}
+.watch-pill{position:absolute;z-index:1;left:50%;bottom:18px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;min-height:44px;padding:0 18px 0 14px;border-radius:999px;background:var(--ember);color:#fff;font:600 14px/1 var(--body);box-shadow:0 10px 30px -10px rgba(255,90,31,.7);transition:transform .2s}
+.ep:hover .watch-pill{transform:translateX(-50%) scale(1.04)}
 .play{position:absolute;z-index:1;inset:0;display:flex;align-items:center;justify-content:center}
 .play span{width:72px;height:72px;border-radius:50%;background:rgba(13,11,9,.45);border:2px solid var(--bone);display:flex;align-items:center;justify-content:center;transition:transform .25s}
 .ep:hover .play span{transform:scale(1.08)}
@@ -350,9 +354,9 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </div>
     <a class="ep hero-film" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
       <div class="still" style="aspect-ratio:9/16;border-radius:14px">
-        <img src="assets/woof.jpg" alt="Cave Base presenter beside a golden retriever on the cave stage" style="object-position:center 60%">
+        <video id="hero-loop" class="loop" muted loop playsinline preload="none" poster="assets/video/woof-loop-poster.jpg" aria-label="Woof: the presenter pulls the cover off a golden retriever"></video>
         <span class="tag mono">Now playing</span>
-        <div class="play" aria-hidden="true"><span><svg width="22" height="24" viewBox="0 0 22 24"><path d="M3 2 L20 12 L3 22 Z" fill="#FAF6EF"/></svg></span></div>
+        <span class="watch-pill" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch with sound</span>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
         <span class="ep-title" style="font-size:34px">Woof</span>
@@ -1399,18 +1403,20 @@ html.player-lock,html.player-lock body{overflow:hidden}
 })();
 </script>
 <script>
-// Love Sucks teaser: a silent 12-second loop that only plays while it's on screen.
+// Silent preview loops (Woof up top, Love Sucks in Labs): load and play only while on screen.
 (function(){
-  var v = document.getElementById('labs-teaser'); if (!v) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // poster only
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // posters only
   if (!('IntersectionObserver' in window)) return;
-  var loaded = false;
-  new IntersectionObserver(function(es){
-    if (es[0].isIntersecting){
-      if (!loaded){ v.src = 'assets/video/love-sucks-teaser.mp4'; loaded = true; }
-      var p = v.play(); if (p && p.catch) p.catch(function(){});
-    } else if (!v.paused) v.pause();
-  }, { threshold: .25 }).observe(v);
+  [['hero-loop', 'assets/video/woof-loop.mp4'], ['labs-teaser', 'assets/video/love-sucks-teaser.mp4']].forEach(function(pair){
+    var v = document.getElementById(pair[0]); if (!v) return;
+    var loaded = false;
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting){
+        if (!loaded){ v.src = pair[1]; loaded = true; }
+        var p = v.play(); if (p && p.catch) p.catch(function(){});
+      } else if (!v.paused) v.pause();
+    }, { threshold: .25 }).observe(v);
+  });
 })();
 </script>
 <dialog class="player" id="player" aria-label="Video player">
