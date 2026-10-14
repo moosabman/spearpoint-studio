@@ -180,13 +180,29 @@ p{text-wrap:pretty}
 @media (prefers-reduced-motion: reduce){.scrub-hint span{animation:none}}
 
 
-/* Labs film */
-.labs-film{position:relative;flex:0 1 340px;min-width:0;width:100%;max-width:340px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--stage-3);border:1px solid var(--edge);box-shadow:0 30px 70px -30px rgba(0,0,0,.8);display:block;color:var(--bone);text-decoration:none}
+/* Labs: swipeable row */
+.labs-side{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+@media (min-width:760px){.labs-side{align-items:flex-end;text-align:right;margin-left:auto}}
+.labs-nav{display:flex;gap:10px}
+.labs-nav[hidden]{display:none}
+.labs-nav button{width:48px;height:48px;border-radius:999px;border:1px solid var(--edge);background:var(--stage-3);color:var(--bone);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,opacity .2s}
+.labs-nav button:hover:not(:disabled){border-color:var(--ember)}
+.labs-nav button:disabled{opacity:.35;cursor:default}
+.labs-nav button:focus-visible,.labs-track:focus-visible{outline:2px solid var(--ember-text);outline-offset:3px}
+.labs-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;margin-inline:calc(clamp(16px,4vw,48px) * -1);padding:4px clamp(16px,4vw,48px) 12px;scroll-padding-inline:clamp(16px,4vw,48px)}
+.labs-track::-webkit-scrollbar{display:none}
+.labs-card{flex:0 0 clamp(236px,72vw,290px);scroll-snap-align:start;display:flex;flex-direction:column;gap:16px}
+.labs-film{position:relative;width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--stage-3);border:1px solid var(--edge);box-shadow:0 30px 70px -30px rgba(0,0,0,.8);display:block;color:var(--bone);text-decoration:none;transition:transform .3s,border-color .3s}
+.labs-film:hover{transform:translateY(-6px);border-color:var(--ember)}
 .labs-film video{width:100%;height:100%;object-fit:cover;display:block}
-.labs-film::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,5,.75),transparent 40%);pointer-events:none}
-.labs-play{position:absolute;z-index:1;left:50%;bottom:20px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;white-space:nowrap;min-height:48px;padding:0 20px 0 16px;border-radius:999px;background:var(--ember);color:#fff;font:600 15px/1 var(--body);box-shadow:0 10px 30px -10px rgba(255,90,31,.7);transition:transform .2s}
+.labs-film::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,5,.7),transparent 38%);pointer-events:none}
+.labs-play{position:absolute;z-index:1;left:50%;bottom:18px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;min-height:44px;padding:0 18px 0 14px;border-radius:999px;background:var(--ember);color:#fff;font:600 14px/1 var(--body);box-shadow:0 10px 30px -10px rgba(255,90,31,.7);transition:transform .2s}
 .labs-film:hover .labs-play{transform:translateX(-50%) scale(1.04)}
 .labs-film:focus-visible{outline:2px solid var(--ember-text);outline-offset:3px}
+.labs-meta{display:flex;flex-direction:column;gap:6px}
+.labs-meta .ep-title{font-size:28px}
+.labs-meta p{margin:4px 0 0;font-size:15px;line-height:1.5;color:var(--ash)}
+@media (prefers-reduced-motion: reduce){.labs-track{scroll-behavior:auto}.labs-film{transition:none}}
 .player-frame.film{overflow:hidden;background:#000}
 .player-frame.film video{display:block;width:100%;height:auto;max-height:calc(100dvh - 140px);aspect-ratio:9/16;background:#000;position:relative;z-index:1}
 
@@ -530,17 +546,50 @@ html.player-lock,html.player-lock body{overflow:hidden}
 </section>
   </section>
 
-  <!-- LABS -->
-  <section class="wrap section labs" style="display:flex;flex-wrap:wrap;gap:40px 72px;align-items:center;justify-content:center">
-    <a class="labs-film reveal" href="assets/video/love-sucks.mp4" data-film="assets/video/love-sucks.mp4" data-poster="assets/video/love-sucks-poster.jpg" aria-label="Watch the Love Sucks trailer (2 minutes 10 seconds)">
-      <video id="labs-teaser" muted loop playsinline preload="none" poster="assets/video/love-sucks-poster.jpg" aria-hidden="true"></video>
-      <span class="labs-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch the trailer · 2:10</span>
-    </a>
-    <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px">
-      <div class="mono eyebrow">Spearpoint Labs</div>
-      <h2 class="disp" style="font-size:clamp(52px,6vw,88px);font-weight:900">Love Sucks</h2>
-      <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ash)">A romantic comedy trailer. A man. A robot vacuum. It’s time to come clean.</p>
-      <p style="margin:0;font-size:15px;line-height:1.6;color:var(--ash-2)">Labs is where we test new formats before they become series.</p>
+  <!-- LABS: swipeable row of experiments -->
+  <section class="wrap section labs" aria-labelledby="labs-h">
+    <div class="section-head" style="gap:16px 40px;margin-bottom:36px">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="mono eyebrow">Spearpoint Labs</div>
+        <h2 class="disp" id="labs-h" style="font-size:clamp(52px,6vw,88px);font-weight:900">Lab experiments.</h2>
+      </div>
+      <div class="labs-side">
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:24em">Where we test new formats before they become series.</p>
+        <div class="labs-nav" id="labs-nav" hidden>
+          <button type="button" id="labs-prev" aria-label="Previous experiment"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" id="labs-next" aria-label="Next experiment"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="labs-track" id="labs-track" tabindex="0" aria-label="Lab experiments, swipe or scroll sideways">
+      <article class="labs-card">
+        <a class="labs-film" href="assets/video/love-sucks.mp4" data-film="assets/video/love-sucks.mp4" data-poster="assets/video/love-sucks-poster.jpg" aria-label="Watch Love Sucks (2 minutes 10 seconds)">
+          <video muted loop playsinline preload="none" poster="assets/video/love-sucks-poster.jpg" data-teaser="assets/video/love-sucks-teaser.mp4" aria-hidden="true"></video>
+          <span class="labs-play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch · 2:10</span>
+        </a>
+        <div class="labs-meta"><span class="ep-title">Love Sucks</span><span class="mono ep-meta">Trailer</span><p>A man. A robot vacuum. It’s time to come clean.</p></div>
+      </article>
+      <article class="labs-card">
+        <a class="labs-film" href="assets/video/party-animals.mp4" data-film="assets/video/party-animals.mp4" data-poster="assets/video/party-animals-poster.jpg" aria-label="Watch Party Animals (30 seconds)">
+          <video muted loop playsinline preload="none" poster="assets/video/party-animals-poster.jpg" data-teaser="assets/video/party-animals-teaser.mp4" aria-hidden="true"></video>
+          <span class="labs-play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch · 0:30</span>
+        </a>
+        <div class="labs-meta"><span class="ep-title">Party Animals</span><span class="mono ep-meta">Short</span><p>A neon jungle where every animal showed up for the party.</p></div>
+      </article>
+      <article class="labs-card">
+        <a class="labs-film" href="assets/video/cowboy.mp4" data-film="assets/video/cowboy.mp4" data-poster="assets/video/cowboy-poster.jpg" aria-label="Watch Cowboy Illustration (19 seconds)">
+          <video muted loop playsinline preload="none" poster="assets/video/cowboy-poster.jpg" data-teaser="assets/video/cowboy-teaser.mp4" aria-hidden="true"></video>
+          <span class="labs-play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch · 0:19</span>
+        </a>
+        <div class="labs-meta"><span class="ep-title">Cowboy Illustration</span><span class="mono ep-meta">Illustrated short</span><p>A lone rider crosses the West, one painting at a time.</p></div>
+      </article>
+      <article class="labs-card">
+        <a class="labs-film" href="assets/video/romeros.mp4" data-film="assets/video/romeros.mp4" data-poster="assets/video/romeros-poster.jpg" aria-label="Watch Romero’s Restaurant (17 seconds)">
+          <video muted loop playsinline preload="none" poster="assets/video/romeros-poster.jpg" data-teaser="assets/video/romeros-teaser.mp4" aria-hidden="true"></video>
+          <span class="labs-play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch · 0:17</span>
+        </a>
+        <div class="labs-meta"><span class="ep-title">Romero’s Restaurant</span><span class="mono ep-meta">Restaurant spot</span><p>The neighborhood’s toughest critics can’t stay away. Fresh nightly.</p></div>
+      </article>
     </div>
   </section>
 
@@ -1403,20 +1452,42 @@ html.player-lock,html.player-lock body{overflow:hidden}
 })();
 </script>
 <script>
-// Silent preview loops (Woof up top, Love Sucks in Labs): load and play only while on screen.
+// Silent preview loops (Woof up top, each Labs card): load and play only while visible.
 (function(){
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // posters only
   if (!('IntersectionObserver' in window)) return;
-  [['hero-loop', 'assets/video/woof-loop.mp4'], ['labs-teaser', 'assets/video/love-sucks-teaser.mp4']].forEach(function(pair){
-    var v = document.getElementById(pair[0]); if (!v) return;
-    var loaded = false;
-    new IntersectionObserver(function(es){
-      if (es[0].isIntersecting){
-        if (!loaded){ v.src = pair[1]; loaded = true; }
+  var hero = document.getElementById('hero-loop');
+  if (hero) hero.setAttribute('data-teaser', 'assets/video/woof-loop.mp4');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting){
+        if (!v.src) v.src = v.getAttribute('data-teaser');
         var p = v.play(); if (p && p.catch) p.catch(function(){});
       } else if (!v.paused) v.pause();
-    }, { threshold: .25 }).observe(v);
-  });
+    });
+  }, { threshold: .6 });
+  document.querySelectorAll('video[data-teaser]').forEach(function(v){ io.observe(v); });
+})();
+
+// Labs row: arrow buttons on wider screens; swipe on phones.
+(function(){
+  var t = document.getElementById('labs-track'), nav = document.getElementById('labs-nav');
+  if (!t || !nav) return;
+  var prev = document.getElementById('labs-prev'), next = document.getElementById('labs-next');
+  function step(){ var c = t.querySelector('.labs-card'); return c ? c.getBoundingClientRect().width + 20 : 300; }
+  function sync(){
+    var over = t.scrollWidth > t.clientWidth + 4;
+    nav.hidden = !over;
+    prev.disabled = t.scrollLeft < 4;
+    next.disabled = t.scrollLeft + t.clientWidth > t.scrollWidth - 4;
+  }
+  var smooth = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  prev.addEventListener('click', function(){ t.scrollBy({ left: -step(), behavior: smooth }); });
+  next.addEventListener('click', function(){ t.scrollBy({ left: step(), behavior: smooth }); });
+  t.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
 })();
 </script>
 <dialog class="player" id="player" aria-label="Video player">
