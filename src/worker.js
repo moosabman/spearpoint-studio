@@ -110,7 +110,7 @@ export async function buildStats(apiKey, fetchJson = zernio) {
     const platform = p.platform || (p.platforms && p.platforms[0] && p.platforms[0].platform) || '';
     const url = p.platformPostUrl || (p.platforms && p.platforms[0] && p.platforms[0].platformPostUrl) || '';
     const code = instagramCode(url);
-    if (code) byShortcode[code] = { views: a.views || 0, shares: a.shares || 0, likes: a.likes || 0, saves: a.saves || 0 };
+    if (code) byShortcode[code] = { views: a.views || 0, shares: a.shares || 0, likes: a.likes || 0, saves: a.saves || 0, reach: a.reach || 0 };
 
     const title = cleanTitle(p.content);
     const gkey = title.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().slice(0, 40);

@@ -146,6 +146,46 @@ p{text-wrap:pretty}
 .case-grid div{background:var(--bone);padding:20px;display:flex;flex-direction:column;gap:4px}
 .case-grid .proof-num{font-size:44px}
 
+
+/* Woof case: scroll story */
+.case-copy{flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.case-data{flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:28px}
+@media (min-width:960px) and (min-height:820px){.case-copy{position:sticky;top:110px}}
+.case-video{display:flex;align-items:center;gap:18px;padding:12px 18px 12px 12px;border-radius:12px;background:#fff;border:1px solid var(--bone-2);color:var(--stage);text-decoration:none;align-self:flex-start;max-width:100%;box-shadow:0 18px 40px -26px rgba(60,30,10,.5);transition:transform .2s,box-shadow .2s}
+.case-video:hover{transform:translateY(-2px);box-shadow:0 24px 50px -26px rgba(60,30,10,.6)}
+.case-video:focus-visible{outline:2px solid var(--ember-deep);outline-offset:3px}
+.case-thumb{position:relative;flex:0 0 auto;width:78px;aspect-ratio:9/16;border-radius:8px;overflow:hidden;background:#d9cfbd}
+.case-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.case-play{position:absolute;inset:auto 6px 6px auto;width:30px;height:30px;border-radius:999px;background:var(--ember);color:#fff;display:flex;align-items:center;justify-content:center}
+.case-video-txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.case-watch{font-weight:600;font-size:15px;color:var(--ember-deep)}
+.case-watch::after{content:" →"}
+.scrub-hint{display:flex;align-items:center;gap:8px;color:var(--ink-3);font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:opacity .4s}
+.scrub-hint span{display:inline-block;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+.chart-card{margin:0;background:#fff;border:1px solid var(--bone-2);border-radius:12px;padding:20px 20px 14px;display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 50px -28px rgba(60,30,10,.45),0 2px 6px rgba(60,30,10,.08)}
+.chart-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.chart-now{display:flex;align-items:baseline;gap:10px}
+.chart-now .proof-num{font-size:clamp(40px,5vw,56px);color:var(--stage)}
+.chart-date{color:var(--ink-3);font-size:12px;min-width:4.5em}
+.chart-plot{position:relative;height:clamp(180px,24vw,240px)}
+.chart-plot svg{width:100%;height:100%;display:block;overflow:visible}
+.chart-x{display:flex;justify-content:space-between;color:var(--ink-3);font-size:11px}
+.chart-tip{position:absolute;top:0;transform:translateX(-50%);background:var(--stage);color:var(--bone);font-size:11px;padding:6px 8px;border-radius:6px;white-space:nowrap;pointer-events:none}
+.meter div{transform-origin:left center}
+@media (prefers-reduced-motion: reduce){.scrub-hint span{animation:none}}
+
+
+/* Labs film */
+.labs-film{position:relative;flex:0 1 340px;min-width:0;width:100%;max-width:340px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--stage-3);border:1px solid var(--edge);box-shadow:0 30px 70px -30px rgba(0,0,0,.8);display:block;color:var(--bone);text-decoration:none}
+.labs-film video{width:100%;height:100%;object-fit:cover;display:block}
+.labs-film::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,5,.75),transparent 40%);pointer-events:none}
+.labs-play{position:absolute;z-index:1;left:50%;bottom:20px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;white-space:nowrap;min-height:48px;padding:0 20px 0 16px;border-radius:999px;background:var(--ember);color:#fff;font:600 15px/1 var(--body);box-shadow:0 10px 30px -10px rgba(255,90,31,.7);transition:transform .2s}
+.labs-film:hover .labs-play{transform:translateX(-50%) scale(1.04)}
+.labs-film:focus-visible{outline:2px solid var(--ember-text);outline-offset:3px}
+.player-frame.film{overflow:hidden;background:#000}
+.player-frame.film video{display:block;width:100%;height:auto;max-height:calc(100dvh - 140px);aspect-ratio:9/16;background:#000;position:relative;z-index:1}
+
 /* Services */
 .svc-row{display:flex;flex-wrap:wrap;gap:20px}
 .svc{flex:1 1 280px;min-width:0;border:1px solid var(--edge);border-radius:16px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:14px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0) 60%);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 30px 60px -28px rgba(0,0,0,.9);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
@@ -399,27 +439,40 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </div>
   </section>
 
-  <!-- WOOF CASE -->
-  <section class="case">
+  <!-- WOOF CASE: one video, told as a scroll story -->
+  <section class="case" id="woof-case" aria-labelledby="woof-h">
     <div class="wrap section">
-      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:20px">
-        <div class="mono" style="color:var(--ember-deep)">Case file · Woof</div>
-        <h2 class="disp" style="font-size:clamp(56px,7vw,104px);font-weight:900">People watched. Then they shared.</h2>
+      <div class="case-copy">
+        <div class="mono" style="color:var(--ember-deep)">Case file · one video</div>
+        <h2 class="disp" id="woof-h" style="font-size:clamp(56px,7vw,104px);font-weight:900">People watched. Then they shared.</h2>
         <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-2);max-width:30em">Woof reached people who had never heard of Spearpoint. That’s the job a brand hires us for: content that travels past the audience you already have.</p>
+        <a class="case-video" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
+          <span class="case-thumb"><img src="assets/woof.jpg" alt="" width="479" height="852" loading="lazy"><span class="case-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></span>
+          <span class="case-video-txt"><span class="ep-title" style="font-size:30px">Woof</span><span class="mono" style="color:var(--ink-3);font-size:12px">One Instagram Reel · posted Sep 22, 2026</span><span class="case-watch">Watch the video</span></span>
+        </a>
       </div>
-      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:28px">
+      <div class="case-data">
+        <div class="scrub-hint mono" id="scrub-hint" aria-hidden="true">Scroll to see the results <span>↓</span></div>
+        <figure class="chart-card" id="woof-chart" aria-labelledby="woof-chart-h">
+          <figcaption class="chart-head">
+            <span class="mono" id="woof-chart-h" style="color:var(--ink-2)">Woof · views since posting</span>
+            <span class="chart-now"><span class="proof-num" id="woof-count">459,091</span><span class="mono chart-date" id="woof-date">Oct 13</span></span>
+          </figcaption>
+          <div class="chart-plot"><svg id="woof-svg" viewBox="0 0 600 250" preserveAspectRatio="none" role="img" aria-label="Woof views grew from zero to 343 thousand in the first four days, then to 459 thousand by October 13."></svg><div class="chart-tip mono" id="woof-tip" hidden></div></div>
+          <div class="chart-x mono" id="woof-x" aria-hidden="true"></div>
+        </figure>
         <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span class="mono" style="color:var(--ink-2)">Who saw it</span><span class="proof-num" style="font-size:44px;color:var(--ember-deep)">96% new</span></div>
-          <div class="meter" role="img" aria-label="96 percent non-followers, 4 percent followers"><div></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span class="mono" style="color:var(--ink-2)">Who saw it</span><span class="proof-num" style="font-size:44px;color:var(--ember-deep)"><span id="woof-new">96</span>% new</span></div>
+          <div class="meter" id="woof-meter" role="img" aria-label="96 percent non-followers, 4 percent followers"><div></div></div>
           <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)"><span>Non-followers · 96%</span><span>Followers · 4%</span></div>
         </div>
-        <div class="case-grid reveal">
-          <div><span class="mono" style="color:var(--ink-3)">Views</span><span class="proof-num" data-woof="views">459K</span></div>
+        <div class="case-grid" id="woof-grid">
           <div><span class="mono" style="color:var(--ink-3)">Shares</span><span class="proof-num" data-woof="shares">32,492</span></div>
           <div><span class="mono" style="color:var(--ink-3)">Likes</span><span class="proof-num" data-woof="likes">24,389</span></div>
           <div><span class="mono" style="color:var(--ink-3)">Saves</span><span class="proof-num" data-woof="saves">3,821</span></div>
+          <div><span class="mono" style="color:var(--ink-3)">Accounts reached</span><span class="proof-num" data-woof="reach">289,587</span></div>
         </div>
-        <span class="mono" style="color:var(--ink-3);font-size:11px;line-height:1.6">Instagram · as of Oct 13, 2026 · audience split from Instagram insights at launch · interaction counts are not unique viewers</span>
+        <span class="mono" style="color:var(--ink-3);font-size:11px;line-height:1.6">Woof only, on Instagram · live from our analytics · daily tracking began Sep 27 · audience split from Instagram insights at launch</span>
       </div>
     </div>
   </section>
@@ -474,8 +527,11 @@ html.player-lock,html.player-lock body{overflow:hidden}
   </section>
 
   <!-- LABS -->
-  <section class="wrap section" style="display:flex;flex-wrap:wrap;gap:40px 72px;align-items:center">
-    <div class="still reveal" style="flex:1 1 480px;min-width:0;aspect-ratio:16/9;border-radius:14px"><img src="assets/love-sucks.jpg" alt="Love Sucks: a man on the couch with popcorn beside a robot vacuum" style="object-position:center 38%" loading="lazy"></div>
+  <section class="wrap section labs" style="display:flex;flex-wrap:wrap;gap:40px 72px;align-items:center;justify-content:center">
+    <a class="labs-film reveal" href="assets/video/love-sucks.mp4" data-film="assets/video/love-sucks.mp4" data-poster="assets/video/love-sucks-poster.jpg" aria-label="Watch the Love Sucks trailer (2 minutes 10 seconds)">
+      <video id="labs-teaser" muted loop playsinline preload="none" poster="assets/video/love-sucks-poster.jpg" aria-hidden="true"></video>
+      <span class="labs-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch the trailer · 2:10</span>
+    </a>
     <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px">
       <div class="mono eyebrow">Spearpoint Labs</div>
       <h2 class="disp" style="font-size:clamp(52px,6vw,88px);font-weight:900">Love Sucks</h2>
@@ -670,7 +726,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
     if (d < 14) return Math.floor(d) + ' days ago';
     return Math.floor(d/7) + ' weeks ago';
   }
-  function set(sel, text){ var el = document.querySelector(sel); if (el && text) el.textContent = text; }
+  function set(sel, text){ var el = document.querySelector(sel); if (el && text){ el.textContent = text; el.dataset.final = text; } }
 
   fetch('/api/stats', { headers: { 'Accept': 'application/json' } })
     .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -688,13 +744,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
         var p = by[el.getAttribute('data-post')];
         if (p) el.textContent = short(p.views) + ' views · ' + short(p.shares) + ' shares';
       });
-      var woof = by['DdnM3osz2s-'];
-      if (woof) {
-        set('[data-woof="views"]', short(woof.views));
-        set('[data-woof="shares"]', comma(woof.shares));
-        set('[data-woof="likes"]', comma(woof.likes));
-        set('[data-woof="saves"]', comma(woof.saves));
-      }
+      document.dispatchEvent(new CustomEvent('sp:stats', { detail: d }));
 
       var list = document.getElementById('latest-posts');
       if (list && d.latest && d.latest.length >= 2) {
@@ -1192,6 +1242,177 @@ html.player-lock,html.player-lock body{overflow:hidden}
 })();
 </script>
 
+<script>
+// Woof case file: as you scroll, the views chart draws itself and the numbers count up with it.
+// Scrolling back up runs it in reverse. Reduced motion: everything shows finished.
+(function(){
+  var card = document.getElementById('woof-chart'); if (!card) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DATA = [["2026-09-22", 0], ["2026-09-27", 342816], ["2026-09-28", 359031], ["2026-09-29", 385937], ["2026-09-30", 388560], ["2026-10-01", 406917], ["2026-10-02", 416026], ["2026-10-03", 422354], ["2026-10-04", 430127], ["2026-10-05", 434981], ["2026-10-06", 437930], ["2026-10-07", 441561], ["2026-10-08", 444371], ["2026-10-09", 447420], ["2026-10-10", 451278], ["2026-10-11", 454988], ["2026-10-12", 456879], ["2026-10-13", 459091]]; // [date, total views], from Zernio; Sep 22 = posted
+  var finals = { shares: 32492, likes: 24389, saves: 3821, reach: 289587 };
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg = document.getElementById('woof-svg'), plot = svg.parentNode;
+  var countEl = document.getElementById('woof-count'), dateEl = document.getElementById('woof-date');
+  var tip = document.getElementById('woof-tip'), hint = document.getElementById('scrub-hint');
+  var meter = document.querySelector('#woof-meter div'), newEl = document.getElementById('woof-new');
+  var grid = document.getElementById('woof-grid');
+  var gridEls = {}; grid.querySelectorAll('[data-woof]').forEach(function(el){ gridEls[el.getAttribute('data-woof')] = el; });
+  var x = document.getElementById('woof-x'); if (x) x.remove();
+  svg.removeAttribute('preserveAspectRatio');
+
+  var W, H, pts = [], clip, head, cross, ann, built = false;
+  var M = { t: 10, r: 8, b: 26, l: 8 };
+  function day(d){ return Date.parse(d + 'T12:00:00Z') / 864e5; }
+  function el(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); (parent || svg).appendChild(e); return e; }
+  function comma(n){ return Math.round(n).toLocaleString('en-US'); }
+  function label(d){ return new Date(day(d) * 864e5).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }); }
+  function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function ease(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function build(){
+    W = plot.clientWidth; H = plot.clientHeight; if (!W || !H) return;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var d0 = day(DATA[0][0]), d1 = day(DATA[DATA.length - 1][0]);
+    var top = DATA[DATA.length - 1][1], step = 100000, maxY = Math.ceil(top * 1.08 / step) * step;
+    var iw = W - M.l - M.r, ih = H - M.t - M.b;
+    pts = DATA.map(function(r){ return { x: M.l + (day(r[0]) - d0) / (d1 - d0) * iw, y: M.t + ih - r[1] / maxY * ih, v: r[1], d: r[0] }; });
+    // recessive grid + y labels
+    for (var g = step; g <= maxY; g += step){
+      var gy = M.t + ih - g / maxY * ih;
+      el('line', { x1: M.l, x2: W - M.r, y1: gy, y2: gy, stroke: '#E6DDCC', 'stroke-width': 1 });
+      var t = el('text', { x: M.l, y: gy - 5, fill: '#8C8272', 'font-size': 11, 'font-family': 'DM Mono, monospace' }); t.textContent = (g / 1000) + 'K';
+    }
+    el('line', { x1: M.l, x2: W - M.r, y1: M.t + ih, y2: M.t + ih, stroke: '#C9BFAD', 'stroke-width': 1 });
+    // x labels on real dates
+    // four evenly spaced date labels
+    [0, 1, 2, 3].forEach(function(k){
+      var dd = d0 + (d1 - d0) * k / 3, px = M.l + (dd - d0) / (d1 - d0) * iw;
+      var iso = new Date(Math.floor(dd) * 864e5).toISOString().slice(0, 10);
+      var t = el('text', { x: px, y: H - 6, fill: '#8C8272', 'font-size': 11, 'font-family': 'DM Mono, monospace', 'text-anchor': k === 0 ? 'start' : k === 3 ? 'end' : 'middle' });
+      t.textContent = k === 0 ? 'Posted ' + label(iso) : label(iso);
+    });
+    var defs = el('defs', {});
+    var lg = el('linearGradient', { id: 'woofFill', x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+    el('stop', { offset: 0, 'stop-color': '#FF5A1F', 'stop-opacity': .28 }, lg); el('stop', { offset: 1, 'stop-color': '#FF5A1F', 'stop-opacity': 0 }, lg);
+    var cp = el('clipPath', { id: 'woofClip' }, defs); clip = el('rect', { x: 0, y: 0, width: 0, height: H }, cp);
+    var g2 = el('g', { 'clip-path': 'url(#woofClip)' });
+    var line = pts.map(function(p, i){ return (i ? 'L' : 'M') + p.x.toFixed(1) + ' ' + p.y.toFixed(1); }).join(' ');
+    el('path', { d: line + ' L' + pts[pts.length - 1].x + ' ' + (M.t + ih) + ' L' + pts[0].x + ' ' + (M.t + ih) + ' Z', fill: 'url(#woofFill)' }, g2);
+    // first days weren't tracked day by day: dashed
+    el('path', { d: 'M' + pts[0].x + ' ' + pts[0].y + ' L' + pts[1].x + ' ' + pts[1].y, fill: 'none', stroke: '#D2400C', 'stroke-width': 2.5, 'stroke-dasharray': '5 5', 'stroke-linecap': 'round' }, g2);
+    el('path', { d: pts.slice(1).map(function(p, i){ return (i ? 'L' : 'M') + p.x.toFixed(1) + ' ' + p.y.toFixed(1); }).join(' '), fill: 'none', stroke: '#D2400C', 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, g2);
+    // callout for the launch spike
+    ann = el('g', { opacity: 0 });
+    el('circle', { cx: pts[1].x, cy: pts[1].y, r: 4, fill: '#D2400C', stroke: '#fff', 'stroke-width': 2 }, ann);
+    var at = el('text', { x: pts[1].x + 10, y: pts[1].y + 22, fill: '#0D0B09', 'font-size': 13, 'font-weight': 600, 'font-family': 'Figtree, sans-serif' }, ann);
+    at.textContent = Math.round(pts[1].v / 1000) + 'K in the first ' + Math.round(day(pts[1].d) - day(pts[0].d)) + ' days';
+    cross = el('line', { y1: M.t, y2: M.t + ih, stroke: '#0D0B09', 'stroke-opacity': .25, 'stroke-width': 1, visibility: 'hidden' });
+    head = el('circle', { r: 6, fill: '#FF5A1F', stroke: '#fff', 'stroke-width': 2.5 });
+    built = true; render(true);
+  }
+
+  // value along the line at horizontal position px
+  function at(px){
+    for (var i = 1; i < pts.length; i++){
+      if (px <= pts[i].x){
+        var a = pts[i - 1], b = pts[i], t = (px - a.x) / (b.x - a.x || 1);
+        return { x: px, y: a.y + (b.y - a.y) * t, v: a.v + (b.v - a.v) * t, d: t < .5 ? a.d : b.d };
+      }
+    }
+    var l = pts[pts.length - 1]; return { x: l.x, y: l.y, v: l.v, d: l.d };
+  }
+  function prog(node, start, span){
+    if (reduce) return 1;
+    var r = node.getBoundingClientRect(), vh = window.innerHeight;
+    return clamp((vh * start - r.top) / (vh * span));
+  }
+  var last = {};
+  function render(force){
+    if (!built) return;
+    var p = prog(card, .9, .55);
+    if (force || p !== last.p){
+      last.p = p;
+      var px = pts[0].x + (pts[pts.length - 1].x - pts[0].x) * ease(p), h = at(px);
+      clip.setAttribute('width', px + 2);
+      head.setAttribute('cx', h.x); head.setAttribute('cy', h.y);
+      head.setAttribute('visibility', p > 0 ? 'visible' : 'hidden');
+      ann.setAttribute('opacity', px >= pts[1].x ? 1 : 0);
+      countEl.textContent = comma(h.v);
+      dateEl.textContent = label(h.d);
+      if (hint) hint.style.opacity = String(clamp(1 - p * 2.5));
+    }
+    var pm = prog(meter.parentNode, .88, .4);
+    if (force || pm !== last.pm){ last.pm = pm; meter.style.transform = 'scaleX(' + ease(pm) + ')'; newEl.textContent = Math.round(96 * ease(pm)); }
+    var pg = prog(grid, .92, .45);
+    if (force || pg !== last.pg){ last.pg = pg; for (var k in gridEls) gridEls[k].textContent = comma(finals[k] * ease(pg)); }
+  }
+  var queued = false;
+  function onScroll(){ if (queued) return; queued = true; requestAnimationFrame(function(){ queued = false; render(); }); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(build, 120); });
+
+  // hover: read any day once the line has finished drawing
+  plot.addEventListener('pointermove', function(e){
+    if (!built || last.p < 1) return;
+    var r = svg.getBoundingClientRect(), mx = e.clientX - r.left, best = pts[0];
+    pts.forEach(function(q){ if (Math.abs(q.x - mx) < Math.abs(best.x - mx)) best = q; });
+    cross.setAttribute('x1', best.x); cross.setAttribute('x2', best.x); cross.setAttribute('visibility', 'visible');
+    head.setAttribute('cx', best.x); head.setAttribute('cy', best.y);
+    tip.hidden = false; tip.textContent = label(best.d) + ' · ' + comma(best.v) + ' views';
+    tip.style.left = Math.max(70, Math.min(r.width - 70, best.x)) + 'px';
+  });
+  plot.addEventListener('pointerleave', function(){ cross.setAttribute('visibility', 'hidden'); tip.hidden = true; render(true); });
+
+  // live numbers from Zernio
+  document.addEventListener('sp:stats', function(e){
+    var w = (e.detail.byShortcode || {})['DdnM3osz2s-']; if (!w) return;
+    ['shares', 'likes', 'saves', 'reach'].forEach(function(k){ if (w[k]) finals[k] = w[k]; });
+    var lastRow = DATA[DATA.length - 1], today = new Date().toISOString().slice(0, 10);
+    if (w.views > lastRow[1]){ if (lastRow[0] === today) lastRow[1] = w.views; else DATA.push([today, w.views]); }
+    build();
+  });
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(build); else build();
+  build();
+})();
+
+// Results band: numbers count up the first time they come into view.
+(function(){
+  var nums = document.querySelectorAll('#results .proof-num');
+  if (!nums.length || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function run(el){
+    var start = performance.now(), dur = 1400;
+    (function tick(now){
+      var target = el.dataset.final || el.dataset.orig, m = /^([\d.,]+)(.*)$/.exec(target);
+      if (!m){ el.textContent = target; return; }
+      var n = parseFloat(m[1].replace(/,/g, '')), dec = (m[1].split('.')[1] || '').length;
+      var t = Math.min(1, (now - start) / dur), v = n * (1 - Math.pow(1 - t, 3));
+      el.textContent = (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US')) + m[2];
+      if (t < 1) requestAnimationFrame(tick); else el.textContent = target;
+    })(start);
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ io.unobserve(e.target); run(e.target); } });
+  }, { threshold: .6 });
+  nums.forEach(function(el){ el.dataset.orig = el.textContent; io.observe(el); });
+})();
+</script>
+<script>
+// Love Sucks teaser: a silent 12-second loop that only plays while it's on screen.
+(function(){
+  var v = document.getElementById('labs-teaser'); if (!v) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // poster only
+  if (!('IntersectionObserver' in window)) return;
+  var loaded = false;
+  new IntersectionObserver(function(es){
+    if (es[0].isIntersecting){
+      if (!loaded){ v.src = 'assets/video/love-sucks-teaser.mp4'; loaded = true; }
+      var p = v.play(); if (p && p.catch) p.catch(function(){});
+    } else if (!v.paused) v.pause();
+  }, { threshold: .25 }).observe(v);
+})();
+</script>
 <dialog class="player" id="player" aria-label="Video player">
   <div class="player-shell">
     <button class="player-close" id="player-close" type="button" aria-label="Close video">
@@ -1218,8 +1439,24 @@ html.player-lock,html.player-lock body{overflow:hidden}
     return null;
   }
 
+  function openFilm(src, poster){
+    frame.className = 'player-frame film';
+    frame.innerHTML = '';
+    var vid = document.createElement('video');
+    vid.src = src; vid.controls = true; vid.autoplay = true; vid.playsInline = true; vid.setAttribute('playsinline', '');
+    if (poster) vid.poster = poster;
+    frame.appendChild(vid);
+    out.hidden = true;
+    document.documentElement.classList.add('player-lock');
+    dlg.showModal();
+    var pr = vid.play(); if (pr && pr.catch) pr.catch(function(){});
+    try { history.pushState({ spPlayer: 1 }, ''); pushed = true; } catch (_) { pushed = false; }
+    return true;
+  }
+
   function open(href){
     var v = parse(href); if (!v) return false;
+    out.hidden = false;
     frame.className = 'player-frame ' + v.kind;
     frame.innerHTML = '<div class="player-loading">Loading…</div>';
     var f = document.createElement('iframe');
@@ -1248,6 +1485,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a || dlg.contains(a)) return;
+    if (a.dataset.film){ e.preventDefault(); openFilm(a.dataset.film, a.dataset.poster); return; }
     if (parse(a.href) && open(a.href)) e.preventDefault();
   });
   document.getElementById('player-close').addEventListener('click', close);
