@@ -43,7 +43,7 @@ async function getStats(env, ctx) {
   if (memo && now - memo.at < STATS_TTL * 1000) return memo.body;
 
   const cache = caches.default;
-  const key = new Request(CACHE_HOST + '/stats-v1');
+  const key = new Request(CACHE_HOST + '/stats-v2');
   const hit = await cache.match(key);
   if (hit) {
     const body = await hit.json();
@@ -96,6 +96,16 @@ export async function buildStats(apiKey, fetchJson = zernio) {
 
   const totals = { views: 0, shares: 0, likes: 0, saves: 0, posts: posts.length, followers,
     followerGrowthPct: followersBefore > 0 ? ((followers - followersBefore) / followersBefore) * 100 : 0 };
+
+  // Share of viewers who didn't already follow us (view-weighted; only some platforms report it).
+  let nfViews = 0, nfWeighted = 0;
+  for (const p of posts) {
+    const a = p.analytics || {}, t = a.audienceTypes;
+    if (t && typeof t.nonFollower === 'number' && a.views) { nfWeighted += t.nonFollower * a.views; nfViews += a.views; }
+  }
+  totals.nonFollowerPct = nfViews ? (nfWeighted / nfViews) * 100 : 0;
+  totals.postsOver10k = posts.filter(p => ((p.analytics || {}).views || 0) >= 10000).length;
+  totals.firstPostAt = posts.reduce((m, p) => (p.publishedAt && (!m || p.publishedAt < m) ? p.publishedAt : m), '');
 
   const byShortcode = {};
   const groups = new Map(); // the same video cross-posted to IG + TikTok becomes one entry

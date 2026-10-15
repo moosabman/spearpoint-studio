@@ -122,7 +122,7 @@ p{text-wrap:pretty}
 .proof{background:var(--bone);color:var(--stage);position:relative;z-index:1;box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
 .proof-grid{display:flex;flex-wrap:wrap;gap:1px;background:var(--bone-2)}
 .proof-cell{flex:1 1 220px;min-width:0;background:var(--bone);padding:28px clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:8px}
-.proof-num{font-family:var(--display);font-weight:900;font-size:64px;line-height:.9;font-variant-numeric:tabular-nums}
+.proof-num{font-family:var(--display);font-weight:900;font-size:64px;line-height:.9;font-variant-numeric:tabular-nums;white-space:nowrap}
 .proof-cell span:last-child{font-size:15px;color:var(--ink-2);line-height:1.4}
 .proof-note{padding:14px clamp(20px,2.4vw,32px) 18px;color:var(--ink-3);font-size:11px;border-top:1px solid var(--bone-2)}
 
@@ -387,12 +387,12 @@ html.player-lock,html.player-lock body{overflow:hidden}
   <section id="results" class="proof" aria-label="Results">
     <div class="wrap">
       <div class="proof-grid">
-        <div class="proof-cell"><span class="proof-num" style="color:var(--ember-deep)">96%</span><span>of Woof’s audience didn’t follow us yet</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="views">960K+</span><span>views across Instagram &amp; TikTok</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="shares">54K+</span><span>shares</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="followers">6.3K</span><span data-stat="followersNote">followers, up 27% in two weeks</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="views">960K+</span><span>views since we launched in September</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="shareRate" data-nocount style="color:var(--ember-deep)">1 in 18</span><span>viewers shared it with someone</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="newPct">95%</span><span>of viewers didn’t follow us yet</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="over10k">13 of 27</span><span>posts passed 10K views</span></div>
       </div>
-      <div class="proof-note mono" data-stat="asOf">Instagram + TikTok · all posts through Oct 13, 2026</div>
+      <div class="proof-note mono" data-stat="asOf">Instagram + TikTok · all posts through Oct 13, 2026 · new-viewer share from TikTok insights</div>
     </div>
   </section>
 
@@ -788,11 +788,11 @@ html.player-lock,html.player-lock body{overflow:hidden}
     .then(function(d){
       if (!d || !d.totals) return;
       set('[data-stat="views"]', fmt(d.totals.views));
-      set('[data-stat="shares"]', fmt(d.totals.shares));
-      set('[data-stat="followers"]', short(d.totals.followers));
-      if (d.totals.followerGrowthPct > 0) set('[data-stat="followersNote"]', 'followers, up ' + Math.round(d.totals.followerGrowthPct) + '% in two weeks');
-      else set('[data-stat="followersNote"]', 'followers across Instagram & TikTok');
-      set('[data-stat="asOf"]', 'Instagram + TikTok · all posts · live from our analytics, updated ' + new Date(d.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+      var t = d.totals;
+      if (t.shares > 0) set('[data-stat="shareRate"]', '1 in ' + Math.round(t.views / t.shares));
+      if (t.nonFollowerPct > 0) set('[data-stat="newPct"]', Math.round(t.nonFollowerPct) + '%');
+      if (t.posts > 0 && t.postsOver10k != null) set('[data-stat="over10k"]', t.postsOver10k + ' of ' + t.posts);
+      set('[data-stat="asOf"]', 'Instagram + TikTok · all posts · new-viewer share from TikTok insights · live, updated ' + new Date(d.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
 
       var by = d.byShortcode || {};
       document.querySelectorAll('[data-post]').forEach(function(el){
@@ -1434,7 +1434,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 
 // Results band: numbers count up the first time they come into view.
 (function(){
-  var nums = document.querySelectorAll('#results .proof-num');
+  var nums = document.querySelectorAll('#results .proof-num:not([data-nocount])');
   if (!nums.length || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   function run(el){
     var start = performance.now(), dur = 1400;
