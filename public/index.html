@@ -242,7 +242,8 @@ p{text-wrap:pretty}
 .status.ok{background:rgba(255,90,31,.1);border:1px solid rgba(255,90,31,.45)}
 .status.err{background:var(--stage);border:1px solid #4A4238}
 .copyrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
-.email{font-family:var(--mono);font-size:14px;letter-spacing:.02em;user-select:all;color:var(--bone)}
+.email{font-family:var(--mono);font-size:14px;letter-spacing:.02em;color:var(--bone);text-decoration:underline;text-decoration-color:var(--ember);text-underline-offset:3px}
+.email:hover{color:var(--ember-text)}
 
 /* Footer */
 .footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding-block:32px;align-items:center}
@@ -622,7 +623,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
       <div class="mono eyebrow">Let’s make something worth watching</div>
       <h2 class="disp" style="font-size:clamp(64px,8vw,120px);font-weight:900">Got a good <span class="ember">bad</span> idea?</h2>
       <p class="lede" style="max-width:26em">Tell us what you’re working on. Your message goes straight to Jordan and Kevin.</p>
-      <p style="margin:0;font-size:15px;color:var(--ash-2)">Prefer email? <span class="email">spearpointcontent@gmail.com</span></p>
+      <p style="margin:0;font-size:15px;color:var(--ash-2)">Prefer email? <a class="email" href="mailto:hello@spearpointpro.com">hello@spearpointpro.com</a></p>
     </div>
 
     <form class="form" id="inquiry" novalidate>
@@ -667,7 +668,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 (function(){
   // Inquiries are emailed through FormSubmit. The first submission sends a one-time
   // activation email to this address; after that, every inquiry arrives as a normal email.
-  var INBOX = 'spearpointcontent@gmail.com';
+  var INBOX = 'hello@spearpointpro.com';
   var ENDPOINT = 'https://formsubmit.co/ajax/' + INBOX;
 
   var form = document.getElementById('inquiry');
