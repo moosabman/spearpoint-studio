@@ -861,6 +861,10 @@ html.player-lock,html.player-lock body{overflow:hidden}
   var hint = document.getElementById('hint'), hintText = document.getElementById('hint-text');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var coarse = window.matchMedia('(hover: none)').matches;
+  // Phones: keep the wall faintly visible in the dark so it's easier to read and find your way around;
+  // the torch still brightens what it touches. Desktop stays pitch black.
+  var MOBILE_DIM = coarse || window.innerWidth <= 720;
+  var DARK_FLOOR = MOBILE_DIM ? .015 : 0;   // ≈ 25% of the wall shows through the darkness
   if (coarse) hintText.textContent = 'Grab the torch to light the wall';
 
   var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -1022,7 +1026,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
     if (gl){ upload(texA, 0, albedoC); upload(texH, 1, heightC); }
     [dctx,gctx,tctx].forEach(function(x){ x.setTransform(DPR,0,0,DPR,0,0); });
     dctx.globalCompositeOperation='source-over';
-    dctx.fillStyle='rgba(6,4,3,1)'; dctx.fillRect(0,0,W,H);
+    dctx.fillStyle='rgba(6,4,3,' + (DARK_FLOOR ? .75 : 1) + ')'; dctx.fillRect(0,0,W,H);
     if (!torch.active){ torch.x = torch.tx = W*.5; torch.y = torch.ty = H*.5; }
   }
 
@@ -1256,6 +1260,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
     var cut = [[0,'rgba(0,0,0,1)'],[.18,'rgba(0,0,0,.94)'],[.36,'rgba(0,0,0,.76)'],[.54,'rgba(0,0,0,.5)'],[.7,'rgba(0,0,0,.27)'],[.84,'rgba(0,0,0,.11)'],[.94,'rgba(0,0,0,.03)'],[1,'rgba(0,0,0,0)']];
     for (var i=0;i<L.length;i++) blob(dctx, L[i], cut);
     if (lit > .01){ dctx.fillStyle = 'rgba(0,0,0,' + (lit*.25) + ')'; dctx.fillRect(0,0,W,H); }
+    if (DARK_FLOOR){ dctx.fillStyle = 'rgba(0,0,0,' + DARK_FLOOR + ')'; dctx.fillRect(0,0,W,H); }
     // the stick's shadow falls away from the flame, down the wall
     if (true){
       dctx.globalCompositeOperation = 'source-over';
