@@ -43,7 +43,7 @@ async function getStats(env, ctx) {
   if (memo && now - memo.at < STATS_TTL * 1000) return memo.body;
 
   const cache = caches.default;
-  const key = new Request(CACHE_HOST + '/stats-v2');
+  const key = new Request(CACHE_HOST + '/stats-v3');
   const hit = await cache.match(key);
   if (hit) {
     const body = await hit.json();
@@ -166,6 +166,7 @@ function cleanLine(s) {
     .replace(/#[\w]+/g, '')
     .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu, '')
     .replace(/\s+/g, ' ')
+    .replace(/\s+([.,!?])/g, '$1')
     .trim();
 }
 
