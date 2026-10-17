@@ -43,7 +43,7 @@ async function getStats(env, ctx) {
   if (memo && now - memo.at < STATS_TTL * 1000) return memo.body;
 
   const cache = caches.default;
-  const key = new Request(CACHE_HOST + '/stats-v5');
+  const key = new Request(CACHE_HOST + '/stats-v6');
   const hit = await cache.match(key);
   if (hit) {
     const body = await hit.json();
@@ -128,6 +128,7 @@ export async function buildStats(apiKey, fetchJson = zernio) {
     const code = instagramCode(url);
     if (code) byShortcode[code] = { views: a.views || 0, shares: a.shares || 0, likes: a.likes || 0, saves: a.saves || 0, reach: a.reach || 0 };
 
+    if (platform !== 'instagram') continue; // What's New shows Instagram posts only
     const title = cleanTitle(p.content);
     const gkey = title.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().slice(0, 40);
     const id = postId(url);
