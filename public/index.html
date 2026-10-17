@@ -124,6 +124,7 @@ p{text-wrap:pretty}
 .proof-cell{flex:1 1 220px;min-width:0;background:var(--bone);padding:28px clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:8px}
 .proof-num{font-family:var(--display);font-weight:900;font-size:64px;line-height:.9;font-variant-numeric:tabular-nums;white-space:nowrap}
 .proof-cell span:last-child{font-size:15px;color:var(--ink-2);line-height:1.4}
+@media (min-width:900px){#results .proof-num{font-size:clamp(44px,3.9vw,56px)}}
 .proof-note{padding:14px clamp(20px,2.4vw,32px) 18px;color:var(--ink-3);font-size:11px;border-top:1px solid var(--bone-2)}
 
 /* Sections */
@@ -390,9 +391,10 @@ html.player-lock,html.player-lock body{overflow:hidden}
         <div class="proof-cell"><span class="proof-num" data-stat="views">960K+</span><span>views since we launched in September</span></div>
         <div class="proof-cell"><span class="proof-num" data-stat="shareRate" data-nocount style="color:var(--ember-deep)">1 in 18</span><span>viewers shared it with someone</span></div>
         <div class="proof-cell"><span class="proof-num" data-stat="newPct">95%</span><span>of viewers didn’t follow us yet</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="igAvg">65K</span><span>average views per Instagram reel</span></div>
         <div class="proof-cell"><span class="proof-num" data-stat="over10k">12 of 16</span><span>Instagram reels passed 10K views</span></div>
       </div>
-      <div class="proof-note mono" data-stat="asOf">Instagram + TikTok · all posts through Oct 13, 2026 · new-viewer share from TikTok insights</div>
+      <div class="proof-note mono" data-stat="asOf">Instagram + TikTok · all posts through Oct 13, 2026 · new-viewer share from TikTok insights · reel average leaves out the last 3 days</div>
     </div>
   </section>
 
@@ -791,8 +793,9 @@ html.player-lock,html.player-lock body{overflow:hidden}
       var t = d.totals;
       if (t.shares > 0) set('[data-stat="shareRate"]', '1 in ' + Math.round(t.views / t.shares));
       if (t.nonFollowerPct > 0) set('[data-stat="newPct"]', Math.round(t.nonFollowerPct) + '%');
+      if (t.igAvgViews > 0) set('[data-stat="igAvg"]', short(Math.floor(t.igAvgViews)));
       if (t.igReels > 0 && t.igReelsOver10k != null) set('[data-stat="over10k"]', t.igReelsOver10k + ' of ' + t.igReels);
-      set('[data-stat="asOf"]', 'Instagram + TikTok · all posts · new-viewer share from TikTok insights · live, updated ' + new Date(d.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+      set('[data-stat="asOf"]', 'Instagram + TikTok · all posts · new-viewer share from TikTok insights · reel average leaves out the last 3 days · live, updated ' + new Date(d.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
 
       var by = d.byShortcode || {};
       document.querySelectorAll('[data-post]').forEach(function(el){

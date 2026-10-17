@@ -43,7 +43,7 @@ async function getStats(env, ctx) {
   if (memo && now - memo.at < STATS_TTL * 1000) return memo.body;
 
   const cache = caches.default;
-  const key = new Request(CACHE_HOST + '/stats-v4');
+  const key = new Request(CACHE_HOST + '/stats-v5');
   const hit = await cache.match(key);
   if (hit) {
     const body = await hit.json();
@@ -108,6 +108,9 @@ export async function buildStats(apiKey, fetchJson = zernio) {
   const igPosts = posts.filter(p => (p.platform || (p.platforms && p.platforms[0] && p.platforms[0].platform)) === 'instagram');
   totals.igReels = igPosts.length;
   totals.igReelsOver10k = igPosts.filter(p => ((p.analytics || {}).views || 0) >= 10000).length;
+  // Average views per reel, leaving out reels from the last 3 days (they're still collecting views).
+  const settled = igPosts.filter(p => p.publishedAt && Date.now() - Date.parse(p.publishedAt) > 3 * 864e5);
+  totals.igAvgViews = settled.length ? settled.reduce((n, p) => n + ((p.analytics || {}).views || 0), 0) / settled.length : 0;
   totals.firstPostAt = posts.reduce((m, p) => (p.publishedAt && (!m || p.publishedAt < m) ? p.publishedAt : m), '');
 
   const byShortcode = {};
