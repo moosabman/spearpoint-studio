@@ -43,7 +43,7 @@ async function getStats(env, ctx) {
   if (memo && now - memo.at < STATS_TTL * 1000) return memo.body;
 
   const cache = caches.default;
-  const key = new Request(CACHE_HOST + '/stats-v3');
+  const key = new Request(CACHE_HOST + '/stats-v4');
   const hit = await cache.match(key);
   if (hit) {
     const body = await hit.json();
@@ -105,6 +105,9 @@ export async function buildStats(apiKey, fetchJson = zernio) {
   }
   totals.nonFollowerPct = nfViews ? (nfWeighted / nfViews) * 100 : 0;
   totals.postsOver10k = posts.filter(p => ((p.analytics || {}).views || 0) >= 10000).length;
+  const igPosts = posts.filter(p => (p.platform || (p.platforms && p.platforms[0] && p.platforms[0].platform)) === 'instagram');
+  totals.igReels = igPosts.length;
+  totals.igReelsOver10k = igPosts.filter(p => ((p.analytics || {}).views || 0) >= 10000).length;
   totals.firstPostAt = posts.reduce((m, p) => (p.publishedAt && (!m || p.publishedAt < m) ? p.publishedAt : m), '');
 
   const byShortcode = {};

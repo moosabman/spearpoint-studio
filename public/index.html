@@ -390,7 +390,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
         <div class="proof-cell"><span class="proof-num" data-stat="views">960K+</span><span>views since we launched in September</span></div>
         <div class="proof-cell"><span class="proof-num" data-stat="shareRate" data-nocount style="color:var(--ember-deep)">1 in 18</span><span>viewers shared it with someone</span></div>
         <div class="proof-cell"><span class="proof-num" data-stat="newPct">95%</span><span>of viewers didn’t follow us yet</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="over10k">13 of 27</span><span>posts passed 10K views</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="over10k">12 of 16</span><span>Instagram reels passed 10K views</span></div>
       </div>
       <div class="proof-note mono" data-stat="asOf">Instagram + TikTok · all posts through Oct 13, 2026 · new-viewer share from TikTok insights</div>
     </div>
@@ -791,7 +791,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
       var t = d.totals;
       if (t.shares > 0) set('[data-stat="shareRate"]', '1 in ' + Math.round(t.views / t.shares));
       if (t.nonFollowerPct > 0) set('[data-stat="newPct"]', Math.round(t.nonFollowerPct) + '%');
-      if (t.posts > 0 && t.postsOver10k != null) set('[data-stat="over10k"]', t.postsOver10k + ' of ' + t.posts);
+      if (t.igReels > 0 && t.igReelsOver10k != null) set('[data-stat="over10k"]', t.igReelsOver10k + ' of ' + t.igReels);
       set('[data-stat="asOf"]', 'Instagram + TikTok · all posts · new-viewer share from TikTok insights · live, updated ' + new Date(d.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
 
       var by = d.byShortcode || {};
