@@ -323,29 +323,29 @@ html.player-lock,html.player-lock body{overflow:hidden}
 @media (prefers-reduced-motion: reduce){.player-shell{animation:none}}
 
 /* ---------- Offer page (Nov 2026 rework) ---------- */
-.hero .hero-h1{font-size:clamp(52px,7.2vw,112px);line-height:.98}
-.hero-copy{flex:1 1 560px}
+.hero .hero-h1{font-size:clamp(52px,6.2vw,96px);line-height:.98}
+.hero-copy{flex:1 1 480px}
 
 /* Hero: illustrated training lesson */
-.tplayer{flex:0 1 420px;min-width:0;margin:0;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015)),var(--stage-3);border:1px solid var(--edge);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 50px 90px -40px rgba(0,0,0,.95),0 20px 60px -30px rgba(255,90,31,.35)}
+.tplayer{flex:0 1 540px;min-width:0;margin:0;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015)),var(--stage-3);border:1px solid var(--edge);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 50px 90px -40px rgba(0,0,0,.95),0 20px 60px -30px rgba(255,90,31,.35)}
 .tp-screen{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;padding:clamp(14px,2.4vw,22px);display:flex;flex-direction:column;gap:10px;background:radial-gradient(120% 90% at 85% 0%,rgba(255,90,31,.28),rgba(255,90,31,0) 55%),linear-gradient(160deg,#1F1A15,#100D0B 70%);border:1px solid rgba(255,255,255,.06)}
 .tp-top{display:flex;gap:6px}
 .tp-chip{font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:var(--ash)}
 .tp-chip.hot{background:var(--ember);border-color:var(--ember);color:var(--stage)}
-.tp-title{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3vw,38px);line-height:1}
-.tp-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;font-size:clamp(13px,1.3vw,15px);color:var(--bone)}
+.tp-title{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,3.8vw,52px);line-height:1}
+.tp-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:clamp(15px,1.5vw,19px);color:var(--bone)}
 .tp-list li{display:flex;align-items:center;gap:10px}
-.tp-box{flex:none;width:16px;height:16px;border-radius:4px;border:1.5px solid var(--ash-2);position:relative}
+.tp-box{flex:none;width:20px;height:20px;border-radius:4px;border:1.5px solid var(--ash-2);position:relative}
 .tp-list li.done .tp-box{background:var(--ember);border-color:var(--ember)}
-.tp-list li.done .tp-box::after{content:"";position:absolute;left:4.5px;top:1.5px;width:4px;height:8px;border:solid var(--stage);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.tp-list li.done .tp-box::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid var(--stage);border-width:0 2px 2px 0;transform:rotate(45deg)}
 .tp-list li.done{color:var(--ash-2)}
-.tp-caption{margin-top:auto;align-self:center;max-width:92%;text-align:center;font-size:clamp(12px,1.2vw,14px);line-height:1.35;padding:6px 10px;border-radius:6px;background:rgba(0,0,0,.72);color:#fff;transition:opacity .35s}
+.tp-caption{margin-top:auto;align-self:center;max-width:92%;text-align:center;font-size:clamp(13px,1.4vw,17px);line-height:1.35;padding:6px 10px;border-radius:6px;background:rgba(0,0,0,.72);color:#fff;transition:opacity .35s}
 .tp-bar{position:relative;height:6px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
 .tp-fill{position:absolute;inset:0 auto 0 0;width:38%;background:var(--ember);border-radius:inherit}
 .tp-bar i{position:absolute;top:0;bottom:0;width:2px;background:var(--stage-3)}
 .tp-meta{display:flex;justify-content:space-between;gap:12px;color:var(--ash-2);font-size:10px}
 .tp-label{color:var(--ash-3);font-size:10px;text-align:center;padding-top:2px}
-@media (max-width:700px){.tplayer{flex-basis:100%}}
+@media (max-width:700px){.tplayer{flex-basis:100%}.tp-screen{aspect-ratio:auto;min-height:250px}.tp-caption{margin-top:14px}}
 
 /* Services */
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
@@ -411,6 +411,19 @@ html.player-lock,html.player-lock body{overflow:hidden}
 .faq details p{margin:0 0 20px;font-size:16px;line-height:1.6;color:var(--ash);max-width:40em}
 .faq a{color:var(--ember-text)}
 #lab + .film{margin-top:0}
+/* Step icons */
+.step-icon{display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:16px;margin-bottom:6px;background:radial-gradient(circle at 30% 25%,rgba(255,90,31,.28),rgba(255,90,31,.06) 70%);border:1px solid rgba(255,90,31,.35);color:var(--ember-text)}
+.step-ico{width:38px;height:38px}
+/* Privacy as a clickable list */
+.promise-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0 48px;border-top:1px solid var(--line-2);margin-bottom:28px}
+.promise-item{border-bottom:1px solid var(--line-2)}
+.promise-item summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px;min-height:56px;padding:12px 0;font-size:18px;font-weight:600}
+.promise-item summary::-webkit-details-marker{display:none}
+.promise-item summary::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px rgba(255,90,31,.6)}
+.promise-item summary::after{content:"+";margin-left:auto;flex:none;font:400 24px/1 var(--body);color:var(--ember-text);transition:transform .2s}
+.promise-item[open] summary::after{transform:rotate(45deg)}
+.promise-item p{margin:0 0 18px 24px;font-size:15px;line-height:1.6;color:var(--ash);max-width:36em}
+
 @media (max-width:520px){.pkg{flex-direction:column;gap:8px}.pkg-price{text-align:left}}
 @media (prefers-reduced-motion:reduce){.svc-card:hover{transform:none}}
 </style>
@@ -438,7 +451,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
   <!-- HERO -->
   <section id="top" class="wrap hero glow">
     <div class="hero-copy">
-      <div class="mono eyebrow">Training · Recruiting · Marketing video · Austin, TX</div>
+      <div class="mono eyebrow">Training · Recruiting · Marketing · Web</div>
       <h1 class="disp hero-h1">Training videos your team will <span class="ember">actually</span> watch.</h1>
       <p class="lede">Training, recruiting and marketing video for growing businesses. Fixed prices, private by default.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
@@ -477,17 +490,17 @@ html.player-lock,html.player-lock body{overflow:hidden}
         <span class="mono svc-tag">Most requested</span>
         <h3 class="svc-name">Training</h3>
         <p>Onboarding, how-to, safety and manager training, so every location teaches it the same way and managers stop repeating themselves.</p>
-        <span class="svc-price"><small>from</small> $2,500</span>
+        <span class="svc-price"><small>from</small> $1,500</span>
       </a>
       <a class="svc-card reveal" href="#pricing">
         <h3 class="svc-name">People &amp; recruiting</h3>
         <p>“Why work here” videos, job-post shorts, recorded screening questions and welcome videos from leadership.</p>
-        <span class="svc-price"><small>from</small> $2,000</span>
+        <span class="svc-price"><small>from</small> $1,000</span>
       </a>
       <a class="svc-card reveal" href="#pricing">
         <h3 class="svc-name">Marketing &amp; media</h3>
         <p>Ads, launch spots and social video, made with the same instincts that built our own comedy series.</p>
-        <span class="svc-price"><small>from</small> $1,500</span>
+        <span class="svc-price"><small>from</small> $1,000</span>
       </a>
     </div>
   </section>
@@ -517,11 +530,11 @@ html.player-lock,html.player-lock body{overflow:hidden}
       <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">A single training video takes about 2–3 weeks from kickoff. You approve every word before anything gets made.</p>
     </div>
     <ol class="steps">
-      <li class="step reveal"><span class="step-n">01</span><h3>Free 30-minute call</h3><p>Tell us what you’re trying to fix and who will watch. No pitch deck, just questions.</p></li>
-      <li class="step reveal"><span class="step-n">02</span><h3>A fixed quote in 2 business days</h3><p>One page: what you get, the price, the timeline and what we need from you.</p></li>
-      <li class="step reveal"><span class="step-n">03</span><h3>NDA, then kickoff</h3><p>We sign a mutual NDA before you send anything. Then we gather your SOPs and spend an hour with your expert.</p></li>
-      <li class="step reveal"><span class="step-n">04</span><h3>You approve the script</h3><p>Every word and the visual plan get your sign-off first. Nothing is produced until you approve.</p></li>
-      <li class="step reveal"><span class="step-n">05</span><h3>Two rounds of changes, then delivery</h3><p>Review on a private link with time-stamped comments. You get the videos, captions and versions sized for your training system or phones.</p></li>
+      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h7l3 8-4.5 3a22 22 0 0 0 9.5 9.5l3-4.5 8 3v7a3 3 0 0 1-3 3C21 37 11 27 11 12a3 3 0 0 1 3-3z"/><path d="M30 8a10 10 0 0 1 10 10M30 14a4 4 0 0 1 4 4"/></svg></span><span class="step-n">01</span><h3>Free 30-minute call</h3><p>Tell us what you’re trying to fix and who will watch. No pitch deck, just questions.</p></li>
+      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 6h16l8 8v28H13z"/><path d="M29 6v8h8"/><path d="M25 21v16M29 24.5c0-1.9-1.8-3-4-3s-4 1.1-4 3 1.8 2.6 4 3 4 1.2 4 3-1.8 3-4 3-4-1.2-4-3"/></svg></span><span class="step-n">02</span><h3>A fixed quote in 2 business days</h3><p>One page: what you get, the price, the timeline and what we need from you.</p></li>
+      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5l15 6v10c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><rect x="18" y="21" width="12" height="10" rx="2"/><path d="M20.5 21v-3a3.5 3.5 0 0 1 7 0v3"/></svg></span><span class="step-n">03</span><h3>NDA, then kickoff</h3><p>We sign a mutual NDA before you send anything. Then we gather your SOPs and spend an hour with your expert.</p></li>
+      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7h20v34H10z"/><path d="M15 15h10M15 21h10M15 27h6"/><path d="M27 33l4 4 9-10"/></svg></span><span class="step-n">04</span><h3>You approve the script</h3><p>Every word and the visual plan get your sign-off first. Nothing is produced until you approve.</p></li>
+      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="11" width="28" height="22" rx="3"/><path d="M17 17v10l8-5z"/><path d="M34 19l8-4v14l-8-4"/><path d="M12 39h16"/></svg></span><span class="step-n">05</span><h3>Two rounds of changes, then delivery</h3><p>Review on a private link with time-stamped comments. You get the videos, captions and versions sized for your training system or phones.</p></li>
     </ol>
   </section>
 
@@ -533,24 +546,23 @@ html.player-lock,html.player-lock body{overflow:hidden}
           <div class="mono eyebrow">Packages</div>
           <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Prices up front.</h2>
         </div>
-        <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">Starting prices. Your quote is fixed before we start, so the number you agree to is the number you pay.</p>
       </div>
       <div class="pkg-grid">
         <div class="pkg-col lead">
           <div class="pkg-head"><h3>Training</h3><span class="mono svc-tag">Most requested</span></div>
-          <div class="pkg"><div><b>Pilot Video</b><p>One 3–5 minute video from your SOP or a 1-hour interview with your expert. Script, visuals, voiceover, captions, 2 rounds of changes.</p></div><span class="pkg-price">$2,500</span></div>
-          <div class="pkg"><div><b>Training Series</b><p>5 videos with one consistent look, chapters, captions, files ready for your training system, and a one-page reference sheet for each.</p></div><span class="pkg-price">$9,500</span></div>
-          <div class="pkg"><div><b>Training Library</b><p>2–4 new or updated videos a month, a running library list, priority turnaround.</p></div><span class="pkg-price">$3,000–5,500<small>/mo</small></span></div>
+          <div class="pkg"><div><b>Pilot Video</b><p>One 3–5 minute video from your SOP or a 1-hour interview with your expert. Script, visuals, voiceover, captions, 2 rounds of changes.</p></div><span class="pkg-price">$1,500</span></div>
+          <div class="pkg"><div><b>Training Series</b><p>5 videos with one consistent look, chapters, captions, files ready for your training system, and a one-page reference sheet for each.</p></div><span class="pkg-price">$7,500</span></div>
+          <div class="pkg"><div><b>Training Library</b><p>2–4 new or updated videos a month, a running library list, priority turnaround.</p></div><span class="pkg-price">$2,000–5,000<small>/mo</small></span></div>
         </div>
         <div class="pkg-col">
           <div class="pkg-head"><h3>People &amp; recruiting</h3></div>
-          <div class="pkg"><div><b>Recruiting Kit</b><p>A 60–90 second “why work here” video, 3 job-post shorts and 5–8 recorded screening questions for your interview tool.</p></div><span class="pkg-price">$3,500</span></div>
-          <div class="pkg"><div><b>Welcome Video</b><p>A 2–3 minute onboarding welcome from leadership, with culture and first-day basics.</p></div><span class="pkg-price">$2,000</span></div>
+          <div class="pkg"><div><b>Recruiting Kit</b><p>A 60–90 second “why work here” video, 3 job-post shorts and 5–8 recorded screening questions for your interview tool.</p></div><span class="pkg-price">$2,500</span></div>
+          <div class="pkg"><div><b>Welcome Video</b><p>A 2–3 minute onboarding welcome from leadership, with culture and first-day basics.</p></div><span class="pkg-price">$1,000</span></div>
         </div>
         <div class="pkg-col">
           <div class="pkg-head"><h3>Marketing &amp; media</h3></div>
-          <div class="pkg"><div><b>Ad or Launch Spot</b><p>One 30–60 second ad or launch video, 2 rounds of changes.</p></div><span class="pkg-price">$1,500</span></div>
-          <div class="pkg"><div><b>Monthly Social</b><p>4 short videos a month plus a monthly check-in.</p></div><span class="pkg-price">$2,000–3,000<small>/mo</small></span></div>
+          <div class="pkg"><div><b>Ad or Launch Spot</b><p>One 30–60 second ad or launch video, 2 rounds of changes.</p></div><span class="pkg-price">$1,000</span></div>
+          <div class="pkg"><div><b>Monthly Social</b><p>4 short videos a month plus a monthly check-in.</p></div><span class="pkg-price">$2,000<small>/mo</small></span></div>
           <div class="pkg"><div><b>Graphics &amp; web media</b><p>Graphics, web images, menus and signage.</p></div><span class="pkg-price small">Quoted per project</span></div>
         </div>
       </div>
@@ -569,15 +581,14 @@ html.player-lock,html.player-lock body{overflow:hidden}
         <div class="mono eyebrow">Trust</div>
         <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Your information stays private.</h2>
       </div>
-      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">Training material holds your processes, your policies and sometimes your people. Here’s exactly how we handle it.</p>
     </div>
-    <div class="promise-grid">
-      <div class="promise reveal"><h3>NDA first</h3><p>We sign a mutual NDA before you send us anything.</p></div>
-      <div class="promise reveal"><h3>A written AI policy</h3><p>We only use business versions of AI tools whose terms say your inputs aren’t used to train their models. Employee personal details, customer data and financials never go into any AI tool.</p></div>
-      <div class="promise reveal"><h3>No faces or voices without consent</h3><p>We never make an AI likeness or voice of a real employee without their written permission. You approve any AI voice or presenter.</p></div>
-      <div class="promise reveal"><h3>Private storage</h3><p>One locked-down folder per client, two-step login on every account, and only Jordan and Kevin have access. Raw materials are deleted 90 days after delivery, or sooner if you ask.</p></div>
-      <div class="promise reveal"><h3>You own it</h3><p>The final videos are yours once paid. We never show internal training in our portfolio without your written permission, and the default is no.</p></div>
-      <div class="promise reveal"><h3>Accuracy stays yours</h3><p>Your expert signs off on the script. Policy, safety and legal content gets reviewed by your HR or legal team.</p></div>
+    <div class="promise-list">
+      <details class="promise-item"><summary>NDA first</summary><p>We sign a mutual NDA before you send us anything.</p></details>
+      <details class="promise-item"><summary>A written AI policy</summary><p>We only use business versions of AI tools whose terms say your inputs aren’t used to train their models. Employee personal details, customer data and financials never go into any AI tool.</p></details>
+      <details class="promise-item"><summary>No faces or voices without consent</summary><p>We never make an AI likeness or voice of a real employee without their written permission. You approve any AI voice or presenter.</p></details>
+      <details class="promise-item"><summary>Private storage</summary><p>One locked-down folder per client, two-step login on every account, and only Jordan and Kevin have access. Raw materials are deleted 90 days after delivery, or sooner if you ask.</p></details>
+      <details class="promise-item"><summary>You own it</summary><p>The final videos are yours once paid. We never show internal training in our portfolio without your written permission, and the default is no.</p></details>
+      <details class="promise-item"><summary>Accuracy stays yours</summary><p>Your expert signs off on the script. Policy, safety and legal content gets reviewed by your HR or legal team.</p></details>
     </div>
     <a class="arrow-link" href="/privacy">Read our full Privacy &amp; AI policy →</a>
   </section>
