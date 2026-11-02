@@ -6,13 +6,13 @@
 <link rel="canonical" href="https://spearpointpro.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://spearpointpro.com/">
-<meta property="og:title" content="Spearpoint Studio">
-<meta property="og:description" content="Original comedy and branded films built to be shared. Home of Cave Base: product launches, 10,000 years early.">
+<meta property="og:title" content="Spearpoint Studio · Training videos your team will actually watch">
+<meta property="og:description" content="Training videos your team will actually watch. Training, recruiting and marketing video for growing businesses. Fixed prices, private by default.">
 <meta property="og:image" content="https://spearpointpro.com/assets/video/poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0D0B09">
-<title>Spearpoint Studio</title>
-<meta name="description" content="Spearpoint Studio makes original comedy and branded films built to be shared. Home of Cave Base: product launches, 10,000 years early.">
+<title>Spearpoint Studio · Training videos your team will actually watch</title>
+<meta name="description" content="Training videos your team will actually watch. Training, recruiting and marketing video for growing businesses. Fixed prices, private by default.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -124,7 +124,7 @@ p{text-wrap:pretty}
 .proof-cell{flex:1 1 220px;min-width:0;background:var(--bone);padding:28px clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:8px}
 .proof-num{font-family:var(--display);font-weight:900;font-size:64px;line-height:.9;font-variant-numeric:tabular-nums;white-space:nowrap}
 .proof-cell span:last-child{font-size:15px;color:var(--ink-2);line-height:1.4}
-@media (min-width:900px){#results .proof-num{font-size:clamp(44px,3.9vw,56px)}}
+@media (min-width:900px){#lab-stats .proof-num{font-size:clamp(44px,3.9vw,56px)}}
 .proof-note{padding:14px clamp(20px,2.4vw,32px) 18px;color:var(--ink-3);font-size:11px;border-top:1px solid var(--bone-2)}
 
 /* Sections */
@@ -321,6 +321,98 @@ p{text-wrap:pretty}
 .player-out:hover{color:var(--bone)}
 html.player-lock,html.player-lock body{overflow:hidden}
 @media (prefers-reduced-motion: reduce){.player-shell{animation:none}}
+
+/* ---------- Offer page (Nov 2026 rework) ---------- */
+.hero .hero-h1{font-size:clamp(52px,7.2vw,112px);line-height:.98}
+.hero-copy{flex:1 1 560px}
+
+/* Hero: illustrated training lesson */
+.tplayer{flex:0 1 420px;min-width:0;margin:0;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015)),var(--stage-3);border:1px solid var(--edge);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 50px 90px -40px rgba(0,0,0,.95),0 20px 60px -30px rgba(255,90,31,.35)}
+.tp-screen{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;padding:clamp(14px,2.4vw,22px);display:flex;flex-direction:column;gap:10px;background:radial-gradient(120% 90% at 85% 0%,rgba(255,90,31,.28),rgba(255,90,31,0) 55%),linear-gradient(160deg,#1F1A15,#100D0B 70%);border:1px solid rgba(255,255,255,.06)}
+.tp-top{display:flex;gap:6px}
+.tp-chip{font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:var(--ash)}
+.tp-chip.hot{background:var(--ember);border-color:var(--ember);color:var(--stage)}
+.tp-title{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3vw,38px);line-height:1}
+.tp-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;font-size:clamp(13px,1.3vw,15px);color:var(--bone)}
+.tp-list li{display:flex;align-items:center;gap:10px}
+.tp-box{flex:none;width:16px;height:16px;border-radius:4px;border:1.5px solid var(--ash-2);position:relative}
+.tp-list li.done .tp-box{background:var(--ember);border-color:var(--ember)}
+.tp-list li.done .tp-box::after{content:"";position:absolute;left:4.5px;top:1.5px;width:4px;height:8px;border:solid var(--stage);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.tp-list li.done{color:var(--ash-2)}
+.tp-caption{margin-top:auto;align-self:center;max-width:92%;text-align:center;font-size:clamp(12px,1.2vw,14px);line-height:1.35;padding:6px 10px;border-radius:6px;background:rgba(0,0,0,.72);color:#fff;transition:opacity .35s}
+.tp-bar{position:relative;height:6px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.tp-fill{position:absolute;inset:0 auto 0 0;width:38%;background:var(--ember);border-radius:inherit}
+.tp-bar i{position:absolute;top:0;bottom:0;width:2px;background:var(--stage-3)}
+.tp-meta{display:flex;justify-content:space-between;gap:12px;color:var(--ash-2);font-size:10px}
+.tp-label{color:var(--ash-3);font-size:10px;text-align:center;padding-top:2px}
+@media (max-width:700px){.tplayer{flex-basis:100%}}
+
+/* Services */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.svc-card{position:relative;display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,32px);border-radius:16px;text-decoration:none;color:var(--bone);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01)),var(--stage-3);border:1px solid var(--line-2);transition:transform .25s,border-color .25s,box-shadow .25s}
+.svc-card:hover{color:var(--bone);transform:translateY(-4px);border-color:var(--ember);box-shadow:0 30px 60px -30px rgba(0,0,0,.9),0 18px 50px -24px rgba(255,90,31,.4)}
+.svc-card.lead{border-color:rgba(255,90,31,.55);background:radial-gradient(120% 80% at 0% 0%,rgba(255,90,31,.16),rgba(255,90,31,0) 60%),var(--stage-3)}
+.svc-card p{margin:0;font-size:16px;line-height:1.55;color:var(--ash);flex:1}
+.svc-name{margin:0;font-family:var(--display);text-transform:uppercase;font-weight:900;font-size:clamp(34px,3.2vw,44px);line-height:1}
+.svc-tag{align-self:flex-start;color:var(--ember-text);font-size:11px}
+.svc-price{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--bone)}
+.svc-price small{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ash-2);margin-right:6px;font-weight:400}
+
+/* Proof band links */
+.proof-link{color:var(--ember-deep);font-weight:600;text-decoration:none;white-space:nowrap}
+.proof-link:hover{color:var(--stage);text-decoration:underline}
+#proof .proof-cell{flex-basis:320px;padding-block:clamp(28px,3vw,40px)}
+#proof .proof-num{font-size:clamp(52px,6vw,80px)}
+
+/* How it works */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;counter-reset:s}
+.step{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:14px;border:1px solid var(--line-2);background:var(--stage-2)}
+.step h3{margin:0;font-size:18px;line-height:1.3;font-weight:600}
+.step p{margin:0;font-size:15px;line-height:1.55;color:var(--ash)}
+.step-n{font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:var(--ember-text)}
+
+/* Packages */
+#pricing .section{display:flex;flex-direction:column;gap:20px}
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;align-items:start}
+.pkg-col{border-radius:16px;border:1px solid var(--line-2);background:var(--stage-3);padding:8px 22px 14px}
+.pkg-col.lead{border-color:rgba(255,90,31,.55)}
+.pkg-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0 12px;border-bottom:1px solid var(--line-2)}
+.pkg-head h3{margin:0;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:30px;line-height:1}
+.pkg{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.pkg:last-child{border-bottom:0}
+.pkg b{font-size:16px;font-weight:600}
+.pkg p{margin:6px 0 0;font-size:14px;line-height:1.5;color:var(--ash)}
+.pkg-price{flex:none;font-family:var(--display);font-weight:800;font-size:28px;line-height:1;white-space:nowrap;text-align:right}
+.pkg-price small{font-family:var(--mono);font-size:11px;color:var(--ash-2);font-weight:400;letter-spacing:.08em;margin-left:2px}
+.pkg-price.small{font-family:var(--body);font-size:14px;font-weight:600;color:var(--ash)}
+.pkg-notes{display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.55;color:var(--ash);max-width:62em}
+.pkg-notes p{margin:0}.pkg-notes b{color:var(--bone)}
+
+/* Privacy promises */
+.promise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:16px;overflow:hidden;margin-bottom:28px}
+.promise{background:var(--stage);padding:24px;display:flex;flex-direction:column;gap:10px}
+.promise h3{margin:0;font-size:18px;font-weight:600;display:flex;align-items:center;gap:10px}
+.promise h3::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px rgba(255,90,31,.6)}
+.promise p{margin:0;font-size:15px;line-height:1.55;color:var(--ash)}
+.arrow-link{font-weight:600;color:var(--ember-text);text-decoration:none}
+.arrow-link:hover{text-decoration:underline}
+
+/* About */
+.person-bio{font-size:15px;line-height:1.5;color:var(--ash)}
+
+/* FAQ */
+.faq-wrap{display:flex;flex-wrap:wrap;gap:32px 72px;align-items:flex-start}
+.faq{flex:2 1 520px;min-width:0;display:flex;flex-direction:column;border-top:1px solid var(--line-2)}
+.faq details{border-bottom:1px solid var(--line-2)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 0;font-size:17px;font-weight:600;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:400 26px/1 var(--body);color:var(--ember-text);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 20px;font-size:16px;line-height:1.6;color:var(--ash);max-width:40em}
+.faq a{color:var(--ember-text)}
+#lab + .film{margin-top:0}
+@media (max-width:520px){.pkg{flex-direction:column;gap:8px}.pkg-price{text-align:left}}
+@media (prefers-reduced-motion:reduce){.svc-card:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -331,17 +423,197 @@ html.player-lock,html.player-lock body{overflow:hidden}
       <span>Spearpoint Studio</span>
     </a>
     <nav class="nav-links" aria-label="Main">
-      <a href="#cave-base">Cave Base</a>
-      <a href="#whats-new">What’s new</a>
-      <a href="#results">Results</a>
-      <a href="#process">Process</a>
-      <a href="#studio">Studio</a>
-      <a class="btn btn-solid" href="#contact" style="min-height:44px;padding:0 20px">Let’s talk</a>
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#studio">About</a>
+      <a href="#lab">Lab</a>
+      <a class="btn btn-solid" href="#contact" style="min-height:44px;padding:0 20px">Book a call</a>
     </nav>
   </div>
 </header>
 
 <main>
+  <!-- HERO -->
+  <section id="top" class="wrap hero glow">
+    <div class="hero-copy">
+      <div class="mono eyebrow">Training · Recruiting · Marketing video · Austin, TX</div>
+      <h1 class="disp hero-h1">Training videos your team will <span class="ember">actually</span> watch.</h1>
+      <p class="lede">Training, recruiting and marketing video for growing businesses. Fixed prices, private by default.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-hot" href="#contact">Book a free 30-minute call</a>
+        <a class="btn btn-ghost" href="#pricing">See pricing</a>
+      </div>
+    </div>
+    <figure class="tplayer" aria-label="Illustration of a Spearpoint training lesson with chapters, captions and a Spanish version">
+      <div class="tp-screen">
+        <div class="tp-top"><span class="tp-chip hot">Lesson 2 of 6</span><span class="tp-chip">CC</span><span class="tp-chip">ES</span></div>
+        <div class="tp-title">Opening checklist</div>
+        <ol class="tp-list">
+          <li><span class="tp-box"></span>Sanitize every station</li>
+          <li><span class="tp-box"></span>Check walk-in temps</li>
+          <li><span class="tp-box"></span>Stock the line</li>
+        </ol>
+        <div class="tp-caption" id="tp-caption">Wipe down every station before the first ticket.</div>
+      </div>
+      <div class="tp-bar"><div class="tp-fill"></div><i style="left:22%"></i><i style="left:48%"></i><i style="left:74%"></i></div>
+      <div class="tp-meta mono"><span>Opening · Food safety · Closing</span><span>4:30</span></div>
+      <figcaption class="mono tp-label">Example lesson · captions, chapters, Spanish version</figcaption>
+    </figure>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="wrap section" style="padding-top:clamp(24px,4vw,48px)">
+    <div class="section-head" style="margin-bottom:36px">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="mono eyebrow">What we make</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Three kinds of video.</h2>
+      </div>
+      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">Training leads. The other two are what teams add once they’ve worked with us.</p>
+    </div>
+    <div class="svc-grid">
+      <a class="svc-card lead reveal" href="#pricing">
+        <span class="mono svc-tag">Most requested</span>
+        <h3 class="svc-name">Training</h3>
+        <p>Onboarding, how-to, safety and manager training, so every location teaches it the same way and managers stop repeating themselves.</p>
+        <span class="svc-price"><small>from</small> $2,500</span>
+      </a>
+      <a class="svc-card reveal" href="#pricing">
+        <h3 class="svc-name">People &amp; recruiting</h3>
+        <p>“Why work here” videos, job-post shorts, recorded screening questions and welcome videos from leadership.</p>
+        <span class="svc-price"><small>from</small> $2,000</span>
+      </a>
+      <a class="svc-card reveal" href="#pricing">
+        <h3 class="svc-name">Marketing &amp; media</h3>
+        <p>Ads, launch spots and social video, made with the same instincts that built our own comedy series.</p>
+        <span class="svc-price"><small>from</small> $1,500</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- SAMPLE REEL: turn on (remove hidden) once the training reel and examples are ready -->
+  <section id="reel" class="wrap section" hidden>
+    <div class="mono eyebrow">Sample reel</div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="proof" class="proof" aria-label="Proof">
+    <div class="wrap">
+      <div class="proof-grid">
+        <div class="proof-cell"><span class="proof-num" data-nocount style="color:var(--ember-deep)">Hundreds</span><span>of training videos produced for a fast-growing restaurant brand</span></div>
+        <div class="proof-cell"><span class="proof-num" data-stat="views">1.1M+</span><span>views on our own comedy series. <a href="#lab" class="proof-link">See Cave Base →</a></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="wrap section">
+    <div class="section-head" style="margin-bottom:40px">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="mono eyebrow">How it works</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Five steps. No surprises.</h2>
+      </div>
+      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">A single training video takes about 2–3 weeks from kickoff. You approve every word before anything gets made.</p>
+    </div>
+    <ol class="steps">
+      <li class="step reveal"><span class="step-n">01</span><h3>Free 30-minute call</h3><p>Tell us what you’re trying to fix and who will watch. No pitch deck, just questions.</p></li>
+      <li class="step reveal"><span class="step-n">02</span><h3>A fixed quote in 2 business days</h3><p>One page: what you get, the price, the timeline and what we need from you.</p></li>
+      <li class="step reveal"><span class="step-n">03</span><h3>NDA, then kickoff</h3><p>We sign a mutual NDA before you send anything. Then we gather your SOPs and spend an hour with your expert.</p></li>
+      <li class="step reveal"><span class="step-n">04</span><h3>You approve the script</h3><p>Every word and the visual plan get your sign-off first. Nothing is produced until you approve.</p></li>
+      <li class="step reveal"><span class="step-n">05</span><h3>Two rounds of changes, then delivery</h3><p>Review on a private link with time-stamped comments. You get the videos, captions and versions sized for your training system or phones.</p></li>
+    </ol>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="pricing" class="band">
+    <div class="wrap section">
+      <div class="section-head" style="margin-bottom:40px">
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div class="mono eyebrow">Packages</div>
+          <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Prices up front.</h2>
+        </div>
+        <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">Starting prices. Your quote is fixed before we start, so the number you agree to is the number you pay.</p>
+      </div>
+      <div class="pkg-grid">
+        <div class="pkg-col lead">
+          <div class="pkg-head"><h3>Training</h3><span class="mono svc-tag">Most requested</span></div>
+          <div class="pkg"><div><b>Pilot Video</b><p>One 3–5 minute video from your SOP or a 1-hour interview with your expert. Script, visuals, voiceover, captions, 2 rounds of changes.</p></div><span class="pkg-price">$2,500</span></div>
+          <div class="pkg"><div><b>Training Series</b><p>5 videos with one consistent look, chapters, captions, files ready for your training system, and a one-page reference sheet for each.</p></div><span class="pkg-price">$9,500</span></div>
+          <div class="pkg"><div><b>Training Library</b><p>2–4 new or updated videos a month, a running library list, priority turnaround.</p></div><span class="pkg-price">$3,000–5,500<small>/mo</small></span></div>
+        </div>
+        <div class="pkg-col">
+          <div class="pkg-head"><h3>People &amp; recruiting</h3></div>
+          <div class="pkg"><div><b>Recruiting Kit</b><p>A 60–90 second “why work here” video, 3 job-post shorts and 5–8 recorded screening questions for your interview tool.</p></div><span class="pkg-price">$3,500</span></div>
+          <div class="pkg"><div><b>Welcome Video</b><p>A 2–3 minute onboarding welcome from leadership, with culture and first-day basics.</p></div><span class="pkg-price">$2,000</span></div>
+        </div>
+        <div class="pkg-col">
+          <div class="pkg-head"><h3>Marketing &amp; media</h3></div>
+          <div class="pkg"><div><b>Ad or Launch Spot</b><p>One 30–60 second ad or launch video, 2 rounds of changes.</p></div><span class="pkg-price">$1,500</span></div>
+          <div class="pkg"><div><b>Monthly Social</b><p>4 short videos a month plus a monthly check-in.</p></div><span class="pkg-price">$2,000–3,000<small>/mo</small></span></div>
+          <div class="pkg"><div><b>Graphics &amp; web media</b><p>Graphics, web images, menus and signage.</p></div><span class="pkg-price small">Quoted per project</span></div>
+        </div>
+      </div>
+      <div class="pkg-notes">
+        <p><b>Add-ons:</b> on-site filming day $1,200 · Spanish version of a video $400 · updating an existing video from $300 · rush delivery (under 1 week) +25%</p>
+        <p><b>Payment:</b> 50% to start, 50% on delivery. Monthly plans are billed at the start of each month, with a 3-month minimum.</p>
+      </div>
+      <a class="btn btn-hot" href="#contact" style="align-self:flex-start;margin-top:8px">Book a free 30-minute call</a>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section id="privacy" class="wrap section">
+    <div class="section-head" style="margin-bottom:40px">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="mono eyebrow">Trust</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Your information stays private.</h2>
+      </div>
+      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">Training material holds your processes, your policies and sometimes your people. Here’s exactly how we handle it.</p>
+    </div>
+    <div class="promise-grid">
+      <div class="promise reveal"><h3>NDA first</h3><p>We sign a mutual NDA before you send us anything.</p></div>
+      <div class="promise reveal"><h3>A written AI policy</h3><p>We only use business versions of AI tools whose terms say your inputs aren’t used to train their models. Employee personal details, customer data and financials never go into any AI tool.</p></div>
+      <div class="promise reveal"><h3>No faces or voices without consent</h3><p>We never make an AI likeness or voice of a real employee without their written permission. You approve any AI voice or presenter.</p></div>
+      <div class="promise reveal"><h3>Private storage</h3><p>One locked-down folder per client, two-step login on every account, and only Jordan and Kevin have access. Raw materials are deleted 90 days after delivery, or sooner if you ask.</p></div>
+      <div class="promise reveal"><h3>You own it</h3><p>The final videos are yours once paid. We never show internal training in our portfolio without your written permission, and the default is no.</p></div>
+      <div class="promise reveal"><h3>Accuracy stays yours</h3><p>Your expert signs off on the script. Policy, safety and legal content gets reviewed by your HR or legal team.</p></div>
+    </div>
+    <a class="arrow-link" href="/privacy">Read our full Privacy &amp; AI policy →</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="studio" class="band">
+    <div class="wrap section" style="display:flex;flex-wrap:wrap;gap:48px 72px;align-items:center">
+      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:20px">
+        <div class="mono eyebrow">About</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Two people. Hundreds of training videos.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:30em">Spearpoint is Jordan and Kevin. We’ve spent years making training and explainer videos for a fast-growing restaurant brand, and we make a comedy series on the side because we like proving people will watch. You work with us directly, from the first call to the final cut. No account managers, no hand-offs.</p>
+      </div>
+      <div style="flex:1 1 440px;min-width:0;display:flex;flex-wrap:wrap;gap:20px">
+        <div class="person reveal">
+          <div class="still portrait"><img src="assets/jordan.webp" alt="Jordan, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span class="ep-title" style="font-size:28px">Jordan</span><span class="person-bio">Years of shooting, editing and motion design in Premiere and After Effects.</span><span class="mono ep-meta">Chief Cave Illustrationist</span></div>
+        </div>
+        <div class="person reveal">
+          <div class="still portrait"><img src="assets/kevin.webp" alt="Kevin, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span class="ep-title" style="font-size:28px">Kevin</span><span class="person-bio">Stop-motion at Warner Bros., then a popular food YouTube channel, then 5+ years leading a restaurant brand’s video team.</span><span class="mono ep-meta">Senior Thinking Maker</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAB: our work for fun -->
+  <section id="lab" class="wrap section" style="padding-bottom:clamp(32px,4vw,48px)">
+    <div class="section-head">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="mono eyebrow">The Lab</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Our work for fun.</h2>
+      </div>
+      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:30em;font-size:17px;line-height:1.6;color:var(--ash)">Our own comedy series and experiments. It’s where we prove we can hold attention, and it’s the same instinct we bring to training people actually finish.</p>
+    </div>
+  </section>
+
   <!-- LOGO REVEAL FILM: loops silently; sound and pause in the corner -->
   <section class="film" id="film" aria-label="Spearpoint Studio logo reveal film">
     <div class="film-frame">
@@ -360,32 +632,8 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </div>
   </section>
 
-  <!-- HERO -->
-  <section id="top" class="wrap hero glow">
-    <div class="hero-copy">
-      <div class="mono eyebrow">Original comedy · Branded films · Austin, TX</div>
-      <h1 class="disp">Funny films.<br><span class="ember">Serious</span> impact.</h1>
-      <p class="lede">Original comedy and branded films built to be shared. Home of <strong style="color:var(--bone)">Cave Base</strong>, the Stone Age product keynote that pulled 960K+ views in its first month.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a class="btn btn-solid" href="#cave-base">Watch Cave Base</a>
-        <a class="btn btn-ghost" href="#contact">Start a project</a>
-      </div>
-    </div>
-    <a class="ep hero-film" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
-      <div class="still" style="aspect-ratio:9/16;border-radius:14px">
-        <video id="hero-loop" class="loop" muted loop playsinline preload="none" poster="assets/video/woof-loop-poster.jpg" aria-label="Woof: the presenter pulls the cover off a golden retriever"></video>
-        <span class="tag mono">Now playing</span>
-        <span class="watch-pill" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch with sound</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-        <span class="ep-title" style="font-size:34px">Woof</span>
-        <span class="mono ep-meta">Cave Base · 459K views</span>
-      </div>
-    </a>
-  </section>
-
-  <!-- PROOF -->
-  <section id="results" class="proof" aria-label="Results">
+  <!-- LAB STATS: live from Zernio -->
+  <section id="lab-stats" class="proof" aria-label="Cave Base results">
     <div class="wrap">
       <div class="proof-grid">
         <div class="proof-cell"><span class="proof-num" data-stat="views">960K+</span><span>views since we launched in September</span></div>
@@ -505,10 +753,10 @@ html.player-lock,html.player-lock body{overflow:hidden}
   <section id="process" aria-labelledby="process-h">
     <div class="wrap section-head" style="padding-block:clamp(64px,8vw,104px) 32px">
       <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-        <div class="mono eyebrow">How a project works</div>
+        <div class="mono eyebrow">How the cave works</div>
         <h2 class="disp" id="process-h" style="font-size:clamp(52px,7vw,104px);font-weight:900">Written on the wall.</h2>
       </div>
-      <p style="flex:1 1 340px;min-width:0;margin:0;max-width:30em;font-size:17px;line-height:1.6;color:var(--ash)">Grab the torch. Our whole process has been documented using the latest technology available.</p>
+      <p style="flex:1 1 340px;min-width:0;margin:0;max-width:30em;font-size:17px;line-height:1.6;color:var(--ash)">Grab the torch. How we make Cave Base, documented using the latest technology available.</p>
     </div>
     <span aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;font-family:'Amatic SC';font-weight:700">Concept Agree Crafting Share 0123456789</span>
     <section class="wall" id="wall" tabindex="0" aria-label="Cave wall showing the four steps of a Spearpoint project. Move your pointer to light it.">
@@ -555,7 +803,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
     <div class="section-head" style="gap:16px 40px;margin-bottom:36px">
       <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
         <div class="mono eyebrow">Spearpoint Labs</div>
-        <h2 class="disp" id="labs-h" style="font-size:clamp(52px,6vw,88px);font-weight:900">Lab experiments.</h2>
+        <h2 class="disp" id="labs-h" style="font-size:clamp(52px,6vw,88px);font-weight:900">Experiments.</h2>
       </div>
       <div class="labs-side">
         <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:24em">Where we test new formats before they become series.</p>
@@ -597,34 +845,32 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </div>
   </section>
 
-  <!-- STUDIO -->
-  <section id="studio" class="band">
-    <div class="wrap section" style="display:flex;flex-wrap:wrap;gap:48px 72px;align-items:center">
-      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:20px">
-        <div class="mono eyebrow">The studio</div>
-        <h2 class="disp" style="font-size:clamp(52px,6vw,88px);font-weight:900">We take the craft seriously.</h2>
-        <p class="disp" style="font-size:clamp(28px,3vw,40px);font-weight:700;color:var(--ash);line-height:1.12">The subject matter? That’s another story.</p>
-        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:30em">Spearpoint is two creators, Jordan and Kevin. You work with us directly, from the first conversation to the final cut. No account managers, no hand-offs.</p>
+  <!-- FAQ -->
+  <section id="faq" class="band">
+    <div class="wrap section faq-wrap">
+      <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:14px">
+        <div class="mono eyebrow">FAQ</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Good questions.</h2>
       </div>
-      <div style="flex:1 1 440px;min-width:0;display:flex;flex-wrap:wrap;gap:20px">
-        <div class="person reveal">
-          <div class="still portrait"><img src="assets/jordan.webp" alt="Jordan, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
-          <div style="display:flex;flex-direction:column;gap:2px"><span class="ep-title" style="font-size:28px">Jordan</span><span class="mono ep-meta">Chief Cave Illustrationist</span></div>
-        </div>
-        <div class="person reveal">
-          <div class="still portrait"><img src="assets/kevin.webp" alt="Kevin, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
-          <div style="display:flex;flex-direction:column;gap:2px"><span class="ep-title" style="font-size:28px">Kevin</span><span class="mono ep-meta">Senior Thinking Maker</span></div>
-        </div>
+      <div class="faq">
+        <details><summary>How long does a training video take?</summary><p>About 2–3 weeks from kickoff for a single video. A series or library runs on a schedule we agree on in your quote.</p></details>
+        <details><summary>Do you use AI?</summary><p>Yes, for parts of production like visuals and editing, under a written policy. We only use business versions of tools whose terms say your inputs aren’t used to train their models, and employee personal details, customer data and financials never go into any AI tool. <a href="/privacy">Read the policy</a>.</p></details>
+        <details><summary>How do you keep our information confidential?</summary><p>We sign a mutual NDA before you send anything, keep your files in a locked-down folder only the two of us can open, and delete raw materials 90 days after delivery, or sooner if you ask.</p></details>
+        <details><summary>Who owns the finished videos?</summary><p>You do, once they’re paid for. We don’t show internal training in our portfolio without your written permission.</p></details>
+        <details><summary>What do you need from us?</summary><p>Your SOPs, slides or manuals, an hour with the person who knows the process best, and one person who approves the script and the cuts.</p></details>
+        <details><summary>Can you film on site or make Spanish versions?</summary><p>Yes. An on-site filming day is $1,200, and a Spanish version of a video is $400.</p></details>
+        <details><summary>How does payment work?</summary><p>50% to start and 50% on delivery. Monthly plans are billed at the start of each month, with a 3-month minimum.</p></details>
+        <details><summary>Where are you?</summary><p>Austin, Texas. We’re happy to meet in person around Austin and work with teams anywhere.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT: book a call -->
   <section id="contact" class="wrap section contact">
     <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:20px">
-      <div class="mono eyebrow">Let’s make something worth watching</div>
-      <h2 class="disp" style="font-size:clamp(64px,8vw,120px);font-weight:900">Got a good <span class="ember">bad</span> idea?</h2>
-      <p class="lede" style="max-width:26em">Tell us what you’re working on. Your message goes straight to Jordan and Kevin.</p>
+      <div class="mono eyebrow">Book a call</div>
+      <h2 class="disp" style="font-size:clamp(56px,7vw,104px);font-weight:900">Book a free <span class="ember">30-minute</span> call.</h2>
+      <p class="lede" style="max-width:26em">Tell us what you’re trying to fix and who will watch. Your message goes straight to Jordan and Kevin, and we’ll email you to set a time.</p>
       <p style="margin:0;font-size:15px;color:var(--ash-2)">Prefer email? <a class="email" href="mailto:hello@spearpointpro.com">hello@spearpointpro.com</a></p>
     </div>
 
@@ -633,22 +879,21 @@ html.player-lock,html.player-lock body{overflow:hidden}
         <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
         <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
       </div>
-      <div class="field"><label for="f-brand">Brand or website <em>(optional)</em></label><input id="f-brand" name="brand" type="text" autocomplete="organization"></div>
-      <div class="field"><label for="f-message">What are you working on?</label><textarea id="f-message" name="message" rows="4" required placeholder="A product launch, a campaign, a good bad idea…"></textarea></div>
+      <div class="field"><label for="f-brand">Company <em>(optional)</em></label><input id="f-brand" name="company" type="text" autocomplete="organization"></div>
       <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-        <legend class="legend" style="margin-bottom:10px">Approximate budget <em>(optional)</em></legend>
+        <legend class="legend" style="margin-bottom:10px">What do you need?</legend>
         <div class="chips">
-          <label class="chip"><input type="radio" name="budget" id="b-0" value="Not sure yet" checked> Not sure yet</label>
-          <label class="chip"><input type="radio" name="budget" id="b-1" value="Under $5K"> Under $5K</label>
-          <label class="chip"><input type="radio" name="budget" id="b-2" value="$5K–$10K"> $5K–$10K</label>
-          <label class="chip"><input type="radio" name="budget" id="b-3" value="$10K–$20K"> $10K–$20K</label>
-          <label class="chip"><input type="radio" name="budget" id="b-4" value="$20K+"> $20K+</label>
+          <label class="chip"><input type="radio" name="budget" id="b-1" value="Training" checked> Training</label>
+          <label class="chip"><input type="radio" name="budget" id="b-2" value="People & recruiting"> People &amp; recruiting</label>
+          <label class="chip"><input type="radio" name="budget" id="b-3" value="Marketing & media"> Marketing &amp; media</label>
+          <label class="chip"><input type="radio" name="budget" id="b-0" value="Not sure yet"> Not sure yet</label>
         </div>
       </fieldset>
-      <div class="field"><label for="f-timing">Timing <em>(optional)</em></label><input id="f-timing" name="timing" type="text" placeholder="e.g. Launching in Q1"></div>
+      <div class="field"><label for="f-message">What are you trying to fix?</label><textarea id="f-message" name="message" rows="4" required placeholder="e.g. New hires at each location learn opening procedures differently"></textarea></div>
+      <div class="field"><label for="f-timing">Team size or timing <em>(optional)</em></label><input id="f-timing" name="timing" type="text" placeholder="e.g. 300 employees, 8 locations, new menu in January"></div>
       <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
       <div id="form-status" role="status" aria-live="polite"></div>
-      <button type="submit" class="btn btn-hot" id="f-submit" style="align-self:flex-start;font-size:16px">Start a conversation</button>
+      <button type="submit" class="btn btn-hot" id="f-submit" style="align-self:flex-start;font-size:16px">Request a call</button>
     </form>
   </section>
 </main>
@@ -657,10 +902,13 @@ html.player-lock,html.player-lock body{overflow:hidden}
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Spearpoint Studio, back to top"><img src="assets/mark-stone.png" alt="" width="17" height="46"><span>Spearpoint Studio</span></a>
     <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="/privacy">Privacy &amp; AI policy</a>
+      <a href="#lab">Lab</a>
       <a href="https://www.instagram.com/spearpointpro/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.tiktok.com/@spearpointpro" target="_blank" rel="noopener">TikTok</a>
-      <a href="#cave-base">Cave Base</a>
-      <a href="#contact">Contact</a>
+      <a href="mailto:hello@spearpointpro.com">hello@spearpointpro.com</a>
     </div>
     <span class="mono" style="color:var(--ash-3)">© 2026 Spearpoint Studio</span>
   </div>
@@ -681,8 +929,8 @@ html.player-lock,html.player-lock body{overflow:hidden}
   function setInvalid(el, bad){ el.setAttribute('aria-invalid', bad ? 'true' : 'false'); }
 
   function compose(d){
-    return 'Name: ' + d.name + '\nEmail: ' + d.email + (d.brand ? '\nBrand: ' + d.brand : '') +
-      '\nBudget: ' + d.budget + (d.timing ? '\nTiming: ' + d.timing : '') + '\n\n' + d.message;
+    return 'Name: ' + d.name + '\nEmail: ' + d.email + (d.brand ? '\nCompany: ' + d.brand : '') +
+      '\nNeeds: ' + d.budget + (d.timing ? '\nTiming: ' + d.timing : '') + '\n\n' + d.message;
   }
 
   function showSent(){
@@ -737,8 +985,8 @@ html.player-lock,html.player-lock body{overflow:hidden}
     statusEl.className = ''; statusEl.textContent = '';
 
     var payload = {
-      name: d.name, email: d.email, brand: d.brand || '—', budget: d.budget, timing: d.timing || '—', message: d.message,
-      _subject: 'New Spearpoint inquiry from ' + d.name, _replyto: d.email, _template: 'table', _captcha: 'false'
+      name: d.name, email: d.email, company: d.brand || '—', needs: d.budget, team_or_timing: d.timing || '—', message: d.message,
+      _subject: 'Call request: ' + d.budget + ' · ' + d.name, _replyto: d.email, _template: 'table', _captcha: 'false'
     };
     var ctrl = ('AbortController' in window) ? new AbortController() : null;
     var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 12000);
@@ -754,7 +1002,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
         else { showFallback(d); }
       })
       .catch(function(){ showFallback(d); })
-      .then(function(){ clearTimeout(timer); submitBtn.disabled = false; submitBtn.textContent = 'Start a conversation'; });
+      .then(function(){ clearTimeout(timer); submitBtn.disabled = false; submitBtn.textContent = 'Request a call'; });
   });
 })();
 </script>
@@ -783,7 +1031,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
     if (d < 14) return Math.floor(d) + ' days ago';
     return Math.floor(d/7) + ' weeks ago';
   }
-  function set(sel, text){ var el = document.querySelector(sel); if (el && text){ el.textContent = text; el.dataset.final = text; } }
+  function set(sel, text){ if (!text) return; document.querySelectorAll(sel).forEach(function(el){ el.textContent = text; el.dataset.final = text; }); }
 
   fetch('/api/stats', { headers: { 'Accept': 'application/json' } })
     .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -1442,7 +1690,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 
 // Results band: numbers count up the first time they come into view.
 (function(){
-  var nums = document.querySelectorAll('#results .proof-num:not([data-nocount])');
+  var nums = document.querySelectorAll('#lab-stats .proof-num:not([data-nocount]), #proof .proof-num:not([data-nocount])');
   if (!nums.length || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   function run(el){
     var start = performance.now(), dur = 1400;
@@ -1498,6 +1746,24 @@ html.player-lock,html.player-lock body{overflow:hidden}
   t.addEventListener('scroll', sync, { passive: true });
   window.addEventListener('resize', sync);
   sync();
+})();
+</script>
+<script>
+// Hero lesson illustration: ticks through the checklist with matching captions.
+(function(){
+  var items = document.querySelectorAll('.tp-list li'), cap = document.getElementById('tp-caption'), fill = document.querySelector('.tp-fill');
+  if (!items.length || !cap) return;
+  var lines = ['Wipe down every station before the first ticket.', 'Walk-in should read 41°F or below. Log it.', 'Restock sauces, cups and lids before doors open.'];
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ items[0].classList.add('done'); return; }
+  var i = 0;
+  function tick(){
+    items.forEach(function(li, k){ li.classList.toggle('done', k < i); });
+    cap.style.opacity = 0;
+    setTimeout(function(){ cap.textContent = lines[Math.min(i, lines.length - 1)]; cap.style.opacity = 1; }, 300);
+    fill.style.transition = 'width 2.6s linear'; fill.style.width = (22 + i * 26) + '%';
+    i = (i + 1) % (items.length + 1);
+  }
+  tick(); setInterval(tick, 2800);
 })();
 </script>
 <dialog class="player" id="player" aria-label="Video player">
