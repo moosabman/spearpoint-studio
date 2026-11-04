@@ -411,6 +411,21 @@ html.player-lock,html.player-lock body{overflow:hidden}
 .faq details p{margin:0 0 20px;font-size:16px;line-height:1.6;color:var(--ash);max-width:40em}
 .faq a{color:var(--ember-text)}
 #lab + .film{margin-top:0}
+/* Sample video */
+.sample{display:flex;flex-direction:column;gap:14px}
+.sample-frame{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#1d1b19;border:1px solid var(--line-2);box-shadow:0 50px 100px -50px rgba(0,0,0,.95),0 24px 70px -40px rgba(255,90,31,.35)}
+.sample-frame video{display:block;width:100%;height:100%;object-fit:contain;background:#1d1b19}
+.sample-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 26px 0 20px;border:0;border-radius:999px;background:var(--ember);color:#fff;font:600 17px/1 var(--body);cursor:pointer;box-shadow:0 14px 40px -10px rgba(255,90,31,.8);transition:transform .2s}
+.sample-play:hover{transform:translate(-50%,-50%) scale(1.05)}
+.sample-play:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.sample-frame.playing .sample-play{display:none}
+.sample-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.lang{display:inline-flex;padding:4px;border-radius:999px;background:var(--stage-3);border:1px solid var(--line-2)}
+.lang-btn{min-height:40px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:var(--ash);font:600 15px/1 var(--body);cursor:pointer}
+.lang-btn[aria-pressed="true"]{background:var(--bone);color:var(--stage)}
+.lang-btn:focus-visible{outline:2px solid var(--ember-text);outline-offset:2px}
+.sample-meta{color:var(--ash-2);font-size:11px}
+
 /* Step icons */
 .step-icon{display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:16px;margin-bottom:6px;background:radial-gradient(circle at 30% 25%,rgba(255,90,31,.28),rgba(255,90,31,.06) 70%);border:1px solid rgba(255,90,31,.35);color:var(--ember-text)}
 .step-ico{width:38px;height:38px}
@@ -505,9 +520,30 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </div>
   </section>
 
-  <!-- SAMPLE REEL: turn on (remove hidden) once the training reel and examples are ready -->
-  <section id="reel" class="wrap section" hidden>
-    <div class="mono eyebrow">Sample reel</div>
+  <!-- SAMPLE: Blackline orientation (spec project for a made-up company), English + Spanish -->
+  <section id="reel" class="wrap section" style="padding-top:clamp(24px,4vw,48px)">
+    <div class="section-head" style="margin-bottom:28px">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="mono eyebrow">Sample</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Watch a sample.</h2>
+      </div>
+      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:26em;font-size:17px;line-height:1.6;color:var(--ash)">A new-hire safety orientation for a made-up electrical contractor, in English and Spanish.</p>
+    </div>
+    <div class="sample">
+      <div class="sample-frame">
+        <video id="sample-video" preload="none" playsinline poster="assets/video/blackline-poster.jpg">
+          <source src="assets/video/blackline-en.mp4" type="video/mp4">
+        </video>
+        <button type="button" class="sample-play" id="sample-play" aria-label="Play the English version"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg><span>Play · <span id="sample-dur">2:54</span></span></button>
+      </div>
+      <div class="sample-bar">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
+        </div>
+        <span class="mono sample-meta">Blackline Electrical · safety orientation · spec project</span>
+      </div>
+    </div>
   </section>
 
   <!-- PROOF -->
@@ -1775,6 +1811,29 @@ html.player-lock,html.player-lock body{overflow:hidden}
     i = (i + 1) % (items.length + 1);
   }
   tick(); setInterval(tick, 2800);
+})();
+</script>
+<script>
+// Sample video: big play button, English/Spanish switch (keeps your place if it's playing).
+(function(){
+  var v = document.getElementById('sample-video'); if (!v) return;
+  var frame = v.parentNode, play = document.getElementById('sample-play'), dur = document.getElementById('sample-dur');
+  var SRC = { en: 'assets/video/blackline-en.mp4', es: 'assets/video/blackline-es.mp4' }, LEN = { en: '2:54', es: '3:28' };
+  var lang = 'en';
+  play.addEventListener('click', function(){ frame.classList.add('playing'); v.controls = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); });
+  v.addEventListener('play', function(){ frame.classList.add('playing'); v.controls = true; });
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      var next = b.getAttribute('data-lang'); if (next === lang) return;
+      var wasPlaying = !v.paused;
+      lang = next;
+      document.querySelectorAll('.lang-btn').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      v.src = SRC[lang]; dur.textContent = LEN[lang];
+      play.setAttribute('aria-label', 'Play the ' + (lang === 'en' ? 'English' : 'Spanish') + ' version');
+      if (wasPlaying){ var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      else { frame.classList.remove('playing'); v.controls = false; v.load(); }
+    });
+  });
 })();
 </script>
 <dialog class="player" id="player" aria-label="Video player">
