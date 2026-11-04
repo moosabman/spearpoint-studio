@@ -323,7 +323,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 @media (prefers-reduced-motion: reduce){.player-shell{animation:none}}
 
 /* ---------- Offer page (Nov 2026 rework) ---------- */
-.hero .hero-h1{font-size:clamp(52px,6.2vw,96px);line-height:.98}
+.hero .hero-h1{font-size:clamp(52px,5.4vw,88px);line-height:.98}
 .hero-copy{flex:1 1 480px}
 
 /* Hero: illustrated training lesson */
@@ -411,6 +411,63 @@ html.player-lock,html.player-lock body{overflow:hidden}
 .faq details p{margin:0 0 20px;font-size:16px;line-height:1.6;color:var(--ash);max-width:40em}
 .faq a{color:var(--ember-text)}
 #lab + .film{margin-top:0}
+/* ---------- Homepage v3: shorter ---------- */
+.hero{align-items:center}
+.hero .hero-copy{flex:1 1 440px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-proof{display:flex;flex-wrap:wrap;gap:16px 40px;padding-top:8px;border-top:1px solid var(--line-2);margin-top:4px}
+.hero-proof div{display:flex;flex-direction:column;gap:4px;padding-top:16px}
+.hero-proof b{font-family:var(--display);font-weight:900;font-size:clamp(34px,3.4vw,44px);line-height:1;color:var(--bone)}
+.hero-proof span{font-size:14px;color:var(--ash-2)}
+.hero-proof a{color:var(--ember-text)}
+.hero-video{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.anchor{position:relative;top:-90px;display:block;height:0}
+.svc-card .pk-list{display:flex;flex-direction:column;border-top:1px solid var(--line-2);margin-top:4px}
+.pk{border-bottom:1px solid var(--line)}
+.pk:last-child{border-bottom:0}
+.pk summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:10px 0;font-size:16px;font-weight:600}
+.pk summary::-webkit-details-marker{display:none}
+.pk summary span::after{content:" +";color:var(--ember-text);font-weight:400}
+.pk[open] summary span::after{content:" −"}
+.pk summary b{font-family:var(--display);font-weight:800;font-size:26px;line-height:1;white-space:nowrap}
+.pk summary b small{font-family:var(--mono);font-size:11px;color:var(--ash-2);font-weight:400}
+.pk summary b.q{font-family:var(--body);font-size:14px;font-weight:600;color:var(--ash)}
+.pk p{margin:0 0 14px;font-size:14px;line-height:1.55;color:var(--ash)}
+.svc-card > p{flex:0 0 auto}
+.terms{margin-top:20px;max-width:62em}
+.terms summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;color:var(--ash)}
+.terms summary::-webkit-details-marker{display:none}
+.terms summary::after{content:"+";color:var(--ember-text);font-size:20px}
+.terms[open] summary::after{content:"−"}
+.terms p{margin:0 0 8px;font-size:15px;line-height:1.55;color:var(--ash)}
+.steps-lite .step{align-items:flex-start}
+.steps-lite .step h3{font-size:19px}
+.lab-strip{padding-block:clamp(40px,5vw,64px)}
+.lab-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 48px;padding:clamp(24px,3vw,40px);border-radius:18px;border:1px solid var(--line-2);background:radial-gradient(90% 120% at 0% 0%,rgba(255,90,31,.14),rgba(255,90,31,0) 60%),var(--stage-3);text-decoration:none;color:var(--bone);transition:border-color .25s}
+.lab-card:hover{border-color:var(--ember);color:var(--bone)}
+.lab-copy{display:flex;flex-direction:column;gap:8px}
+.lab-num{font-family:var(--display);font-weight:900;font-size:clamp(56px,7vw,96px);line-height:.9}
+.lab-line{font-size:17px;color:var(--ash)}
+.lab-thumbs{display:flex;gap:12px;flex:0 1 auto}
+.lab-thumbs img{width:clamp(80px,11vw,140px);aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line-2)}
+.lab-thumbs img:nth-child(2){transform:translateY(-14px)}
+.sticky-cta{display:none}
+@media (max-width:760px){
+  .steps-lite{gap:10px}
+  .steps-lite .step{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:14px;padding:12px 16px}
+  .steps-lite .step-icon{width:48px;height:48px;border-radius:12px;margin:0}
+  .steps-lite .step-ico{width:28px;height:28px}
+  .steps-lite .step-n{font-size:26px}
+  .steps-lite .step h3{font-size:17px}
+  .hero-video .sample-play{min-height:48px;padding:0 18px 0 14px;font-size:15px;white-space:nowrap}
+}
+
+@media (max-width:760px){
+  .sticky-cta{display:flex;justify-content:center;position:fixed;z-index:30;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 14px 40px -10px rgba(0,0,0,.8),0 10px 30px -12px rgba(255,90,31,.7)}
+  .sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
+}
+@media (prefers-reduced-motion: reduce){.sticky-cta{transition:none}}
+
 /* Sample video */
 .sample{display:flex;flex-direction:column;gap:14px}
 .sample-frame{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#1d1b19;border:1px solid var(--line-2);box-shadow:0 50px 100px -50px rgba(0,0,0,.95),0 24px 70px -40px rgba(255,90,31,.35)}
@@ -451,162 +508,109 @@ html.player-lock,html.player-lock body{overflow:hidden}
       <span>Spearpoint Studio</span>
     </a>
     <nav class="nav-links" aria-label="Main">
-      <a href="#services">Services</a>
+      <a href="#pricing">Services &amp; pricing</a>
       <a href="#how">How it works</a>
-      <a href="#pricing">Pricing</a>
       <a href="#privacy">Privacy</a>
       <a href="#studio">About</a>
-      <a href="#lab">Lab</a>
+      <a href="/lab">Lab</a>
       <a class="btn btn-solid" href="#contact" style="min-height:44px;padding:0 20px">Book a call</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <!-- HERO -->
+  <!-- HERO: headline, call to action, real sample video, proof -->
   <section id="top" class="wrap hero glow">
     <div class="hero-copy">
       <div class="mono eyebrow">Training · Recruiting · Marketing · Web</div>
       <h1 class="disp hero-h1">Training videos your team will <span class="ember">actually</span> watch.</h1>
-      <p class="lede">Training, recruiting and marketing video for growing businesses. Fixed prices, private by default.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <p class="lede">Fixed prices. Private by default.</p>
+      <div class="hero-ctas" id="hero-ctas">
         <a class="btn btn-hot" href="#contact">Book a free 30-minute call</a>
         <a class="btn btn-ghost" href="#pricing">See pricing</a>
       </div>
-    </div>
-    <figure class="tplayer" aria-label="Illustration of a Spearpoint training lesson with chapters, captions and a Spanish version">
-      <div class="tp-screen">
-        <div class="tp-top"><span class="tp-chip hot">Lesson 2 of 6</span><span class="tp-chip">CC</span><span class="tp-chip">ES</span></div>
-        <div class="tp-title">Opening checklist</div>
-        <ol class="tp-list">
-          <li><span class="tp-box"></span>Sanitize every station</li>
-          <li><span class="tp-box"></span>Check walk-in temps</li>
-          <li><span class="tp-box"></span>Stock the line</li>
-        </ol>
-        <div class="tp-caption" id="tp-caption">Wipe down every station before the first ticket.</div>
+      <div class="hero-proof">
+        <div><b>Hundreds</b><span>of training videos produced</span></div>
+        <div><b data-stat="views">1.1M+</b><span>views on our <a href="/lab">comedy series</a></span></div>
       </div>
-      <div class="tp-bar"><div class="tp-fill"></div><i style="left:22%"></i><i style="left:48%"></i><i style="left:74%"></i></div>
-      <div class="tp-meta mono"><span>Opening · Food safety · Closing</span><span>4:30</span></div>
-      <figcaption class="mono tp-label">Example lesson · captions, chapters, Spanish version</figcaption>
-    </figure>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="wrap section" style="padding-top:clamp(24px,4vw,48px)">
-    <div class="section-head" style="margin-bottom:36px">
-      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-        <div class="mono eyebrow">What we make</div>
-        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Three kinds of video.</h2>
-      </div>
-      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">Training leads. The other two are what teams add once they’ve worked with us.</p>
     </div>
-    <div class="svc-grid">
-      <a class="svc-card lead reveal" href="#pricing">
-        <span class="mono svc-tag">Most requested</span>
-        <h3 class="svc-name">Training</h3>
-        <p>Onboarding, how-to, safety and manager training, so every location teaches it the same way and managers stop repeating themselves.</p>
-        <span class="svc-price"><small>from</small> $1,500</span>
-      </a>
-      <a class="svc-card reveal" href="#pricing">
-        <h3 class="svc-name">People &amp; recruiting</h3>
-        <p>“Why work here” videos, job-post shorts, recorded screening questions and welcome videos from leadership.</p>
-        <span class="svc-price"><small>from</small> $1,000</span>
-      </a>
-      <a class="svc-card reveal" href="#pricing">
-        <h3 class="svc-name">Marketing &amp; media</h3>
-        <p>Ads, launch spots and social video, made with the same instincts that built our own comedy series.</p>
-        <span class="svc-price"><small>from</small> $1,000</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- SAMPLE: Blackline orientation (spec project for a made-up company), English + Spanish -->
-  <section id="reel" class="wrap section" style="padding-top:clamp(24px,4vw,48px)">
-    <div class="section-head" style="margin-bottom:28px">
-      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-        <div class="mono eyebrow">Sample</div>
-        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Watch a sample.</h2>
-      </div>
-      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:26em;font-size:17px;line-height:1.6;color:var(--ash)">A new-hire safety orientation for a made-up electrical contractor, in English and Spanish.</p>
-    </div>
-    <div class="sample">
-      <div class="sample-frame">
-        <video id="sample-video" preload="none" playsinline poster="assets/video/blackline-poster.jpg">
-          <source src="assets/video/blackline-en.mp4" type="video/mp4">
-        </video>
-        <button type="button" class="sample-play" id="sample-play" aria-label="Play the English version"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg><span>Play · <span id="sample-dur">2:54</span></span></button>
+    <div class="hero-video">
+      <div class="sample-frame" id="hv-frame">
+        <video id="hero-video" muted loop playsinline preload="none" poster="assets/video/blackline-poster.jpg" aria-label="Sample: new-hire safety orientation"></video>
+        <button type="button" class="sample-play" id="hv-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg><span>Watch with sound · <span id="hv-dur">2:54</span></span></button>
       </div>
       <div class="sample-bar">
         <div class="lang" role="group" aria-label="Language">
           <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button>
           <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
         </div>
-        <span class="mono sample-meta">Blackline Electrical · safety orientation · spec project</span>
+        <span class="mono sample-meta">Sample · safety orientation for a made-up company</span>
       </div>
     </div>
   </section>
 
-  <!-- PROOF -->
-  <section id="proof" class="proof" aria-label="Proof">
-    <div class="wrap">
-      <div class="proof-grid">
-        <div class="proof-cell"><span class="proof-num" data-nocount style="color:var(--ember-deep)">Hundreds</span><span>of training videos produced for a fast-growing restaurant brand</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="views">1.1M+</span><span>views on our own comedy series. <a href="#lab" class="proof-link">See Cave Base →</a></span></div>
+  <!-- SERVICES & PRICING -->
+  <section id="pricing" class="wrap section">
+    <span id="services" class="anchor" aria-hidden="true"></span>
+    <div class="section-head" style="margin-bottom:32px">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="mono eyebrow">Services &amp; pricing</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Pick a starting point.</h2>
       </div>
     </div>
+    <div class="svc-grid">
+      <div class="svc-card lead">
+        <span class="mono svc-tag">Most requested</span>
+        <h3 class="svc-name">Training</h3>
+        <p>Onboarding, how-to and safety videos every location teaches the same way.</p>
+        <div class="pk-list">
+          <details class="pk"><summary><span>Pilot Video</span><b>$1,500</b></summary><p>One 3–5 minute video from your SOP or an hour with your expert. Script, visuals, voiceover, captions, 2 rounds of changes.</p></details>
+          <details class="pk"><summary><span>Training Series</span><b>$7,500</b></summary><p>5 videos with one look, chapters, captions, files ready for your training system and a one-page sheet for each.</p></details>
+          <details class="pk"><summary><span>Training Library</span><b>$2,000–5,000<small>/mo</small></b></summary><p>2–4 new or updated videos a month, a running library list and priority turnaround.</p></details>
+        </div>
+      </div>
+      <div class="svc-card">
+        <h3 class="svc-name">People &amp; recruiting</h3>
+        <p>“Why work here” videos, job-post shorts and recorded screening questions.</p>
+        <div class="pk-list">
+          <details class="pk"><summary><span>Recruiting Kit</span><b>$2,500</b></summary><p>A 60–90 second “why work here” video, 3 job-post shorts and 5–8 recorded screening questions.</p></details>
+          <details class="pk"><summary><span>Welcome Video</span><b>$1,000</b></summary><p>A 2–3 minute welcome from leadership, with culture and first-day basics.</p></details>
+        </div>
+      </div>
+      <div class="svc-card">
+        <h3 class="svc-name">Marketing &amp; media</h3>
+        <p>Ads, launch spots and social video made to get watched.</p>
+        <div class="pk-list">
+          <details class="pk"><summary><span>Ad or Launch Spot</span><b>$1,000</b></summary><p>One 30–60 second ad or launch video, 2 rounds of changes.</p></details>
+          <details class="pk"><summary><span>Monthly Social</span><b>$2,000<small>/mo</small></b></summary><p>4 short videos a month plus a monthly check-in.</p></details>
+          <details class="pk"><summary><span>Graphics &amp; web media</span><b class="q">Quoted</b></summary><p>Graphics, web images, menus and signage, quoted per project.</p></details>
+        </div>
+      </div>
+    </div>
+    <details class="terms">
+      <summary>Add-ons &amp; payment</summary>
+      <p>On-site filming day $1,200 · Spanish version $400 · updating an existing video from $300 · rush delivery (under 1 week) +25%.</p>
+      <p>50% to start, 50% on delivery. Monthly plans are billed at the start of each month, 3-month minimum.</p>
+    </details>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section id="how" class="wrap section">
-    <div class="section-head" style="margin-bottom:40px">
-      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-        <div class="mono eyebrow">How it works</div>
-        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Five steps. No surprises.</h2>
-      </div>
-      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">A single training video takes about 2–3 weeks from kickoff. You approve every word before anything gets made.</p>
-    </div>
-    <ol class="steps">
-      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h7l3 8-4.5 3a22 22 0 0 0 9.5 9.5l3-4.5 8 3v7a3 3 0 0 1-3 3C21 37 11 27 11 12a3 3 0 0 1 3-3z"/><path d="M30 8a10 10 0 0 1 10 10M30 14a4 4 0 0 1 4 4"/></svg></span><span class="step-n">01</span><h3>Free 30-minute call</h3><p>Tell us what you’re trying to fix and who will watch. No pitch deck, just questions.</p></li>
-      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 6h16l8 8v28H13z"/><path d="M29 6v8h8"/><path d="M25 21v16M29 24.5c0-1.9-1.8-3-4-3s-4 1.1-4 3 1.8 2.6 4 3 4 1.2 4 3-1.8 3-4 3-4-1.2-4-3"/></svg></span><span class="step-n">02</span><h3>A fixed quote in 2 business days</h3><p>One page: what you get, the price, the timeline and what we need from you.</p></li>
-      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5l15 6v10c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><rect x="18" y="21" width="12" height="10" rx="2"/><path d="M20.5 21v-3a3.5 3.5 0 0 1 7 0v3"/></svg></span><span class="step-n">03</span><h3>NDA, then kickoff</h3><p>We sign a mutual NDA before you send anything. Then we gather your SOPs and spend an hour with your expert.</p></li>
-      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7h20v34H10z"/><path d="M15 15h10M15 21h10M15 27h6"/><path d="M27 33l4 4 9-10"/></svg></span><span class="step-n">04</span><h3>You approve the script</h3><p>Every word and the visual plan get your sign-off first. Nothing is produced until you approve.</p></li>
-      <li class="step reveal"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="11" width="28" height="22" rx="3"/><path d="M17 17v10l8-5z"/><path d="M34 19l8-4v14l-8-4"/><path d="M12 39h16"/></svg></span><span class="step-n">05</span><h3>Two rounds of changes, then delivery</h3><p>Review on a private link with time-stamped comments. You get the videos, captions and versions sized for your training system or phones.</p></li>
-    </ol>
-  </section>
-
-  <!-- PACKAGES -->
-  <section id="pricing" class="band">
+  <section id="how" class="band">
     <div class="wrap section">
-      <div class="section-head" style="margin-bottom:40px">
+      <div class="section-head" style="margin-bottom:32px">
         <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-          <div class="mono eyebrow">Packages</div>
-          <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Prices up front.</h2>
+          <div class="mono eyebrow">How it works</div>
+          <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Five steps. No surprises.</h2>
         </div>
+        <p style="flex:1 1 260px;min-width:0;margin:0;max-width:22em;font-size:17px;line-height:1.6;color:var(--ash)">About 2–3 weeks per video.</p>
       </div>
-      <div class="pkg-grid">
-        <div class="pkg-col lead">
-          <div class="pkg-head"><h3>Training</h3><span class="mono svc-tag">Most requested</span></div>
-          <div class="pkg"><div><b>Pilot Video</b><p>One 3–5 minute video from your SOP or a 1-hour interview with your expert. Script, visuals, voiceover, captions, 2 rounds of changes.</p></div><span class="pkg-price">$1,500</span></div>
-          <div class="pkg"><div><b>Training Series</b><p>5 videos with one consistent look, chapters, captions, files ready for your training system, and a one-page reference sheet for each.</p></div><span class="pkg-price">$7,500</span></div>
-          <div class="pkg"><div><b>Training Library</b><p>2–4 new or updated videos a month, a running library list, priority turnaround.</p></div><span class="pkg-price">$2,000–5,000<small>/mo</small></span></div>
-        </div>
-        <div class="pkg-col">
-          <div class="pkg-head"><h3>People &amp; recruiting</h3></div>
-          <div class="pkg"><div><b>Recruiting Kit</b><p>A 60–90 second “why work here” video, 3 job-post shorts and 5–8 recorded screening questions for your interview tool.</p></div><span class="pkg-price">$2,500</span></div>
-          <div class="pkg"><div><b>Welcome Video</b><p>A 2–3 minute onboarding welcome from leadership, with culture and first-day basics.</p></div><span class="pkg-price">$1,000</span></div>
-        </div>
-        <div class="pkg-col">
-          <div class="pkg-head"><h3>Marketing &amp; media</h3></div>
-          <div class="pkg"><div><b>Ad or Launch Spot</b><p>One 30–60 second ad or launch video, 2 rounds of changes.</p></div><span class="pkg-price">$1,000</span></div>
-          <div class="pkg"><div><b>Monthly Social</b><p>4 short videos a month plus a monthly check-in.</p></div><span class="pkg-price">$2,000<small>/mo</small></span></div>
-          <div class="pkg"><div><b>Graphics &amp; web media</b><p>Graphics, web images, menus and signage.</p></div><span class="pkg-price small">Quoted per project</span></div>
-        </div>
-      </div>
-      <div class="pkg-notes">
-        <p><b>Add-ons:</b> on-site filming day $1,200 · Spanish version of a video $400 · updating an existing video from $300 · rush delivery (under 1 week) +25%</p>
-        <p><b>Payment:</b> 50% to start, 50% on delivery. Monthly plans are billed at the start of each month, with a 3-month minimum.</p>
-      </div>
-      <a class="btn btn-hot" href="#contact" style="align-self:flex-start;margin-top:8px">Book a free 30-minute call</a>
+      <ol class="steps steps-lite">
+        <li class="step"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h7l3 8-4.5 3a22 22 0 0 0 9.5 9.5l3-4.5 8 3v7a3 3 0 0 1-3 3C21 37 11 27 11 12a3 3 0 0 1 3-3z"/><path d="M30 8a10 10 0 0 1 10 10M30 14a4 4 0 0 1 4 4"/></svg></span><span class="step-n">01</span><h3>Free 30-minute call</h3></li>
+        <li class="step"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 6h16l8 8v28H13z"/><path d="M29 6v8h8"/><path d="M25 21v16M29 24.5c0-1.9-1.8-3-4-3s-4 1.1-4 3 1.8 2.6 4 3 4 1.2 4 3-1.8 3-4 3-4-1.2-4-3"/></svg></span><span class="step-n">02</span><h3>Fixed quote in 2 days</h3></li>
+        <li class="step"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5l15 6v10c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><rect x="18" y="21" width="12" height="10" rx="2"/><path d="M20.5 21v-3a3.5 3.5 0 0 1 7 0v3"/></svg></span><span class="step-n">03</span><h3>NDA, then kickoff</h3></li>
+        <li class="step"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7h20v34H10z"/><path d="M15 15h10M15 21h10M15 27h6"/><path d="M27 33l4 4 9-10"/></svg></span><span class="step-n">04</span><h3>You approve the script</h3></li>
+        <li class="step"><span class="step-icon"><svg class="step-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="11" width="28" height="22" rx="3"/><path d="M17 17v10l8-5z"/><path d="M34 19l8-4v14l-8-4"/><path d="M12 39h16"/></svg></span><span class="step-n">05</span><h3>Review, then delivery</h3></li>
+      </ol>
     </div>
   </section>
 
@@ -629,267 +633,43 @@ html.player-lock,html.player-lock body{overflow:hidden}
     <a class="arrow-link" href="/privacy">Read our full Privacy &amp; AI policy →</a>
   </section>
 
+
   <!-- ABOUT -->
   <section id="studio" class="band">
-    <div class="wrap section" style="display:flex;flex-wrap:wrap;gap:48px 72px;align-items:center">
-      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:20px">
+    <div class="wrap section" style="display:flex;flex-wrap:wrap;gap:40px 72px;align-items:center">
+      <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:18px">
         <div class="mono eyebrow">About</div>
         <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Two people. Hundreds of training videos.</h2>
-        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:30em">Spearpoint is Jordan and Kevin. We’ve spent years making training and explainer videos for a fast-growing restaurant brand, and we make a comedy series on the side because we like proving people will watch. You work with us directly, from the first call to the final cut. No account managers, no hand-offs.</p>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:28em">Spearpoint is Jordan and Kevin. You work with us directly, from the first call to the final cut.</p>
       </div>
       <div style="flex:1 1 440px;min-width:0;display:flex;flex-wrap:wrap;gap:20px">
-        <div class="person reveal">
+        <div class="person">
           <div class="still portrait"><img src="assets/jordan.webp" alt="Jordan, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
-          <div style="display:flex;flex-direction:column;gap:6px"><span class="ep-title" style="font-size:28px">Jordan</span><span class="person-bio">Years of shooting, editing and motion design in Premiere and After Effects.</span><span class="mono ep-meta">Chief Cave Illustrationist</span></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span class="ep-title" style="font-size:28px">Jordan</span><span class="person-bio">Shooting, editing and motion design in Premiere and After Effects.</span><span class="mono ep-meta">Chief Cave Illustrationist</span></div>
         </div>
-        <div class="person reveal">
+        <div class="person">
           <div class="still portrait"><img src="assets/kevin.webp" alt="Kevin, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
-          <div style="display:flex;flex-direction:column;gap:6px"><span class="ep-title" style="font-size:28px">Kevin</span><span class="person-bio">Stop-motion at Warner Bros., then a popular food YouTube channel, then 5+ years leading a restaurant brand’s video team.</span><span class="mono ep-meta">Senior Thinking Maker</span></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span class="ep-title" style="font-size:28px">Kevin</span><span class="person-bio">Warner Bros. stop-motion, a popular food YouTube channel, then 5+ years leading a video team.</span><span class="mono ep-meta">Senior Thinking Maker</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LAB: our work for fun -->
-  <section id="lab" class="wrap section" style="padding-bottom:clamp(32px,4vw,48px)">
-    <div class="section-head">
-      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+  <!-- LAB TEASER -->
+  <section class="wrap section lab-strip" aria-label="The Lab">
+    <a class="lab-card" href="/lab">
+      <div class="lab-copy">
         <div class="mono eyebrow">The Lab</div>
-        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Our work for fun.</h2>
+        <span class="lab-num" data-stat="views">1.1M+</span>
+        <span class="lab-line">views on our own comedy series</span>
+        <span class="arrow-link">See the Lab →</span>
       </div>
-      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:30em;font-size:17px;line-height:1.6;color:var(--ash)">Our own comedy series and experiments. It’s where we prove we can hold attention, and it’s the same instinct we bring to training people actually finish.</p>
-    </div>
-  </section>
-
-  <!-- LOGO REVEAL FILM: loops silently; sound and pause in the corner -->
-  <section class="film" id="film" aria-label="Spearpoint Studio logo reveal film">
-    <div class="film-frame">
-      <video id="film-video" muted loop playsinline preload="none" poster="assets/video/poster.jpg" aria-label="Spearpoint Studio logo reveal: a flight over a frozen river ends on a stone spearpoint in the snow"></video>
-      <div class="film-ctrls">
-        <button class="film-btn" id="film-sound" type="button" aria-pressed="false" aria-label="Turn sound on">
-          <svg class="i-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
-          <svg class="i-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-          <span class="t">Sound</span>
-        </button>
-        <button class="film-btn" id="film-pause" type="button" aria-pressed="false" aria-label="Pause the film">
-          <svg class="i-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-          <svg class="i-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5 20 12 7 19.5z"/></svg>
-        </button>
+      <div class="lab-thumbs" aria-hidden="true">
+        <img src="assets/woof.jpg" alt="" loading="lazy">
+        <img src="assets/fire-mini.jpg" alt="" loading="lazy">
+        <img src="assets/bow.jpg" alt="" loading="lazy">
       </div>
-    </div>
-  </section>
-
-  <!-- LAB STATS: live from Zernio -->
-  <section id="lab-stats" class="proof" aria-label="Cave Base results">
-    <div class="wrap">
-      <div class="proof-grid">
-        <div class="proof-cell"><span class="proof-num" data-stat="views">960K+</span><span>views since we launched in September</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="shareRate" data-nocount style="color:var(--ember-deep)">1 in 18</span><span>viewers shared it with someone</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="newPct">95%</span><span>of viewers didn’t follow us yet</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="igAvg">65K</span><span>average views per Instagram reel</span></div>
-        <div class="proof-cell"><span class="proof-num" data-stat="over10k">12 of 16</span><span>Instagram reels passed 10K views</span></div>
-      </div>
-      <div class="proof-note mono" data-stat="asOf">Instagram + TikTok · all posts through Oct 13, 2026 · new-viewer share from TikTok insights · reel average leaves out the last 3 days</div>
-    </div>
-  </section>
-
-  <!-- CAVE BASE -->
-  <section id="cave-base" class="wrap section glow" style="display:flex;flex-direction:column;gap:48px">
-    <div class="section-head">
-      <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:18px">
-        <div class="mono eyebrow">The series</div>
-        <h2 class="disp" style="font-size:clamp(72px,11vw,160px);font-weight:900">Cave Base</h2>
-        <p class="disp" style="font-size:clamp(28px,3.2vw,44px);font-weight:700;color:var(--ash);line-height:1.12">Product launches, 10,000 years early.</p>
-      </div>
-      <p style="flex:1 1 340px;min-width:0;margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:28em">One stage. One very confident presenter. Every episode is a keynote you’ve seen a hundred times, for a product humanity hasn’t quite earned yet.</p>
-    </div>
-    <div class="row">
-      <a class="ep reveal" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
-        <div class="still" style="aspect-ratio:4/5"><img src="assets/woof.jpg" alt="Woof: presenter and golden retriever" style="object-position:center 55%" loading="lazy"></div>
-        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">Woof</span><span class="ep-line">The product launch for man’s best friend.</span><span class="mono ep-meta" data-post="DdnM3osz2s-" style="margin-top:4px">459K views · 32K shares</span></div>
-      </a>
-      <a class="ep reveal" href="https://www.instagram.com/reel/DdcoZOAPKnf/" target="_blank" rel="noopener">
-        <div class="still" style="aspect-ratio:4/5"><img src="assets/fire-mini.jpg" alt="Fire Mini: presenter holding a candle in a stone holder" style="object-position:center 35%" loading="lazy"></div>
-        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">Fire Mini</span><span class="ep-line">Small flame. Big announcement.</span><span class="mono ep-meta" data-post="DdcoZOAPKnf" style="margin-top:4px">167K views · 10.8K shares</span></div>
-      </a>
-      <a class="ep reveal" href="https://www.instagram.com/reel/Ddks5cyTrXc/" target="_blank" rel="noopener">
-        <div class="still" style="aspect-ratio:4/5"><img src="assets/bow.jpg" alt="BOW: presenter gesturing to a bow on a draped pedestal" style="object-position:center 40%" loading="lazy"></div>
-        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">BOW</span><span class="ep-line">The Branch Operated Weapon. Extremely accurate. Conditions apply.</span><span class="mono ep-meta" data-post="Ddks5cyTrXc" style="margin-top:4px">44K views · 1.3K shares</span></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- WHAT'S NEW
-       Today: latest posts are listed by hand and the side card links to the channels.
-       Next: replace the posts and the side card with Spearpoint Studio analytics (via Zernio). -->
-  <section id="whats-new" class="band">
-    <div class="wrap section" style="display:flex;flex-direction:column;gap:40px">
-      <div class="section-head" style="gap:16px 40px">
-        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-          <div class="mono eyebrow">What’s new</div>
-          <h2 class="disp" style="font-size:clamp(52px,6.5vw,92px);font-weight:900">Fresh off the stage.</h2>
-        </div>
-        <a class="btn btn-ghost" href="https://www.instagram.com/spearpointpro/" target="_blank" rel="noopener" style="min-height:44px">See everything on Instagram</a>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:stretch">
-        <div class="row" id="latest-posts" style="flex:999 1 620px;min-width:0">
-          <a class="ep reveal" href="https://www.instagram.com/reel/DdO0sZmv2U-/" target="_blank" rel="noopener" style="flex:1 1 180px">
-            <div class="still" style="aspect-ratio:4/5"><img src="assets/wheel.jpg" alt="Latest post: Wheel" style="object-position:center 45%" loading="lazy"><span class="tag mono">Latest</span></div>
-            <div style="display:flex;flex-direction:column;gap:6px"><span class="mono ep-meta" style="font-size:11px">Instagram · Cave Base</span><span style="font-size:15px;line-height:1.4">Wheel. It rolls. That’s the whole pitch.</span></div>
-          </a>
-          <a class="ep reveal" href="https://www.instagram.com/reel/Ddks5cyTrXc/" target="_blank" rel="noopener" style="flex:1 1 180px">
-            <div class="still" style="aspect-ratio:4/5"><img src="assets/bow.jpg" alt="BOW" style="object-position:center 40%" loading="lazy"></div>
-            <div style="display:flex;flex-direction:column;gap:6px"><span class="mono ep-meta" style="font-size:11px">Instagram · Cave Base</span><span style="font-size:15px;line-height:1.4">BOW. Precision, with a few caveats.</span></div>
-          </a>
-        </div>
-        <aside class="side-card reveal" aria-label="Follow Spearpoint">
-          <span class="mono" style="color:var(--bone)">Follow us</span>
-          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ash)">New episodes land on Instagram and TikTok first.</p>
-          <a class="social" href="https://www.instagram.com/spearpointpro/" target="_blank" rel="noopener">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
-            <span><b>Instagram</b><small>@spearpointpro</small></span>
-          </a>
-          <a class="social" href="https://www.tiktok.com/@spearpointpro" target="_blank" rel="noopener">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg>
-            <span><b>TikTok</b><small>@spearpointpro</small></span>
-          </a>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- WOOF CASE: one video, told as a scroll story -->
-  <section class="case" id="woof-case" aria-labelledby="woof-h">
-    <div class="wrap section">
-      <div class="case-copy">
-        <div class="mono" style="color:var(--ember-deep)">Case file · one video</div>
-        <h2 class="disp" id="woof-h" style="font-size:clamp(56px,7vw,104px);font-weight:900">People watched. Then they shared.</h2>
-        <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-2);max-width:30em">Woof reached people who had never heard of Spearpoint. That’s the job a brand hires us for: content that travels past the audience you already have.</p>
-        <a class="case-video" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
-          <span class="case-thumb"><img src="assets/woof.jpg" alt="" width="479" height="852" loading="lazy"><span class="case-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></span>
-          <span class="case-video-txt"><span class="ep-title" style="font-size:30px">Woof</span><span class="mono" style="color:var(--ink-3);font-size:12px">One Instagram Reel · posted Sep 22, 2026</span><span class="case-watch">Watch the video</span></span>
-        </a>
-      </div>
-      <div class="case-data">
-        <div class="scrub-hint mono" id="scrub-hint" aria-hidden="true">Scroll to see the results <span>↓</span></div>
-        <figure class="chart-card" id="woof-chart" aria-labelledby="woof-chart-h">
-          <figcaption class="chart-head">
-            <span class="mono" id="woof-chart-h" style="color:var(--ink-2)">Woof · views since posting</span>
-            <span class="chart-now"><span class="proof-num" id="woof-count">459,091</span><span class="mono chart-date" id="woof-date">Oct 13</span></span>
-          </figcaption>
-          <div class="chart-plot"><svg id="woof-svg" viewBox="0 0 600 250" preserveAspectRatio="none" role="img" aria-label="Woof views grew from zero to 343 thousand in the first four days, then to 459 thousand by October 13."></svg><div class="chart-tip mono" id="woof-tip" hidden></div></div>
-          <div class="chart-x mono" id="woof-x" aria-hidden="true"></div>
-        </figure>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span class="mono" style="color:var(--ink-2)">Who saw it</span><span class="proof-num" style="font-size:44px;color:var(--ember-deep)"><span id="woof-new">96</span>% new</span></div>
-          <div class="meter" id="woof-meter" role="img" aria-label="96 percent non-followers, 4 percent followers"><div></div></div>
-          <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)"><span>Non-followers · 96%</span><span>Followers · 4%</span></div>
-        </div>
-        <div class="case-grid" id="woof-grid">
-          <div><span class="mono" style="color:var(--ink-3)">Shares</span><span class="proof-num" data-woof="shares">32,492</span></div>
-          <div><span class="mono" style="color:var(--ink-3)">Likes</span><span class="proof-num" data-woof="likes">24,389</span></div>
-          <div><span class="mono" style="color:var(--ink-3)">Saves</span><span class="proof-num" data-woof="saves">3,821</span></div>
-          <div><span class="mono" style="color:var(--ink-3)">Accounts reached</span><span class="proof-num" data-woof="reach">289,587</span></div>
-        </div>
-        <span class="mono" style="color:var(--ink-3);font-size:11px;line-height:1.6">Woof only, on Instagram · live from our analytics · daily tracking began Sep 27 · audience split from Instagram insights at launch</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW A PROJECT WORKS: the torch wall -->
-  <section id="process" aria-labelledby="process-h">
-    <div class="wrap section-head" style="padding-block:clamp(64px,8vw,104px) 32px">
-      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-        <div class="mono eyebrow">How the cave works</div>
-        <h2 class="disp" id="process-h" style="font-size:clamp(52px,7vw,104px);font-weight:900">Written on the wall.</h2>
-      </div>
-      <p style="flex:1 1 340px;min-width:0;margin:0;max-width:30em;font-size:17px;line-height:1.6;color:var(--ash)">Grab the torch. How we make Cave Base, documented using the latest technology available.</p>
-    </div>
-    <span aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;font-family:'Amatic SC';font-weight:700">Concept Agree Crafting Share 0123456789</span>
-    <section class="wall" id="wall" tabindex="0" aria-label="Cave wall showing the four steps of a Spearpoint project. Move your pointer to light it.">
-  <canvas class="stone" id="stone" aria-hidden="true"></canvas>
-
-  <div class="paint" aria-hidden="true">
-    <svg width="0" height="0" style="position:absolute"><defs><filter id="scrawl" x="-4%" y="-20%" width="108%" height="140%">
-<feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="2" seed="3" result="wob"/>
-<feDisplacementMap in="SourceGraphic" in2="wob" scale="4.5" result="w1"/>
-<feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="8" result="edge"/>
-<feDisplacementMap in="w1" in2="edge" scale="2.6" result="w2"/>
-<feTurbulence type="fractalNoise" baseFrequency="1.3" numOctaves="2" seed="12" result="grain"/>
-<feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.75" result="holes"/>
-<feComposite in="w2" in2="holes" operator="in"/>
-</filter><g id="p1"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">01</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Concept</text><image href="art/concept.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">We pitch the bit.</text></g><g id="p2"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">02</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Agree</text><image href="art/agree.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">We agree on the idea.</text></g><g id="p3"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">03</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Crafting</text><image href="art/crafting.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">We build every</tspan><tspan x="0" dy="44">piece by hand.</tspan></text></g><g id="p4"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">04</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Share</text><image href="art/share.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">Get feedback for</tspan><tspan x="0" dy="44">the next round.</tspan></text></g></defs></svg>
-    <svg class="wide" viewBox="0 0 1400 500" role="presentation">
-      <use href="#p1" x="20" y="70"/><use href="#p2" x="370" y="70"/><use href="#p3" x="720" y="70"/><use href="#p4" x="1070" y="70"/>
-    </svg>
-    <svg class="tall" viewBox="0 0 700 1040" role="presentation">
-      <use href="#p1" x="15" y="80"/><use href="#p2" x="365" y="80"/><use href="#p3" x="15" y="600"/><use href="#p4" x="365" y="600"/>
-    </svg>
-  </div>
-
-  <canvas class="dark" id="dark" aria-hidden="true"></canvas>
-  <canvas class="tw-glow" id="glow" aria-hidden="true"></canvas>
-  <canvas class="torchc" id="torchc" aria-hidden="true"></canvas>
-
-  <div class="hint mono" id="hint" aria-hidden="true">
-    <svg width="12" height="16" viewBox="0 0 12 16" aria-hidden="true"><path d="M6 1c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8z" fill="#FF6A2B"/></svg>
-    <span id="hint-text">Move to light the wall</span>
-  </div>
-
-  <ol class="sr">
-    <li>01 Concept: We pitch the bit.</li>
-    <li>02 Agree: We agree on the idea.</li>
-    <li>03 Crafting: We build every piece by hand.</li>
-    <li>04 Share: Get feedback for the next round.</li>
-  </ol>
-</section>
-  </section>
-
-  <!-- LABS: swipeable row of experiments -->
-  <section class="wrap section labs" aria-labelledby="labs-h">
-    <div class="section-head" style="gap:16px 40px;margin-bottom:36px">
-      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-        <div class="mono eyebrow">Spearpoint Labs</div>
-        <h2 class="disp" id="labs-h" style="font-size:clamp(52px,6vw,88px);font-weight:900">Experiments.</h2>
-      </div>
-      <div class="labs-side">
-        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:24em">Where we test new formats before they become series.</p>
-        <div class="labs-nav" id="labs-nav" hidden>
-          <button type="button" id="labs-prev" aria-label="Previous experiment"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <button type="button" id="labs-next" aria-label="Next experiment"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-        </div>
-      </div>
-    </div>
-    <div class="labs-track" id="labs-track" tabindex="0" aria-label="Lab experiments, swipe or scroll sideways">
-      <article class="labs-card">
-        <a class="labs-film" href="assets/video/love-sucks.mp4" data-film="assets/video/love-sucks.mp4" data-poster="assets/video/love-sucks-poster.jpg" aria-label="Watch Love Sucks (2 minutes 10 seconds)">
-          <video muted loop playsinline preload="none" poster="assets/video/love-sucks-poster.jpg" data-teaser="assets/video/love-sucks-teaser.mp4" aria-hidden="true"></video>
-          <span class="labs-play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch · 2:10</span>
-        </a>
-        <div class="labs-meta"><span class="ep-title">Love Sucks</span><span class="mono ep-meta">Trailer</span><p>A man. A robot vacuum. It’s time to come clean.</p></div>
-      </article>
-      <article class="labs-card">
-        <a class="labs-film" href="assets/video/party-animals.mp4" data-film="assets/video/party-animals.mp4" data-poster="assets/video/party-animals-poster.jpg" aria-label="Watch Party Animals (30 seconds)">
-          <video muted loop playsinline preload="none" poster="assets/video/party-animals-poster.jpg" data-teaser="assets/video/party-animals-teaser.mp4" aria-hidden="true"></video>
-          <span class="labs-play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch · 0:30</span>
-        </a>
-        <div class="labs-meta"><span class="ep-title">Party Animals</span><span class="mono ep-meta">Short</span><p>A neon jungle where every animal showed up for the party.</p></div>
-      </article>
-      <article class="labs-card">
-        <a class="labs-film" href="assets/video/cowboy.mp4" data-film="assets/video/cowboy.mp4" data-poster="assets/video/cowboy-poster.jpg" aria-label="Watch Cowboy Illustration (19 seconds)">
-          <video muted loop playsinline preload="none" poster="assets/video/cowboy-poster.jpg" data-teaser="assets/video/cowboy-teaser.mp4" aria-hidden="true"></video>
-          <span class="labs-play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch · 0:19</span>
-        </a>
-        <div class="labs-meta"><span class="ep-title">Cowboy Illustration</span><span class="mono ep-meta">Illustrated short</span><p>A lone rider crosses the West, one painting at a time.</p></div>
-      </article>
-      <article class="labs-card">
-        <a class="labs-film" href="assets/video/romeros.mp4" data-film="assets/video/romeros.mp4" data-poster="assets/video/romeros-poster.jpg" aria-label="Watch Romero’s Restaurant (17 seconds)">
-          <video muted loop playsinline preload="none" poster="assets/video/romeros-poster.jpg" data-teaser="assets/video/romeros-teaser.mp4" aria-hidden="true"></video>
-          <span class="labs-play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch · 0:17</span>
-        </a>
-        <div class="labs-meta"><span class="ep-title">Romero’s Restaurant</span><span class="mono ep-meta">Restaurant spot</span><p>The neighborhood’s toughest critics can’t stay away. Fresh nightly.</p></div>
-      </article>
-    </div>
+    </a>
   </section>
 
   <!-- FAQ -->
@@ -944,15 +724,15 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </form>
   </section>
 </main>
+<a class="sticky-cta btn btn-hot" id="sticky-cta" href="#contact">Book a free 30-minute call</a>
 
 <footer class="footer" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Spearpoint Studio, back to top"><img src="assets/mark-stone.png" alt="" width="17" height="46"><span>Spearpoint Studio</span></a>
     <div class="footer-links">
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="/privacy">Privacy &amp; AI policy</a>
-      <a href="#lab">Lab</a>
+      <a href="#pricing">Services &amp; pricing</a>
+            <a href="/privacy">Privacy &amp; AI policy</a>
+      <a href="/lab">Lab</a>
       <a href="https://www.instagram.com/spearpointpro/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.tiktok.com/@spearpointpro" target="_blank" rel="noopener">TikTok</a>
       <a href="mailto:hello@spearpointpro.com">hello@spearpointpro.com</a>
@@ -969,6 +749,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
   var ENDPOINT = 'https://formsubmit.co/ajax/' + INBOX;
 
   var form = document.getElementById('inquiry');
+  if (!form) return;
   var statusEl = document.getElementById('form-status');
   var submitBtn = document.getElementById('f-submit');
 
@@ -1149,454 +930,6 @@ html.player-lock,html.player-lock body{overflow:hidden}
     }, { threshold: .15 }).observe(v);
   }
   syncPause();
-})();
-</script>
-<script>
-(function(){
-  var wall = document.getElementById('wall');
-  var stone = document.getElementById('stone'), dark = document.getElementById('dark'), glow = document.getElementById('glow'), tc = document.getElementById('torchc');
-  var dctx = dark.getContext('2d'), gctx = glow.getContext('2d'), tctx = tc.getContext('2d');
-  var hint = document.getElementById('hint'), hintText = document.getElementById('hint-text');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var coarse = window.matchMedia('(hover: none)').matches;
-  // Phones: keep the wall faintly visible in the dark so it's easier to read and find your way around;
-  // the torch still brightens what it touches. Desktop stays pitch black.
-  var MOBILE_DIM = coarse || window.innerWidth <= 720;
-  var DARK_FLOOR = MOBILE_DIM ? .015 : 0;   // ≈ 25% of the wall shows through the darkness
-  if (coarse) hintText.textContent = 'Grab the torch to light the wall';
-
-  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 1.5);
-  // torch.x/y = top of the torch head, where the flame sits
-  var torch = { x: 0, y: 0, tx: 0, ty: 0, vx: 0, tilt: .34, active: false, lastMove: 0 };
-  var GRIP = 128; // distance from the hand to the torch head, along the stick
-  var sparks = [], fire = [], realFlame = true;
-  // soft glowing sprites, one per stage of the fire's colour as it cools
-  function sprite(rgb){
-    var c = document.createElement('canvas'); c.width = c.height = 64;
-    var x = c.getContext('2d'), g = x.createRadialGradient(32,32,0,32,32,32);
-    g.addColorStop(0,'rgba(' + rgb + ',1)'); g.addColorStop(.35,'rgba(' + rgb + ',.55)'); g.addColorStop(1,'rgba(' + rgb + ',0)');
-    x.fillStyle = g; x.fillRect(0,0,64,64); return c;
-  }
-  var fireRamp = [sprite('255,222,160'), sprite('255,184,92'), sprite('248,132,48'), sprite('214,82,24'), sprite('130,36,12')];
-  var lit = reduce ? 1 : 0, litTarget = reduce ? 1 : 0;
-  var visible = true, raf = 0, t0 = performance.now(), last = t0;
-
-  // ----- stone: colour and height maps are generated once, then lit live by the torch on the GPU -----
-  var albedoC = document.createElement('canvas'), heightC = document.createElement('canvas');
-  var sctx = albedoC.getContext('2d'), hctx = heightC.getContext('2d');
-  var TS = 1; // texture scale (CSS px per texel)
-  var gl = null, prog = null, texA = null, texH = null, U = {};
-  var fallback2d = null;
-  function rand(seed){ return function(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
-  function paintStone(){
-    var r = rand(7);
-    sctx.setTransform(TS,0,0,TS,0,0);
-    var g = sctx.createLinearGradient(0,0,W,H);
-    g.addColorStop(0,'#6A4C36'); g.addColorStop(.5,'#5A412E'); g.addColorStop(1,'#4A3524');
-    sctx.fillStyle = g; sctx.fillRect(0,0,W,H);
-    for (var i=0;i<140;i++){
-      var x=r()*W, y=r()*H, rad=40+r()*220, light=r()>.5;
-      var rg=sctx.createRadialGradient(x,y,0,x,y,rad);
-      rg.addColorStop(0, light ? 'rgba(120,88,60,.16)' : 'rgba(18,12,8,.22)');
-      rg.addColorStop(1,'rgba(0,0,0,0)');
-      sctx.fillStyle=rg; sctx.fillRect(x-rad,y-rad,rad*2,rad*2);
-    }
-    sctx.lineCap='round';
-    for (var c=0;c<26;c++){
-      var cx=r()*W, cy=r()*H, ang=r()*Math.PI*2;
-      sctx.beginPath(); sctx.moveTo(cx,cy);
-      for (var s=0;s<8+r()*14;s++){ ang+=(r()-.5)*.9; cx+=Math.cos(ang)*(8+r()*18); cy+=Math.sin(ang)*(8+r()*18); sctx.lineTo(cx,cy); }
-      sctx.strokeStyle='rgba(14,9,6,'+(.25+r()*.35)+')'; sctx.lineWidth=.6+r()*1.6; sctx.stroke();
-      sctx.strokeStyle='rgba(160,120,84,.10)'; sctx.lineWidth=.6; sctx.translate(.8,.8); sctx.stroke(); sctx.translate(-.8,-.8);
-    }
-    var img = sctx.getImageData(0,0,albedoC.width,albedoC.height), d = img.data;
-    for (var p=0;p<d.length;p+=4){ var n=(r()-.5)*26; d[p]+=n; d[p+1]+=n; d[p+2]+=n*.8; }
-    sctx.putImageData(img,0,0);
-  }
-
-  // Height map: R = surface height (light = raised), G = mineral flecks that glint
-  function paintHeight(){
-    var r = rand(11);
-    hctx.setTransform(TS,0,0,TS,0,0);
-    hctx.fillStyle = 'rgb(128,128,128)'; hctx.fillRect(0,0,W,H);
-    // broad swells and hollows, then smaller lumps, then chisel facets
-    var passes = [[30, 160, 340, .34], [200, 26, 110, .32], [900, 5, 26, .3]];
-    passes.forEach(function(pz){
-      for (var i=0;i<pz[0];i++){
-        var x=r()*W, y=r()*H, rad=pz[1]+r()*(pz[2]-pz[1]), up=r()>.5;
-        var g=hctx.createRadialGradient(x,y,0,x,y,rad);
-        g.addColorStop(0, up ? 'rgba(255,255,255,'+pz[3]+')' : 'rgba(0,0,0,'+pz[3]+')');
-        g.addColorStop(1,'rgba(128,128,128,0)');
-        hctx.fillStyle=g; hctx.fillRect(x-rad,y-rad,rad*2,rad*2);
-      }
-    });
-    // flat-ish knapped facets: hard-edged polygons, slightly raised or sunk
-    for (var f=0; f<160; f++){
-      var cx=r()*W, cy=r()*H, n=5+Math.floor(r()*3), rr=18+r()*60, up2=r()>.5;
-      hctx.beginPath();
-      for (var k=0;k<n;k++){ var an=k/n*Math.PI*2 + r()*.5, q=rr*(.6+r()*.5); hctx[k?'lineTo':'moveTo'](cx+Math.cos(an)*q, cy+Math.sin(an)*q); }
-      hctx.closePath(); hctx.fillStyle = up2 ? 'rgba(255,255,255,.13)' : 'rgba(0,0,0,.13)'; hctx.fill();
-    }
-    // cracks: deep grooves (same seed as the colour cracks so they line up)
-    var r2 = rand(7); for (var skip=0; skip<140*5; skip++) r2();
-    hctx.lineCap='round';
-    for (var c=0;c<26;c++){
-      var x0=r2()*W, y0=r2()*H, ang=r2()*Math.PI*2;
-      hctx.beginPath(); hctx.moveTo(x0,y0);
-      for (var s2=0;s2<8+r2()*14;s2++){ ang+=(r2()-.5)*.9; x0+=Math.cos(ang)*(8+r2()*18); y0+=Math.sin(ang)*(8+r2()*18); hctx.lineTo(x0,y0); }
-      var lw=.6+r2()*1.6; r2();
-      hctx.strokeStyle='rgba(0,0,0,.55)'; hctx.lineWidth=lw+1.5; hctx.stroke();
-    }
-    // grain + flecks
-    var img = hctx.getImageData(0,0,heightC.width,heightC.height), d = img.data;
-    for (var p=0;p<d.length;p+=4){
-      var v = d[p] + (r()-.5)*18;
-      d[p] = v; d[p+1] = 0; d[p+2] = 0; d[p+3] = 255;
-    }
-    hctx.putImageData(img,0,0);
-  }
-
-  // ----- WebGL relighting -----
-  var VS = 'attribute vec2 p; varying vec2 uv; void main(){ uv = vec2(p.x*.5+.5, .5-p.y*.5); gl_Position = vec4(p,0.,1.); }';
-  var FS = [
-    'precision mediump float;',
-    'uniform sampler2D albedo, height; uniform vec2 res, light; uniform float reach, power, lit;',
-    'varying vec2 uv;',
-    'float h(vec2 o){ return texture2D(height, uv + o).r; }',
-    'void main(){',
-    '  vec2 px = 1.0 / res;',
-    '  float dx = h(vec2(px.x,0.)) - h(vec2(-px.x,0.));',
-    '  float dy = h(vec2(0.,px.y)) - h(vec2(0.,-px.y));',
-    '  vec3 N = normalize(vec3(-dx*16.0, -dy*16.0, 1.0));',
-    '  vec3 base = texture2D(albedo, uv).rgb;',
-    '  float fleck = texture2D(height, uv).g;',
-    '  vec2 frag = uv * res;',
-    '  vec3 Lv = vec3(light - frag, 80.0); float d = length(Lv); vec3 L = Lv / d;',
-    '  float att = 1.0 / (1.0 + (d*d) / (reach*reach));',
-    '  float diff = max(dot(N, L), 0.0);',
-    '  vec3 Hh = normalize(L + vec3(0.,0.,1.));',
-    '  float nh = max(dot(N, Hh), 0.0);',
-    '  float sheen = pow(nh, 18.0) * .22;',
-    '  float glint = 0.0;',
-    '  vec3 fire = vec3(1.0, .62, .32);',
-    '  vec3 amb = base * (.42 + .25*lit);',
-    '  vec3 col = amb * mix(.75, 1.15, diff) + base * fire * diff * att * 1.6 * power + fire * (sheen + glint) * att * power;',
-    '  col *= mix(.78, 1.0, smoothstep(.0, 1.0, N.z*1.2 - .2));',
-    '  gl_FragColor = vec4(col, 1.0);',
-    '}'
-  ].join('\n');
-  function initGL(){
-    try { gl = stone.getContext('webgl', { premultipliedAlpha: false, antialias: false }); } catch(e){ gl = null; }
-    if (!gl){ fallback2d = stone.getContext('2d'); return; }
-    function sh(type, src){ var x = gl.createShader(type); gl.shaderSource(x, src); gl.compileShader(x); if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(x)); return x; }
-    try {
-      prog = gl.createProgram();
-      gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
-      gl.linkProgram(prog); gl.useProgram(prog);
-    } catch(e){ gl = null; fallback2d = stone.getContext('2d'); return; }
-    var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-    var loc = gl.getAttribLocation(prog, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    ['albedo','height','res','light','reach','power','lit'].forEach(function(n){ U[n] = gl.getUniformLocation(prog, n); });
-    texA = gl.createTexture(); texH = gl.createTexture();
-  }
-  function upload(tex, unit, src){
-    gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, tex);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, src);
-  }
-  function drawStone(lx, ly, reach, power){
-    if (!gl){ if (fallback2d){ fallback2d.setTransform(1,0,0,1,0,0); fallback2d.drawImage(albedoC, 0, 0, stone.width, stone.height); } return; }
-    gl.viewport(0, 0, stone.width, stone.height);
-    gl.uniform1i(U.albedo, 0); gl.uniform1i(U.height, 1);
-    gl.uniform2f(U.res, W, H); gl.uniform2f(U.light, lx, ly);
-    gl.uniform1f(U.reach, reach); gl.uniform1f(U.power, power); gl.uniform1f(U.lit, lit);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-  }
-
-  function resize(){
-    var rect = wall.getBoundingClientRect();
-    W = rect.width; H = rect.height;
-    [stone,dark,glow,tc].forEach(function(c){ c.width = Math.round(W*DPR); c.height = Math.round(H*DPR); });
-    albedoC.width = heightC.width = Math.round(W*TS); albedoC.height = heightC.height = Math.round(H*TS);
-    paintStone(); paintHeight();
-    if (gl){ upload(texA, 0, albedoC); upload(texH, 1, heightC); }
-    [dctx,gctx,tctx].forEach(function(x){ x.setTransform(DPR,0,0,DPR,0,0); });
-    dctx.globalCompositeOperation='source-over';
-    dctx.fillStyle='rgba(6,4,3,' + (DARK_FLOOR ? .75 : 1) + ')'; dctx.fillRect(0,0,W,H);
-    if (!torch.active){ torch.x = torch.tx = W*.5; torch.y = torch.ty = H*.5; }
-  }
-
-
-  // Make sure the hand-drawn font is downloaded (fonts used only inside SVG drawings are often skipped),
-  // then nudge the drawing to re-render with it.
-  if (document.fonts && document.fonts.load){
-    document.fonts.load('700 48px "Amatic SC"').then(function(){
-      document.querySelectorAll('.paint svg').forEach(function(sv){ sv.style.display = 'none'; void sv.offsetWidth; sv.style.display = ''; });
-    }).catch(function(){});
-  }
-
-  // ----- input -----
-  function setTarget(clientX, clientY){
-    var rect = wall.getBoundingClientRect();
-    torch.gx = clientX - rect.left; torch.gy = clientY - rect.top;
-    torch.active = true; torch.lastMove = performance.now();
-    hint.classList.add('gone');
-  }
-  // Mouse and pen: the torch simply follows the pointer.
-  wall.addEventListener('pointermove', function(e){ if (e.pointerType !== 'touch') setTarget(e.clientX, e.clientY); });
-  wall.addEventListener('pointerdown', function(e){ if (e.pointerType !== 'touch') setTarget(e.clientX, e.clientY); });
-  wall.addEventListener('pointerleave', function(e){ if (e.pointerType !== 'touch') torch.lastMove = 0; });
-
-  // Touch: a finger that lands on or near the torch picks it up (and the page stays put);
-  // a finger anywhere else scrolls the page as normal. A quick tap elsewhere moves the torch there.
-  var dragging = false, tapStart = null;
-  function nearTorch(x, y){
-    // distance from the touch to the stick, from the flame down to the hand
-    var hx = torch.x, hy = torch.y - 40, gx = torch.x - Math.sin(torch.tilt)*GRIP, gy = torch.y + Math.cos(torch.tilt)*GRIP + 20;
-    var dx = gx - hx, dy = gy - hy, len2 = dx*dx + dy*dy, k = Math.max(0, Math.min(1, ((x-hx)*dx + (y-hy)*dy) / len2));
-    var px = hx + k*dx, py = hy + k*dy;
-    return Math.hypot(x - px, y - py) < 56;
-  }
-  wall.addEventListener('touchstart', function(e){
-    if (e.touches.length !== 1) return;
-    var t0 = e.touches[0], r = wall.getBoundingClientRect(), x = t0.clientX - r.left, y = t0.clientY - r.top;
-    if (nearTorch(x, y)){
-      dragging = true; e.preventDefault();
-      // keep the stick where the finger grabbed it
-      torch.gx = x; torch.gy = y; torch.active = true; torch.lastMove = performance.now(); hint.classList.add('gone');
-    } else {
-      tapStart = { x: x, y: y, t: performance.now() };
-    }
-  }, { passive: false });
-  wall.addEventListener('touchmove', function(e){
-    if (!dragging) { tapStart = null; return; }
-    e.preventDefault();
-    setTarget(e.touches[0].clientX, e.touches[0].clientY);
-  }, { passive: false });
-  wall.addEventListener('touchend', function(e){
-    if (!dragging && tapStart && performance.now() - tapStart.t < 300){
-      var r = wall.getBoundingClientRect();
-      setTarget(tapStart.x + r.left, tapStart.y + r.top);
-    }
-    dragging = false; tapStart = null;
-  });
-  wall.addEventListener('touchcancel', function(){ dragging = false; tapStart = null; });
-  wall.addEventListener('keydown', function(e){
-    var step = 40, k = e.key;
-    if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].indexOf(k) < 0) return;
-    e.preventDefault();
-    if (!torch.active || torch.gx == null){ torch.gx = torch.x - Math.sin(torch.tilt)*GRIP; torch.gy = torch.y + Math.cos(torch.tilt)*GRIP; }
-    if (k==='ArrowLeft') torch.gx -= step; if (k==='ArrowRight') torch.gx += step;
-    if (k==='ArrowUp') torch.gy -= step; if (k==='ArrowDown') torch.gy += step;
-    torch.gx = Math.max(0,Math.min(W,torch.gx)); torch.gy = Math.max(0,Math.min(H+GRIP,torch.gy));
-    torch.active = true; torch.lastMove = performance.now(); hint.classList.add('gone');
-  });
-
-  // ----- light shape: three overlapping, independently flickering lobes, taller than wide,
-  // centred a little above the torch head, so the edge is ragged like real firelight -----
-  function lobes(t, R){
-    // all three pools start at the flame (just above the torch head) and lean upward: egg-shaped light
-    var fx = torch.x, fy = torch.y - 30;
-    return [
-      { x: fx + 4*Math.sin(t*1.7),              y: fy,                        r: R,       sy: 1.12, up: .38 },
-      { x: fx + R*.14*Math.sin(t*.9+1),         y: fy - 8 + 6*Math.sin(t*2.3), r: R*.78,  sy: 1.2,  up: .48 },
-      { x: fx - R*.12 + 8*Math.sin(t*1.3+2),    y: fy + 4,                    r: R*.66,   sy: 1.0,  up: .28 }
-    ];
-  }
-  // Two-circle radial gradient: inner point at the flame, outer circle shifted up,
-  // so light reaches far above the flame and stops short below it.
-  function blob(ctx, L, stops){
-    ctx.save(); ctx.translate(L.x, L.y); ctx.scale(1, L.sy);
-    var oy = -L.r * L.up;
-    var g = ctx.createRadialGradient(0, 0, 0, 0, oy, L.r);
-    for (var i=0;i<stops.length;i++) g.addColorStop(stops[i][0], stops[i][1]);
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, oy, L.r, 0, Math.PI*2); ctx.fill();
-    ctx.restore();
-  }
-
-  // ----- the torch itself -----
-  function drawTorch(ctx, t, f){
-    var hx = torch.x, hy = torch.y, ang = torch.tilt;
-    ctx.save(); ctx.translate(hx, hy); ctx.rotate(ang);
-    // stick (lit on the flame side)
-    var len = 150;
-    var sg = ctx.createLinearGradient(-7, 0, 7, 0);
-    sg.addColorStop(0,'#8A5A34'); sg.addColorStop(.45,'#5C3A22'); sg.addColorStop(1,'#2C1B10');
-    ctx.fillStyle = sg;
-    ctx.beginPath(); ctx.moveTo(-6, 14); ctx.lineTo(6, 14); ctx.lineTo(4.5, len); ctx.quadraticCurveTo(0, len+5, -4.5, len); ctx.closePath(); ctx.fill();
-    // knots
-    ctx.fillStyle = 'rgba(30,18,10,.6)';
-    ctx.beginPath(); ctx.ellipse(1, 70, 2.2, 3.4, 0, 0, Math.PI*2); ctx.fill();
-    ctx.beginPath(); ctx.ellipse(-1.5, 112, 1.8, 3, 0, 0, Math.PI*2); ctx.fill();
-    // fade the grip end into the dark
-    var fade = ctx.createLinearGradient(0, 90, 0, len+6);
-    fade.addColorStop(0,'rgba(6,4,3,0)'); fade.addColorStop(1,'rgba(6,4,3,.85)');
-    ctx.fillStyle = fade; ctx.fillRect(-8, 90, 16, len-84);
-    // cloth-wrapped head
-    var hg = ctx.createLinearGradient(-11, 0, 11, 0);
-    hg.addColorStop(0,'#7A4A2A'); hg.addColorStop(.5,'#4A2E1C'); hg.addColorStop(1,'#24160D');
-    ctx.fillStyle = hg;
-    ctx.beginPath(); ctx.moveTo(-10, -2); ctx.quadraticCurveTo(0, -8, 10, -2); ctx.lineTo(8, 24); ctx.quadraticCurveTo(0, 28, -8, 24); ctx.closePath(); ctx.fill();
-    ctx.strokeStyle = 'rgba(20,12,7,.75)'; ctx.lineWidth = 1.6;
-    for (var b=0;b<4;b++){ var y=2+b*6; ctx.beginPath(); ctx.moveTo(-9.5, y+3); ctx.quadraticCurveTo(0, y-1, 9.5, y+2); ctx.stroke(); }
-    // ember glow on the cloth top
-    var eg = ctx.createRadialGradient(0, -2, 0, 0, -2, 14);
-    eg.addColorStop(0,'rgba(255,170,80,.9)'); eg.addColorStop(1,'rgba(255,90,31,0)');
-    ctx.fillStyle = eg; ctx.beginPath(); ctx.arc(0, -2, 14, 0, Math.PI*2); ctx.fill();
-    ctx.restore();
-
-    if (realFlame){
-      drawFire(ctx, torch.dt || .016);
-    } else {
-    // classic flame: stays upright regardless of the stick's tilt; it leans against the motion
-    var lean = Math.max(-.6, Math.min(.6, -torch.vx * .04));
-    ctx.save(); ctx.translate(hx + Math.sin(ang)*-2, hy - 4);
-    ctx.globalCompositeOperation = 'lighter';
-    tongue(ctx, t, 0,    62*f, 17, lean,      'rgba(255,70,20,.55)');
-    tongue(ctx, t, 1.7,  50*f, 13.5, lean*1.1,  'rgba(255,120,30,.7)');
-    tongue(ctx, t, 3.1,  36*f, 10,  lean*1.2,  'rgba(255,190,80,.85)');
-    tongue(ctx, t, 4.4,  20*f, 6,lean*1.3,  'rgba(255,245,210,.95)');
-    ctx.restore();
-    }
-
-    // sparks
-    ctx.save(); ctx.globalCompositeOperation = 'lighter';
-    for (var i=sparks.length-1;i>=0;i--){
-      var s = sparks[i]; s.life -= .016; s.x += s.vx; s.y += s.vy; s.vy -= .02;
-      if (s.life <= 0){ sparks.splice(i,1); continue; }
-      ctx.fillStyle = 'rgba(255,' + (150+Math.round(90*s.life)) + ',80,' + s.life + ')';
-      ctx.beginPath(); ctx.arc(s.x, s.y, 1.4, 0, Math.PI*2); ctx.fill();
-    }
-    ctx.restore();
-  }
-  function tongue(ctx, t, phase, h, w, lean, color){
-    var wob = Math.sin(t*9 + phase)*w*.18, tip = Math.sin(t*6.5 + phase*1.3)*w*.5 + lean*h*.5;
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(-w, 0);
-    ctx.bezierCurveTo(-w*1.05, -h*.45 + wob, -w*.2 + tip*.4, -h*.75, tip, -h);
-    ctx.bezierCurveTo(w*.2 + tip*.4, -h*.7, w*1.05, -h*.45 - wob, w, 0);
-    ctx.quadraticCurveTo(0, w*.6, -w, 0);
-    ctx.fill();
-  }
-
-  // ----- realistic flame: many short-lived glowing particles -----
-  // Particles live in the torch's own space, so a fast swing bends the flame instead of scattering it.
-  var lean = 0, fireCap = 300, slowFrames = 0;
-  function drawFire(ctx, dt){
-    var bx = torch.x, by = torch.y - 3;
-    var step = dt / .016;
-    // the whole flame leans away from motion, but only so far
-    var leanTarget = Math.max(-1, Math.min(1, -torch.vx / 14));
-    lean += (leanTarget - lean) * Math.min(1, .18 * step);
-    var n = Math.round(10 * step);
-    for (var i=0;i<n && fire.length < fireCap;i++){
-      var a = (Math.random()-.5) * 2;
-      fire.push({ x: a*6, y: Math.random()*3, vx: a*.22, vy: -(1.15 + Math.random()*1.4),
-                  size: 11 + Math.random()*9, age: 0, life: .36 + Math.random()*.4, seed: Math.random()*100 });
-    }
-    var tt = performance.now() / 1000;
-    ctx.save(); ctx.globalCompositeOperation = 'screen';
-    for (var j = fire.length - 1; j >= 0; j--){
-      var p = fire[j]; p.age += dt;
-      var k = p.age / p.life;
-      if (k >= 1){ fire.splice(j,1); continue; }
-      var turb = Math.sin(tt*21 + p.seed + p.y*.09) * .55 + Math.sin(tt*9.3 + p.seed*1.7) * .35;
-      p.vx += turb * .11 * (.4 + k);
-      p.vx += -p.x * .02 * (1 - k);          // taper toward the centre line
-      p.vx *= .92; p.vy *= .985; p.vy -= .045;
-      p.x += p.vx * step; p.y += p.vy * step;
-      // lean grows with height, capped at about 45 px at the tip
-      var ox = p.x + lean * Math.min(45, -p.y * .9);
-      var sz = p.size * (1 - k*.72);
-      var stage = Math.min(4, Math.floor(.9 + k * 4.4));
-      ctx.globalAlpha = Math.max(0, (1 - k) * (k < .1 ? k/.1 : 1)) * .3;
-      ctx.drawImage(fireRamp[stage], bx + ox - sz, by + p.y - sz*1.25, sz*2, sz*2.5);
-    }
-    ctx.globalAlpha = .28;
-    ctx.drawImage(fireRamp[1], bx - 9, by - 18, 18, 24);
-    ctx.restore();
-    // if the device is struggling, use fewer particles
-    if (dt > .024){ if (++slowFrames > 45){ fireCap = Math.max(120, fireCap - 40); slowFrames = 0; } } else slowFrames = Math.max(0, slowFrames - 1);
-  }
-
-  // ----- render loop -----
-  function frame(now){
-    raf = 0;
-    if (!visible) return;
-    var t = (now - t0) / 1000, dt = Math.min(.05, (now - last)/1000); last = now; torch.dt = dt;
-
-    var idle = !torch.lastMove || now - torch.lastMove > 2600;
-    if (idle){
-      torch.tx = W*(.5 + .36*Math.sin(t*.37)); torch.ty = H*(.5 + .22*Math.sin(t*.53 + 1.3));
-    } else if (torch.gx != null){
-      // the visitor holds the base of the stick; the flame end sits up the stick from there
-      torch.tx = torch.gx + Math.sin(torch.tilt) * GRIP; torch.ty = torch.gy - Math.cos(torch.tilt) * GRIP;
-    }
-    var ease = reduce ? 1 : (idle ? .03 : .3);
-    var px = torch.x;
-    torch.x += (torch.tx - torch.x) * ease; torch.y += (torch.ty - torch.y) * ease;
-    torch.vx += ((torch.x - px) - torch.vx) * .25;
-    // the stick swings a little with movement, then settles
-    var tiltTarget = .34 + Math.max(-.45, Math.min(.45, torch.vx * .03));
-    torch.tilt += (tiltTarget - torch.tilt) * .12;
-    lit += (litTarget - lit) * .06;
-
-    var f = reduce ? 1 : 1 + .05*Math.sin(t*11.3) + .035*Math.sin(t*23.7+1) + .02*Math.sin(t*4.1);
-    var R = Math.max(190, Math.min(W, H) * .46) * f;
-    var L = lobes(reduce ? 0 : t, R);
-    drawStone(torch.x, torch.y - 30, R * .55, f);
-
-    // darkness slowly returns where the light has been
-    dctx.globalCompositeOperation = 'source-over';
-    dctx.fillStyle = 'rgba(6,4,3,' + (reduce ? .2 : .045) + ')';
-    dctx.fillRect(0,0,W,H);
-    // cut ragged firelight out of the dark
-    dctx.globalCompositeOperation = 'destination-out';
-    var cut = [[0,'rgba(0,0,0,1)'],[.18,'rgba(0,0,0,.94)'],[.36,'rgba(0,0,0,.76)'],[.54,'rgba(0,0,0,.5)'],[.7,'rgba(0,0,0,.27)'],[.84,'rgba(0,0,0,.11)'],[.94,'rgba(0,0,0,.03)'],[1,'rgba(0,0,0,0)']];
-    for (var i=0;i<L.length;i++) blob(dctx, L[i], cut);
-    if (lit > .01){ dctx.fillStyle = 'rgba(0,0,0,' + (lit*.25) + ')'; dctx.fillRect(0,0,W,H); }
-    if (DARK_FLOOR){ dctx.fillStyle = 'rgba(0,0,0,' + DARK_FLOOR + ')'; dctx.fillRect(0,0,W,H); }
-    // the stick's shadow falls away from the flame, down the wall
-    if (true){
-      dctx.globalCompositeOperation = 'source-over';
-      dctx.save(); dctx.translate(torch.x, torch.y + 10); dctx.rotate(torch.tilt * .55);
-      var sh = dctx.createLinearGradient(0, 0, 0, R*1.2);
-      sh.addColorStop(0,'rgba(6,4,3,0)'); sh.addColorStop(.25,'rgba(6,4,3,.35)'); sh.addColorStop(1,'rgba(6,4,3,0)');
-      dctx.fillStyle = sh;
-      dctx.beginPath(); dctx.moveTo(-5, 0); dctx.lineTo(5, 0); dctx.lineTo(22, R*1.2); dctx.lineTo(-22, R*1.2); dctx.closePath(); dctx.fill();
-      dctx.restore();
-    }
-
-    // warm firelight, same ragged shape
-    gctx.clearRect(0,0,W,H);
-    var a = .30 * f;
-    var warm = [[0,'rgba(255,160,80,' + a + ')'],[.3,'rgba(255,120,50,' + (a*.7) + ')'],[.6,'rgba(255,96,31,' + (a*.32) + ')'],[.85,'rgba(255,90,31,' + (a*.08) + ')'],[1,'rgba(255,90,31,0)']];
-    for (var j=0;j<L.length;j++){ var LL = { x: L[j].x, y: L[j].y, r: L[j].r*1.12, sy: L[j].sy, up: L[j].up }; blob(gctx, LL, j ? warm.map(function(s){ return [s[0], s[1].replace(/,([0-9.]+)\)$/, function(m,v){ return ',' + (v*.5).toFixed(3) + ')'; })]; }) : warm); }
-    if (lit > .01){ gctx.fillStyle = 'rgba(255,120,50,' + (lit*.08) + ')'; gctx.fillRect(0,0,W,H); }
-
-    // the torch
-    tctx.clearRect(0,0,W,H);
-    if (true){
-      if (!reduce && Math.random() < .18) sparks.push({ x: torch.x + (Math.random()-.5)*10, y: torch.y - 20, vx: (Math.random()-.5)*.6 - torch.vx*.05, vy: -.6 - Math.random()*.8, life: .6 + Math.random()*.4 });
-      drawTorch(tctx, reduce ? 0 : t, f);
-    }
-
-    raf = requestAnimationFrame(frame);
-  }
-
-  if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){
-      visible = es[0].isIntersecting;
-      if (visible && !raf){ last = performance.now(); raf = requestAnimationFrame(frame); }
-    }, { rootMargin: '100px' }).observe(wall);
-  }
-  initGL();
-  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(resize, 150); });
-  resize();
-  raf = requestAnimationFrame(frame);
 })();
 </script>
 
@@ -1796,44 +1129,44 @@ html.player-lock,html.player-lock body{overflow:hidden}
 })();
 </script>
 <script>
-// Hero lesson illustration: ticks through the checklist with matching captions.
+// Hero video: silent sample loop until someone presses play, then the full video with sound.
+// English/Español switch picks the version; switching mid-play keeps playing in the other language.
 (function(){
-  var items = document.querySelectorAll('.tp-list li'), cap = document.getElementById('tp-caption'), fill = document.querySelector('.tp-fill');
-  if (!items.length || !cap) return;
-  var lines = ['Wipe down every station before the first ticket.', 'Walk-in should read 41°F or below. Log it.', 'Restock sauces, cups and lids before doors open.'];
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ items[0].classList.add('done'); return; }
-  var i = 0;
-  function tick(){
-    items.forEach(function(li, k){ li.classList.toggle('done', k < i); });
-    cap.style.opacity = 0;
-    setTimeout(function(){ cap.textContent = lines[Math.min(i, lines.length - 1)]; cap.style.opacity = 1; }, 300);
-    fill.style.transition = 'width 2.6s linear'; fill.style.width = (22 + i * 26) + '%';
-    i = (i + 1) % (items.length + 1);
-  }
-  tick(); setInterval(tick, 2800);
-})();
-</script>
-<script>
-// Sample video: big play button, English/Spanish switch (keeps your place if it's playing).
-(function(){
-  var v = document.getElementById('sample-video'); if (!v) return;
-  var frame = v.parentNode, play = document.getElementById('sample-play'), dur = document.getElementById('sample-dur');
+  var v = document.getElementById('hero-video'); if (!v) return;
+  var frame = document.getElementById('hv-frame'), play = document.getElementById('hv-play'), dur = document.getElementById('hv-dur');
   var SRC = { en: 'assets/video/blackline-en.mp4', es: 'assets/video/blackline-es.mp4' }, LEN = { en: '2:54', es: '3:28' };
-  var lang = 'en';
-  play.addEventListener('click', function(){ frame.classList.add('playing'); v.controls = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); });
-  v.addEventListener('play', function(){ frame.classList.add('playing'); v.controls = true; });
-  document.querySelectorAll('.lang-btn').forEach(function(b){
+  var LOOP = 'assets/video/blackline-loop.mp4', lang = 'en', full = false;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      if (full) return;
+      if (es[0].isIntersecting){ if (!v.getAttribute('src')) v.src = LOOP; var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      else if (!v.paused) v.pause();
+    }, { threshold: .4 }).observe(v);
+  }
+  function startFull(){
+    full = true; frame.classList.add('playing');
+    v.loop = false; v.muted = false; v.controls = true; v.src = SRC[lang];
+    var p = v.play(); if (p && p.catch) p.catch(function(){});
+  }
+  play.addEventListener('click', startFull);
+  document.querySelectorAll('.hero-video .lang-btn').forEach(function(b){
     b.addEventListener('click', function(){
       var next = b.getAttribute('data-lang'); if (next === lang) return;
-      var wasPlaying = !v.paused;
-      lang = next;
-      document.querySelectorAll('.lang-btn').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
-      v.src = SRC[lang]; dur.textContent = LEN[lang];
-      play.setAttribute('aria-label', 'Play the ' + (lang === 'en' ? 'English' : 'Spanish') + ' version');
-      if (wasPlaying){ var p = v.play(); if (p && p.catch) p.catch(function(){}); }
-      else { frame.classList.remove('playing'); v.controls = false; v.load(); }
+      lang = next; dur.textContent = LEN[lang];
+      document.querySelectorAll('.hero-video .lang-btn').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      if (full) startFull();
     });
   });
+})();
+
+// Phones: a "Book a call" button stays in reach once the hero buttons scroll away, and hides at the form.
+(function(){
+  var bar = document.getElementById('sticky-cta'); if (!bar || !('IntersectionObserver' in window)) return;
+  var heroOut = false, formIn = false;
+  function sync(){ bar.classList.toggle('show', heroOut && !formIn); }
+  new IntersectionObserver(function(es){ heroOut = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; sync(); }).observe(document.getElementById('hero-ctas'));
+  new IntersectionObserver(function(es){ formIn = es[0].isIntersecting; sync(); }, { threshold: .15 }).observe(document.getElementById('contact'));
 })();
 </script>
 <dialog class="player" id="player" aria-label="Video player">
