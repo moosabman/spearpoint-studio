@@ -452,6 +452,12 @@ html.player-lock,html.player-lock body{overflow:hidden}
 .lab-thumbs img{width:clamp(80px,11vw,140px);aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line-2)}
 .lab-thumbs img:nth-child(2){transform:translateY(-14px)}
 .sticky-cta{display:none}
+.hero-proof .proof-line{justify-content:flex-end;max-width:15em}
+.hero-proof .proof-line span{font-size:clamp(17px,1.6vw,19px);line-height:1.35;font-weight:600;color:var(--bone)}
+.nav-lab{display:none}
+@media (max-width:860px){.topbar .wrap{flex-wrap:nowrap;gap:10px}.nav-links{gap:8px;flex-wrap:nowrap}.nav-lab{display:inline-flex}.nav-links .btn{padding:0 16px!important;font-size:14px}.brand span{font-size:11px;letter-spacing:.16em;white-space:nowrap}}
+@media (max-width:374px){.brand span{display:none}}
+
 @media (max-width:760px){
   .steps-lite{gap:10px}
   .steps-lite .step{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:14px;padding:12px 16px}
@@ -513,6 +519,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
       <a href="#privacy">Privacy</a>
       <a href="#studio">About</a>
       <a href="/lab">Lab</a>
+      <a class="btn btn-ghost nav-lab" href="/lab" style="min-height:44px;padding:0 20px">Lab</a>
       <a class="btn btn-solid" href="#contact" style="min-height:44px;padding:0 20px">Book a call</a>
     </nav>
   </div>
@@ -530,7 +537,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
         <a class="btn btn-ghost" href="#pricing">See pricing</a>
       </div>
       <div class="hero-proof">
-        <div><b>Hundreds</b><span>of training videos produced</span></div>
+        <div class="proof-line"><span>Hundreds of training and marketing videos produced</span></div>
         <div><b data-stat="views">1.1M+</b><span>views on our <a href="/lab">comedy series</a></span></div>
       </div>
     </div>
