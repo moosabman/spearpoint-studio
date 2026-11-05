@@ -441,6 +441,10 @@ html.player-lock,html.player-lock body{overflow:hidden}
 
 @media (max-width:520px){.pkg{flex-direction:column;gap:8px}.pkg-price{text-align:left}}
 @media (prefers-reduced-motion:reduce){.svc-card:hover{transform:none}}
+.nav-lab{display:none}
+@media (max-width:860px){.topbar .wrap{flex-wrap:nowrap;gap:10px}.nav-links{gap:8px;flex-wrap:nowrap}.nav-lab{display:inline-flex}.nav-links .btn{padding:0 16px!important;font-size:14px}.brand span{font-size:11px;letter-spacing:.16em;white-space:nowrap}}
+@media (max-width:860px){.nav-links .btn{white-space:nowrap}}
+@media (max-width:419px){.brand span{display:none}}
 </style>
 </head>
 <body>
@@ -456,6 +460,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
       <a href="#woof-case">Woof</a>
       <a href="#process">The torch wall</a>
       <a href="#labs-h">Experiments</a>
+      <a class="btn btn-ghost nav-lab" href="/" style="min-height:44px;padding:0 20px">Services</a>
       <a class="btn btn-solid" href="/#contact" style="min-height:44px;padding:0 20px">Book a call</a>
     </nav>
   </div>
