@@ -511,6 +511,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 .demo-video{flex:1.4 1 520px;min-width:0;display:flex;flex-direction:column;gap:12px}
 .demo .sample-frame video{object-fit:cover;background:#eef0f4}
 @media (max-width:520px){.demo .sample-play{min-height:48px;padding:0 18px 0 14px;font-size:15px;white-space:nowrap}}
+.sample-title{font-size:clamp(28px,2.6vw,36px);font-weight:800;margin:0}
 </style>
 </head>
 <body>
@@ -537,17 +538,13 @@ html.player-lock,html.player-lock body{overflow:hidden}
     <div class="hero-copy">
       <div class="mono eyebrow">Training · Recruiting · Marketing · Web</div>
       <h1 class="disp hero-h1">Training videos your team will <span class="ember">actually</span> watch.</h1>
-      <p class="lede">Fixed prices. Private by default.</p>
       <div class="hero-ctas" id="hero-ctas">
         <a class="btn btn-hot" href="#contact">Book a free 30-minute call</a>
         <a class="btn btn-ghost" href="#pricing">See pricing</a>
       </div>
-      <div class="hero-proof">
-        <div class="proof-line"><span>Hundreds of training and marketing videos produced</span></div>
-        <div><b data-stat="views">1.1M+</b><span>views on our <a href="/lab">comedy series</a></span></div>
-      </div>
     </div>
     <div class="hero-video">
+      <h2 class="disp sample-title">Here’s a sample.</h2>
       <div class="sample-frame" id="hv-frame">
         <video id="hero-video" muted loop playsinline preload="none" poster="assets/video/blackline-poster.jpg" aria-label="Sample: new-hire safety orientation"></video>
         <button type="button" class="sample-play" id="hv-play"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg><span>Watch with sound · <span id="hv-dur">2:54</span></span></button>
@@ -630,9 +627,9 @@ html.player-lock,html.player-lock body{overflow:hidden}
   <section class="case" id="woof-case" aria-labelledby="woof-h">
     <div class="wrap section">
       <div class="case-copy">
-        <div class="mono" style="color:var(--ember-deep)">Case file · one video</div>
+        <div class="mono" style="color:var(--ember-deep)">Our comedy series · one video</div>
         <h2 class="disp" id="woof-h" style="font-size:clamp(56px,7vw,104px);font-weight:900">People watched. Then they shared.</h2>
-        <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-2);max-width:30em">Woof reached people who had never heard of Spearpoint. That’s the job a brand hires us for: content that travels past the audience you already have.</p>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-2);max-width:30em">We also make Cave Base, our own comedy series, with <span data-stat="views">1.1M+</span> views so far. One episode, Woof, reached people who had never heard of us. That’s the job a brand hires us for: content that travels past the audience you already have.</p>
         <a class="case-video" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
           <span class="case-thumb"><img src="assets/woof.jpg" alt="" width="479" height="852" loading="lazy"><span class="case-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></span>
           <span class="case-video-txt"><span class="ep-title" style="font-size:30px">Woof</span><span class="mono" style="color:var(--ink-3);font-size:12px">One Instagram Reel · posted Sep 22, 2026</span><span class="case-watch">Watch the video</span></span>
