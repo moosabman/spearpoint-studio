@@ -446,6 +446,9 @@ html.player-lock,html.player-lock body{overflow:hidden}
 @media (max-width:860px){.nav-links .btn{white-space:nowrap}}
 @media (max-width:419px){.brand{gap:8px}.brand span{white-space:normal;max-width:7em;line-height:1.3;font-size:10.5px;letter-spacing:.16em}}
 @media (max-width:349px){.brand span{display:none}}
+/* Lab intro with Woof playing */
+.lab-hero h1{font-size:clamp(56px,9vw,128px)}
+@media (max-width:700px){.lab-hero{padding-block:32px 48px;gap:24px}.lab-hero .hero-film{flex:1 1 100%;max-width:340px;margin-inline:auto}}
 </style>
 </head>
 <body>
@@ -458,9 +461,9 @@ html.player-lock,html.player-lock body{overflow:hidden}
     <nav class="nav-links" aria-label="Main">
       <a href="/#pricing">Services &amp; pricing</a>
       <a href="#cave-base">Cave Base</a>
-      <a href="#woof-case">Woof</a>
       <a href="#process">The torch wall</a>
       <a href="#labs-h">Experiments</a>
+      <a href="#cavemen">The cavemen</a>
       <a class="btn btn-ghost nav-lab" href="/" style="min-height:44px;padding:0 20px">Services</a>
       <a class="btn btn-solid" href="/#contact" style="min-height:44px;padding:0 20px">Book a call</a>
     </nav>
@@ -468,18 +471,28 @@ html.player-lock,html.player-lock body{overflow:hidden}
 </header>
 
 <main>
-  <!-- LAB INTRO -->
-  <section id="top" class="wrap section" style="padding-bottom:clamp(24px,3vw,40px)">
-    <div class="section-head">
-      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-        <div class="mono eyebrow">The Lab</div>
-        <h1 class="disp" style="font-size:clamp(56px,8vw,128px);font-weight:900">Our work for fun.</h1>
-      </div>
-      <p style="flex:1 1 320px;min-width:0;margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">Our own comedy series and experiments. It’s where we prove people will watch.</p>
+  <!-- LAB INTRO: Woof plays right away -->
+  <section id="top" class="wrap hero glow lab-hero">
+    <div class="hero-copy">
+      <div class="mono eyebrow">The Lab</div>
+      <h1 class="disp">Our work for fun.</h1>
+      <p style="margin:0;max-width:28em;font-size:17px;line-height:1.6;color:var(--ash)">Our own comedy series and experiments. It’s where we prove people will watch.</p>
     </div>
+    <a class="ep hero-film" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
+      <div class="still" style="aspect-ratio:9/16;border-radius:14px">
+        <video id="hero-loop" class="loop" muted loop playsinline preload="none" poster="assets/video/woof-loop-poster.jpg" aria-label="Woof: the presenter pulls the cover off a golden retriever"></video>
+        <span class="tag mono">Now playing</span>
+        <span class="watch-pill" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>Watch with sound</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <span class="ep-title" style="font-size:34px">Woof</span>
+        <span class="mono ep-meta" data-post="DdnM3osz2s-">459K views · 32K shares</span>
+      </div>
+    </a>
   </section>
 
   <!-- LOGO REVEAL FILM: loops silently; sound and pause in the corner -->
+  <!-- Hidden for now (Nov 2026). To bring it back, uncomment this section.
   <section class="film" id="film" aria-label="Spearpoint Studio logo reveal film">
     <div class="film-frame">
       <video id="film-video" muted loop playsinline preload="none" poster="assets/video/poster.jpg" aria-label="Spearpoint Studio logo reveal: a flight over a frozen river ends on a stone spearpoint in the snow"></video>
@@ -494,6 +507,33 @@ html.player-lock,html.player-lock body{overflow:hidden}
           <svg class="i-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5 20 12 7 19.5z"/></svg>
         </button>
       </div>
+    </div>
+  </section>
+  -->
+
+  <!-- CAVE BASE -->
+  <section id="cave-base" class="wrap section glow" style="display:flex;flex-direction:column;gap:48px">
+    <div class="section-head">
+      <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:18px">
+        <div class="mono eyebrow">The series</div>
+        <h2 class="disp" style="font-size:clamp(72px,11vw,160px);font-weight:900">Cave Base</h2>
+        <p class="disp" style="font-size:clamp(28px,3.2vw,44px);font-weight:700;color:var(--ash);line-height:1.12">Product launches, 10,000 years early.</p>
+      </div>
+      <p style="flex:1 1 340px;min-width:0;margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:28em">One stage. One very confident presenter. Every episode is a keynote you’ve seen a hundred times, for a product humanity hasn’t quite earned yet.</p>
+    </div>
+    <div class="row">
+      <a class="ep reveal" href="https://www.instagram.com/reel/DdcoZOAPKnf/" target="_blank" rel="noopener">
+        <div class="still" style="aspect-ratio:4/5"><img src="assets/fire-mini.jpg" alt="Fire Mini: presenter holding a candle in a stone holder" style="object-position:center 35%" loading="lazy"></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">Fire Mini</span><span class="ep-line">Small flame. Big announcement.</span><span class="mono ep-meta" data-post="DdcoZOAPKnf" style="margin-top:4px">167K views · 10.8K shares</span></div>
+      </a>
+      <a class="ep reveal" href="https://www.instagram.com/reel/Ddks5cyTrXc/" target="_blank" rel="noopener">
+        <div class="still" style="aspect-ratio:4/5"><img src="assets/bow.jpg" alt="BOW: presenter gesturing to a bow on a draped pedestal" style="object-position:center 40%" loading="lazy"></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">BOW</span><span class="ep-line">The Branch Operated Weapon. Extremely accurate. Conditions apply.</span><span class="mono ep-meta" data-post="Ddks5cyTrXc" style="margin-top:4px">44K views · 1.3K shares</span></div>
+      </a>
+      <a class="ep reveal" href="https://www.instagram.com/reel/DdO0sZmv2U-/" target="_blank" rel="noopener">
+        <div class="still" style="aspect-ratio:4/5"><img src="assets/wheel.jpg" alt="Wheel: presenter unveiling a stone wheel" style="object-position:center 45%" loading="lazy"></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">Wheel</span><span class="ep-line">It rolls. That’s the whole pitch.</span><span class="mono ep-meta" data-post="DdO0sZmv2U-" style="margin-top:4px">New episode</span></div>
+      </a>
     </div>
   </section>
 
@@ -511,36 +551,10 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </div>
   </section>
 
-  <!-- CAVE BASE -->
-  <section id="cave-base" class="wrap section glow" style="display:flex;flex-direction:column;gap:48px">
-    <div class="section-head">
-      <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:18px">
-        <div class="mono eyebrow">The series</div>
-        <h2 class="disp" style="font-size:clamp(72px,11vw,160px);font-weight:900">Cave Base</h2>
-        <p class="disp" style="font-size:clamp(28px,3.2vw,44px);font-weight:700;color:var(--ash);line-height:1.12">Product launches, 10,000 years early.</p>
-      </div>
-      <p style="flex:1 1 340px;min-width:0;margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:28em">One stage. One very confident presenter. Every episode is a keynote you’ve seen a hundred times, for a product humanity hasn’t quite earned yet.</p>
-    </div>
-    <div class="row">
-      <a class="ep reveal" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
-        <div class="still" style="aspect-ratio:4/5"><img src="assets/woof.jpg" alt="Woof: presenter and golden retriever" style="object-position:center 55%" loading="lazy"></div>
-        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">Woof</span><span class="ep-line">The product launch for man’s best friend.</span><span class="mono ep-meta" data-post="DdnM3osz2s-" style="margin-top:4px">459K views · 32K shares</span></div>
-      </a>
-      <a class="ep reveal" href="https://www.instagram.com/reel/DdcoZOAPKnf/" target="_blank" rel="noopener">
-        <div class="still" style="aspect-ratio:4/5"><img src="assets/fire-mini.jpg" alt="Fire Mini: presenter holding a candle in a stone holder" style="object-position:center 35%" loading="lazy"></div>
-        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">Fire Mini</span><span class="ep-line">Small flame. Big announcement.</span><span class="mono ep-meta" data-post="DdcoZOAPKnf" style="margin-top:4px">167K views · 10.8K shares</span></div>
-      </a>
-      <a class="ep reveal" href="https://www.instagram.com/reel/Ddks5cyTrXc/" target="_blank" rel="noopener">
-        <div class="still" style="aspect-ratio:4/5"><img src="assets/bow.jpg" alt="BOW: presenter gesturing to a bow on a draped pedestal" style="object-position:center 40%" loading="lazy"></div>
-        <div style="display:flex;flex-direction:column;gap:4px"><span class="ep-title">BOW</span><span class="ep-line">The Branch Operated Weapon. Extremely accurate. Conditions apply.</span><span class="mono ep-meta" data-post="Ddks5cyTrXc" style="margin-top:4px">44K views · 1.3K shares</span></div>
-      </a>
-    </div>
-  </section>
-
   <!-- WHAT'S NEW
        Today: latest posts are listed by hand and the side card links to the channels.
        Next: replace the posts and the side card with Spearpoint Studio analytics (via Zernio). -->
-  <section id="whats-new" class="band">
+  <section id="whats-new" class="band" hidden>
     <div class="wrap section" style="display:flex;flex-direction:column;gap:40px">
       <div class="section-head" style="gap:16px 40px">
         <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
@@ -551,14 +565,6 @@ html.player-lock,html.player-lock body{overflow:hidden}
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:stretch">
         <div class="row" id="latest-posts" style="flex:999 1 620px;min-width:0">
-          <a class="ep reveal" href="https://www.instagram.com/reel/DdO0sZmv2U-/" target="_blank" rel="noopener" style="flex:1 1 180px">
-            <div class="still" style="aspect-ratio:4/5"><img src="assets/wheel.jpg" alt="Latest post: Wheel" style="object-position:center 45%" loading="lazy"><span class="tag mono">Latest</span></div>
-            <div style="display:flex;flex-direction:column;gap:6px"><span class="mono ep-meta" style="font-size:11px">Instagram · Cave Base</span><span style="font-size:15px;line-height:1.4">Wheel. It rolls. That’s the whole pitch.</span></div>
-          </a>
-          <a class="ep reveal" href="https://www.instagram.com/reel/Ddks5cyTrXc/" target="_blank" rel="noopener" style="flex:1 1 180px">
-            <div class="still" style="aspect-ratio:4/5"><img src="assets/bow.jpg" alt="BOW" style="object-position:center 40%" loading="lazy"></div>
-            <div style="display:flex;flex-direction:column;gap:6px"><span class="mono ep-meta" style="font-size:11px">Instagram · Cave Base</span><span style="font-size:15px;line-height:1.4">BOW. Precision, with a few caveats.</span></div>
-          </a>
         </div>
         <aside class="side-card reveal" aria-label="Follow Spearpoint">
           <span class="mono" style="color:var(--bone)">Follow us</span>
@@ -572,44 +578,6 @@ html.player-lock,html.player-lock body{overflow:hidden}
             <span><b>TikTok</b><small>@spearpointpro</small></span>
           </a>
         </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- WOOF CASE: one video, told as a scroll story -->
-  <section class="case" id="woof-case" aria-labelledby="woof-h">
-    <div class="wrap section">
-      <div class="case-copy">
-        <div class="mono" style="color:var(--ember-deep)">Case file · one video</div>
-        <h2 class="disp" id="woof-h" style="font-size:clamp(56px,7vw,104px);font-weight:900">People watched. Then they shared.</h2>
-        <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-2);max-width:30em">Woof reached people who had never heard of Spearpoint. That’s the job a brand hires us for: content that travels past the audience you already have.</p>
-        <a class="case-video" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
-          <span class="case-thumb"><img src="assets/woof.jpg" alt="" width="479" height="852" loading="lazy"><span class="case-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></span>
-          <span class="case-video-txt"><span class="ep-title" style="font-size:30px">Woof</span><span class="mono" style="color:var(--ink-3);font-size:12px">One Instagram Reel · posted Sep 22, 2026</span><span class="case-watch">Watch the video</span></span>
-        </a>
-      </div>
-      <div class="case-data">
-        <div class="scrub-hint mono" id="scrub-hint" aria-hidden="true">Scroll to see the results <span>↓</span></div>
-        <figure class="chart-card" id="woof-chart" aria-labelledby="woof-chart-h">
-          <figcaption class="chart-head">
-            <span class="mono" id="woof-chart-h" style="color:var(--ink-2)">Woof · views since posting</span>
-            <span class="chart-now"><span class="proof-num" id="woof-count">459,091</span><span class="mono chart-date" id="woof-date">Oct 13</span></span>
-          </figcaption>
-          <div class="chart-plot"><svg id="woof-svg" viewBox="0 0 600 250" preserveAspectRatio="none" role="img" aria-label="Woof views grew from zero to 343 thousand in the first four days, then to 459 thousand by October 13."></svg><div class="chart-tip mono" id="woof-tip" hidden></div></div>
-          <div class="chart-x mono" id="woof-x" aria-hidden="true"></div>
-        </figure>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span class="mono" style="color:var(--ink-2)">Who saw it</span><span class="proof-num" style="font-size:44px;color:var(--ember-deep)"><span id="woof-new">96</span>% new</span></div>
-          <div class="meter" id="woof-meter" role="img" aria-label="96 percent non-followers, 4 percent followers"><div></div></div>
-          <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)"><span>Non-followers · 96%</span><span>Followers · 4%</span></div>
-        </div>
-        <div class="case-grid" id="woof-grid">
-          <div><span class="mono" style="color:var(--ink-3)">Shares</span><span class="proof-num" data-woof="shares">32,492</span></div>
-          <div><span class="mono" style="color:var(--ink-3)">Likes</span><span class="proof-num" data-woof="likes">24,389</span></div>
-          <div><span class="mono" style="color:var(--ink-3)">Saves</span><span class="proof-num" data-woof="saves">3,821</span></div>
-          <div><span class="mono" style="color:var(--ink-3)">Accounts reached</span><span class="proof-num" data-woof="reach">289,587</span></div>
-        </div>
-        <span class="mono" style="color:var(--ink-3);font-size:11px;line-height:1.6">Woof only, on Instagram · live from our analytics · daily tracking began Sep 27 · audience split from Instagram insights at launch</span>
       </div>
     </div>
   </section>
@@ -636,7 +604,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 <feTurbulence type="fractalNoise" baseFrequency="1.3" numOctaves="2" seed="12" result="grain"/>
 <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.75" result="holes"/>
 <feComposite in="w2" in2="holes" operator="in"/>
-</filter><g id="p1"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">01</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Concept</text><image href="art/concept.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">We pitch the bit.</text></g><g id="p2"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">02</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Agree</text><image href="art/agree.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">We agree on the idea.</text></g><g id="p3"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">03</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Crafting</text><image href="art/crafting.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">We build every</tspan><tspan x="0" dy="44">piece by hand.</tspan></text></g><g id="p4"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">04</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Share</text><image href="art/share.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">Get feedback for</tspan><tspan x="0" dy="44">the next round.</tspan></text></g></defs></svg>
+</filter><g id="p1"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">01</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Concept</text><image href="art/concept.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">We pitch</tspan><tspan x="0" dy="44">the bit.</tspan></text></g><g id="p2"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">02</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Agree</text><image href="art/agree.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">We agree on</tspan><tspan x="0" dy="44">the idea.</tspan></text></g><g id="p3"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">03</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Crafting</text><image href="art/crafting.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">We build every</tspan><tspan x="0" dy="44">piece by hand.</tspan></text></g><g id="p4"><text x="0" y="-34" fill="#E8844A" font-size="30" letter-spacing="3" font-weight="700" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">04</text><text x="0" y="50" fill="#F1E6D2" font-size="68" font-weight="700" letter-spacing="1" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)">Share</text><image href="art/share.webp" x="0" y="66" width="320" height="250" preserveAspectRatio="xMidYMid meet"/><text x="0" y="364" fill="#F1E6D2" font-size="46" font-weight="700" letter-spacing=".5" font-family="Amatic SC, Big Shoulders Display, Impact, sans-serif" filter="url(#scrawl)"><tspan x="0">Get feedback for</tspan><tspan x="0" dy="44">the next round.</tspan></text></g></defs></svg>
     <svg class="wide" viewBox="0 0 1400 500" role="presentation">
       <use href="#p1" x="20" y="70"/><use href="#p2" x="370" y="70"/><use href="#p3" x="720" y="70"/><use href="#p4" x="1070" y="70"/>
     </svg>
@@ -663,12 +631,33 @@ html.player-lock,html.player-lock body{overflow:hidden}
 </section>
   </section>
 
+  <!-- THE CAVEMEN -->
+  <section id="cavemen" class="band">
+    <div class="wrap section" style="display:flex;flex-wrap:wrap;gap:40px 72px;align-items:center">
+      <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:18px">
+        <div class="mono eyebrow">The cavemen</div>
+        <h2 class="disp" style="font-size:clamp(48px,6vw,88px);font-weight:900">Jordan and Kevin.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:28em">Two guys in Austin making the things we’d want to watch.</p>
+      </div>
+      <div style="flex:1 1 440px;min-width:0;display:flex;flex-wrap:wrap;gap:20px">
+        <div class="person">
+          <div class="still portrait"><img src="assets/jordan.webp" alt="Jordan, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span class="ep-title" style="font-size:28px">Jordan</span><span class="mono ep-meta">Chief Cave Illustrationist</span></div>
+        </div>
+        <div class="person">
+          <div class="still portrait"><img src="assets/kevin.webp" alt="Kevin, painted as a cave painting in a stitched hide vest" style="object-position:center 35%" loading="lazy"></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span class="ep-title" style="font-size:28px">Kevin</span><span class="mono ep-meta">Senior Thinking Maker</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- LABS: swipeable row of experiments -->
   <section class="wrap section labs" aria-labelledby="labs-h">
     <div class="section-head" style="gap:16px 40px;margin-bottom:36px">
       <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
         <div class="mono eyebrow">Spearpoint Labs</div>
-        <h2 class="disp" id="labs-h" style="font-size:clamp(52px,6vw,88px);font-weight:900">Experiments.</h2>
+        <h2 class="disp" id="labs-h" style="font-size:clamp(44px,12vw,88px);font-weight:900">Experiments.</h2>
       </div>
       <div class="labs-side">
         <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ash);max-width:24em">Where we test new formats before they become series.</p>
@@ -877,9 +866,11 @@ html.player-lock,html.player-lock body{overflow:hidden}
       document.dispatchEvent(new CustomEvent('sp:stats', { detail: d }));
 
       var list = document.getElementById('latest-posts');
-      if (list && d.latest && d.latest.length >= 2) {
+      var shown = ['DdnM3osz2s-', 'DdcoZOAPKnf', 'Ddks5cyTrXc', 'DdO0sZmv2U-']; // already on the page
+      var fresh = (d.latest || []).filter(function(p){ return !shown.some(function(c){ return (p.url || '').indexOf(c) > -1; }); });
+      if (list && fresh.length) {
         var frag = document.createDocumentFragment();
-        d.latest.slice(0, 2).forEach(function(p, i){
+        fresh.slice(0, 2).forEach(function(p, i){
           var a = document.createElement('a');
           a.className = 'ep'; a.href = p.url; a.target = '_blank'; a.rel = 'noopener'; a.style.flex = '1 1 180px';
           var still = document.createElement('div'); still.className = 'still'; still.style.aspectRatio = '4/5';
@@ -893,6 +884,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
           a.appendChild(still); a.appendChild(meta); frag.appendChild(a);
         });
         list.innerHTML = ''; list.appendChild(frag);
+        document.getElementById('whats-new').hidden = false;
       }
     })
     .catch(function(){ /* keep the built-in numbers */ });
