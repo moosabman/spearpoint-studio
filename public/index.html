@@ -27,6 +27,7 @@
   --body:Geist,system-ui,-apple-system,"Segoe UI",sans-serif;
   --pad:clamp(16px,3vw,40px)}
 *,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:clip}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
@@ -58,16 +59,17 @@ a:hover{color:var(--accent)}
 .topbar{position:sticky;top:0;z-index:20;background:rgba(253,253,252,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:6px solid var(--ink);border-bottom:1px solid var(--rule)}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.brand img{height:30px;width:auto}
+.brand img{height:40px;width:auto;margin-block:-4px}
 .brand span{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:24px;line-height:1;letter-spacing:.01em}
 .nav{display:flex;align-items:center;gap:6px 28px;font-size:15px}
 .nav a{text-decoration:none}
+.nav .btn{white-space:nowrap}
 .nav .btn{color:var(--on-accent)}
 .nav .btn-line{color:var(--ink)}
 .nav .btn-line:hover{color:var(--bg)}
 .nav-lab{display:none}
 @media (max-width:860px){.nav .nav-link{display:none}.nav-lab{display:inline-flex}.nav{gap:8px}}
-@media (max-width:400px){.brand span{font-size:20px}.brand img{height:26px}.nav .btn-sm{padding:0 12px;font-size:14px}}
+@media (max-width:400px){.brand span{font-size:20px}.brand img{height:34px}.nav .btn-sm{padding:0 12px;font-size:14px}}
 
 /* masthead + film strip */
 .kicker{font-size:13px;color:var(--muted);padding:clamp(24px,3.5vw,48px) 0 10px}
@@ -248,7 +250,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 <body>
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Spearpoint Studio, back to top"><img src="assets/mark-on-light.svg" alt="" width="20" height="30"><span>Spearpoint Studio</span></a>
+    <a class="brand" href="#top" aria-label="Spearpoint Studio, back to top"><img src="assets/mark-stone.png" alt="" width="17" height="46"><span>Spearpoint Studio</span></a>
     <nav class="nav" aria-label="Main">
       <a class="nav-link" href="#work">Work</a>
       <a class="nav-link" href="#pricing">Services &amp; pricing</a>

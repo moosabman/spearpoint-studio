@@ -16,6 +16,7 @@
 :root{color-scheme:light;--bg:#FDFDFC;--ink:#0A0A0A;--muted:#555;--rule:#0A0A0A;--panel:#F2F2F1;--accent:#2D5B7A;--accent-hover:#234A63;
   --display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--body:Geist,system-ui,-apple-system,"Segoe UI",sans-serif}
 *,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -23,9 +24,9 @@ a{color:var(--accent)}
 .topbar{position:sticky;top:0;z-index:5;background:rgba(253,253,252,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:6px solid var(--ink);border-bottom:1px solid var(--rule)}
 .topbar .wrap{max-width:1360px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.brand img{height:30px;width:auto}
+.brand img{height:40px;width:auto;margin-block:-4px}
 .brand span{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:24px;line-height:1}
-.btn{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;background:var(--accent);color:#fff;font:600 15px/1 var(--body);text-decoration:none}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;min-height:42px;padding:0 16px;background:var(--accent);color:#fff;font:600 15px/1 var(--body);text-decoration:none}
 .btn:hover{background:var(--accent-hover)}
 .mono{display:block;width:fit-content;background:var(--ink);color:var(--bg)!important;font:600 12px/1 var(--body);letter-spacing:.04em;padding:5px 7px}
 h1{font-family:var(--display);text-transform:uppercase;font-weight:900;font-size:clamp(52px,8vw,96px);line-height:.92;margin:16px 0 20px;text-wrap:balance}
@@ -46,7 +47,7 @@ footer a:hover{text-decoration:underline}
 <body>
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Spearpoint Studio home"><img src="assets/mark-on-light.svg" alt="" width="20" height="30"><span>Spearpoint Studio</span></a>
+    <a class="brand" href="/" aria-label="Spearpoint Studio home"><img src="assets/mark-stone.png" alt="" width="17" height="46"><span>Spearpoint Studio</span></a>
     <a class="btn" href="/#contact">Book a call</a>
   </div>
 </header>
@@ -91,7 +92,7 @@ footer a:hover{text-decoration:underline}
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="/"><img src="assets/mark-on-light.svg" alt="" width="20" height="30"><span>Spearpoint Studio</span></a>
+    <a class="brand" href="/"><img src="assets/mark-stone.png" alt="" width="17" height="46"><span>Spearpoint Studio</span></a>
     <div style="display:flex;gap:24px;flex-wrap:wrap"><a href="/#pricing">Services &amp; pricing</a><a href="/lab">Lab</a><a href="mailto:hello@spearpointpro.com">hello@spearpointpro.com</a></div>
   </div>
 </footer>
