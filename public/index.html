@@ -56,7 +56,7 @@ a:hover{color:var(--accent)}
 .split>.main{flex:1.6 1 520px;min-width:0}
 
 /* header */
-.topbar{position:sticky;top:0;z-index:20;background:rgba(253,253,252,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:6px solid var(--ink);border-bottom:1px solid var(--rule)}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(253,253,252,.62);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);border-top:6px solid var(--ink);border-bottom:1px solid var(--rule)}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .brand img{height:40px;width:auto;margin-block:-4px}
@@ -101,7 +101,10 @@ a:hover{color:var(--accent)}
 .deck p{margin:0;font-size:clamp(20px,1.7vw,24px);line-height:1.35;max-width:22em}
 .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
 .types{border-block:1px solid var(--rule)}
-.types .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 28px;padding-block:16px;font-size:clamp(19px,1.9vw,26px);color:var(--muted)}
+.types ul{list-style:none;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 28px;padding-block:20px;font-size:clamp(19px,1.9vw,26px);line-height:1.2}
+.types li{display:flex;align-items:baseline;gap:12px}
+.types li::before{content:"";flex:none;width:8px;height:8px;background:var(--accent);transform:translateY(-.15em)}
+@media (max-width:760px){.types ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}}
 
 /* section heads */
 .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 40px;margin-bottom:32px}
@@ -114,6 +117,7 @@ a:hover{color:var(--accent)}
 .work .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
 .work a.shot:hover img{transform:scale(1.03)}
 .work .shot video{width:100%;height:100%;object-fit:cover;display:block}
+.work .pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;height:100%;background:var(--bg)}
 .work .shot .play{left:14px;bottom:14px;min-height:42px;font-size:14px;pointer-events:none}
 .work .shot button.play{pointer-events:auto}
 .work figcaption{border-top:1px solid var(--rule);padding-top:10px;display:flex;flex-direction:column;gap:4px}
@@ -244,7 +248,6 @@ a:hover{color:var(--accent)}
 .player-out{align-self:center;display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-size:14px;color:#ccc;text-decoration:none}
 .player-out[hidden]{display:none}
 html.player-lock,html.player-lock body{overflow:hidden}
-@media (max-width:760px){.types .wrap{justify-content:flex-start;gap:6px 22px}}
 </style>
 </head>
 <body>
@@ -276,7 +279,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
           <button type="button" class="play" id="hv-play"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4v16l14-8z" fill="currentColor"/></svg><span>Play sample · <span id="hv-dur">2:54</span></span></button>
         </div>
         <div class="sample-bar">
-          <span class="caption">Sample: jobsite safety orientation for a made-up company</span>
+          <span class="caption">Sample: jobsite safety orientation for a sample company</span>
           <div class="lang" role="group" aria-label="Language">
             <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button>
             <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
@@ -300,13 +303,13 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </div>
   </section>
 
-  <div class="types" aria-hidden="true"><div class="wrap serif"><span>Onboarding</span><span>Safety</span><span>How-to</span><span>Why work here</span><span>Job-post shorts</span><span>Launch spots</span><span>Social</span></div></div>
+  <div class="types"><ul class="wrap serif" aria-label="What we make"><li>Onboarding</li><li>Safety</li><li>How-to</li><li>Why work here</li><li>Job-post shorts</li><li>Welcome videos</li><li>Launch spots</li><li>Social</li></ul></div>
 
   <!-- [01] SELECTED WORK -->
   <section id="work" class="wrap section">
     <div class="head">
       <h2 class="disp h2"><span class="tag">[01]</span>Selected work</h2>
-      <p class="small muted">Client work stays private by default, so these are samples we made for made-up companies, plus our own series.</p>
+      <p class="small muted">Client work stays private by default, so here are some examples with sample companies, plus our own series.</p>
     </div>
     <div class="work">
       <figure>
@@ -332,7 +335,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
       </figure>
       <figure>
         <a class="shot" href="https://www.instagram.com/reel/DdnM3osz2s-/" target="_blank" rel="noopener">
-          <img src="assets/woof.jpg" alt="Woof, an episode of our comedy series Cave Base" style="object-position:center 30%" loading="lazy">
+          <span class="pair"><img src="assets/stills/woof-before.jpg" alt="Woof: the presenter about to pull the cover off" loading="lazy"><img src="assets/stills/woof-after.jpg" alt="Woof: a golden retriever revealed under the cover" loading="lazy"></span>
           <span class="play" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M6 4v16l14-8z" fill="currentColor"/></svg>Watch Woof</span>
         </a>
         <figcaption><b>Woof, from Cave Base<span>Our series</span></b><p>Our own comedy series, where we test what makes people stop scrolling. <span data-post="DdnM3osz2s-">459K views · 32K shares</span>.</p></figcaption>
