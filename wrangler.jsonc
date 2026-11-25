@@ -9,5 +9,6 @@
     "run_worker_first": ["/api/*", "/assets/video/*"]
   },
   "keep_vars": true,
+  "previews": {},
   "observability": { "enabled": true }
 }
