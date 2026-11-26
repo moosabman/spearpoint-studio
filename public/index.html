@@ -75,11 +75,18 @@ a:hover{color:var(--accent)}
 .kicker{font-size:13px;color:var(--muted);padding:clamp(24px,3.5vw,48px) 0 10px}
 .mast{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(60px,20vw,288px);line-height:.96;letter-spacing:-.005em;margin:0}
 .mast span{display:block}
+@media (min-width:900px){.mast{font-size:calc((min(100vw, 1360px) - 2 * var(--pad)) / 7.2);white-space:nowrap}.mast span{display:inline}.kicker{padding-top:24px}.strip{margin-top:28px}}
 .strip{display:grid;grid-template-columns:1fr 1.2fr 3fr 1.2fr 1fr;gap:12px;align-items:center;position:relative;margin-top:clamp(28px,4vw,56px)}
 .strip-canvas{position:absolute;z-index:0;pointer-events:none;display:block}
 .strip .hero-video{position:relative;z-index:1}
 .strip.is-3d>img{visibility:hidden}
 .strip.is-3d .frame{box-shadow:0 24px 60px rgba(10,10,10,.28)}
+.strip.is-3d{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.strip.is-3d.grabbing{cursor:grabbing}
+.strip.is-3d .hero-video{cursor:auto}
+.reel-hint{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);transition:opacity .6s}
+.reel-hint.done{opacity:0}
+.reel-hint[hidden]{display:none}
 .strip>img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
 .strip .s1{object-position:28% center;opacity:.55}
 .strip .s2{object-position:14% center;opacity:.85}
@@ -273,7 +280,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
   <!-- MASTHEAD + SAMPLE -->
   <section class="wrap" aria-label="Spearpoint Studio">
     <p class="kicker">Training · Recruiting · Marketing · Web</p>
-    <p class="mast" aria-hidden="true"><span>Spearpoint</span><span>Studio</span></p>
+    <p class="mast" aria-hidden="true"><span>Spearpoint</span> <span>Studio</span></p>
     <div class="strip">
       <img class="s1" src="assets/stills/blackline-ppe.jpg" alt="" loading="lazy">
       <img class="s2" src="assets/stills/blackline-lock.jpg" alt="" loading="lazy">
@@ -287,6 +294,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
             <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button>
             <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
           </div>
+          <span class="reel-hint" id="reel-hint" hidden><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M6 1 1 6l5 5M16 1l5 5-5 5M1 6h20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Drag the film to spin it</span>
         </div>
       </div>
       <img class="s4" src="assets/stills/blackline-ladder.jpg" alt="" loading="lazy">
@@ -991,13 +999,15 @@ html.player-lock,html.player-lock body{overflow:hidden}
 })();
 </script>
 <script type="module">
-// Desktop-only: a curved 3D film strip of sample stills that wraps behind the hero video
-// and drifts as you scroll. Phones and reduced-motion visitors keep the plain still images.
+// Desktop-only: a curved 3D film strip of sample stills that wraps behind the hero video.
+// Drag it to spin it (with momentum); the frame under the cursor is lit like a projector spotlight.
+// Phones and reduced-motion visitors keep the plain still images.
 (async function(){
   var strip = document.querySelector('.strip');
   var frameEl = document.getElementById('hv-frame');
+  var hint = document.getElementById('reel-hint');
   if (!strip || !frameEl) return;
-  if (!window.matchMedia('(min-width: 1024px)').matches) return;
+  if (!window.matchMedia('(min-width: 1024px) and (pointer: fine)').matches) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   try { var t = document.createElement('canvas'); if (!(t.getContext('webgl2') || t.getContext('webgl'))) return; } catch (e) { return; }
 
@@ -1011,7 +1021,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
   imgs = imgs.filter(Boolean);
   if (imgs.length < 4) return;
 
-  // One strip of film drawn on a canvas: frames, gaps and sprocket holes (holes are see-through).
+  // One strip of film drawn on a canvas: frames, gaps and see-through sprocket holes.
   var FW = 480, FH = 270, GAP = 28, BAND = 46;
   var W = imgs.length * (FW + GAP), H = FH + BAND * 2;
   var c = document.createElement('canvas'); c.width = W; c.height = H;
@@ -1023,10 +1033,9 @@ html.player-lock,html.player-lock body{overflow:hidden}
     g.save(); g.beginPath(); g.rect(x, BAND, FW, FH); g.clip();
     g.drawImage(img, x + (FW - w) / 2, BAND + (FH - h) / 2, w, h); g.restore();
   });
-  var HOLE_W = 20, HOLE_H = 24, STEP = 42;
-  for (var x = 12; x < W; x += STEP) {
-    g.clearRect(x, (BAND - HOLE_H) / 2, HOLE_W, HOLE_H);
-    g.clearRect(x, H - BAND + (BAND - HOLE_H) / 2, HOLE_W, HOLE_H);
+  for (var x = 12; x < W; x += 42) {
+    g.clearRect(x, (BAND - 24) / 2, 20, 24);
+    g.clearRect(x, H - BAND + (BAND - 24) / 2, 20, 24);
   }
 
   var tex = new THREE.CanvasTexture(c);
@@ -1035,62 +1044,91 @@ html.player-lock,html.player-lock body{overflow:hidden}
   tex.anisotropy = 8;
 
   // A curved ribbon: the inside of a cylinder, so the ends wrap toward the viewer.
-  var R = 10, ARC = 2.5;                       // radius and arc in radians
-  var COPIES = 1.6;                            // how many film strips fit along the arc
-  var ribbonH = (R * ARC / COPIES) * (H / W);  // keeps frames in proportion
-  tex.repeat.set(-COPIES, 1);  // negative: reads left-to-right from inside the curve
+  var R = 10, ARC = 2.5, COPIES = 1.6;
+  var ribbonH = (R * ARC / COPIES) * (H / W);
+  tex.repeat.set(-COPIES, 1);  // negative so it reads left to right from inside the curve
   var geo = new THREE.CylinderGeometry(R, R, ribbonH, 160, 1, true, Math.PI - ARC / 2, ARC);
+
+  // Spotlight: frames near the cursor stay bright, the rest dim a little.
+  var uni = { uMouse: { value: new THREE.Vector2(-9999, -9999) }, uLight: { value: 0 }, uRadius: { value: 260 } };
   var mat = new THREE.MeshBasicMaterial({ map: tex, side: THREE.BackSide, transparent: true, alphaTest: 0.5 });
+  mat.onBeforeCompile = function(sh){
+    Object.assign(sh.uniforms, uni);
+    sh.fragmentShader = 'uniform vec2 uMouse; uniform float uLight; uniform float uRadius;\n' + sh.fragmentShader.replace(
+      '#include <dithering_fragment>',
+      '#include <dithering_fragment>\n  float d = distance(gl_FragCoord.xy, uMouse);\n  float lit = 1.0 - smoothstep(uRadius * 0.35, uRadius, d);\n  gl_FragColor.rgb *= mix(1.0, mix(0.42, 1.12, lit), uLight);');
+  };
   var ribbon = new THREE.Mesh(geo, mat);
-  var group = new THREE.Group(); group.add(ribbon);
 
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
   camera.position.set(0, 0, 3.2);
-  scene.add(group);
+  scene.add(ribbon);
 
   var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  renderer.setPixelRatio(dpr);
   renderer.setClearColor(0x000000, 0);
   var cv = renderer.domElement;
   cv.className = 'strip-canvas';
   cv.setAttribute('aria-hidden', 'true');
   strip.prepend(cv);
   strip.classList.add('is-3d');
+  if (hint) hint.hidden = false;
 
-  // Size the canvas to the full page width, centred on the video frame.
+  var cw = 1;
   function layout(){
     var sr = strip.getBoundingClientRect(), fr = frameEl.getBoundingClientRect();
-    var vw = document.documentElement.clientWidth;
-    var h = Math.round(fr.height * 1.5);
-    var top = (fr.top - sr.top) + fr.height / 2 - h / 2;
-    cv.style.top = top + 'px';
+    var vw = document.documentElement.clientWidth, h = Math.round(fr.height * 1.5);
+    cv.style.top = ((fr.top - sr.top) + fr.height / 2 - h / 2) + 'px';
     cv.style.left = (-sr.left) + 'px';
     cv.style.width = vw + 'px';
     cv.style.height = h + 'px';
     renderer.setSize(vw, h, false);
+    cw = vw;
     camera.aspect = vw / h;
-    // Fit the vertical view so the ribbon at the centre is about 80% of the video's height.
-    var dist = R + camera.position.z;
     var want = ribbonH / 0.8 * (h / fr.height);
-    camera.fov = 2 * Math.atan(want / 2 / dist) * 180 / Math.PI;
+    camera.fov = 2 * Math.atan(want / 2 / (R + camera.position.z)) * 180 / Math.PI;
     camera.updateProjectionMatrix();
+    uni.uRadius.value = fr.height * 0.75 * dpr;
   }
   layout();
   window.addEventListener('resize', layout);
 
-  var mx = 0, tx = 0, drift = 0, lastY = window.scrollY, vel = 0, running = false, visible = true;
-  window.addEventListener('pointermove', function(e){ tx = (e.clientX / window.innerWidth - .5); }, { passive: true });
+  // Interaction
+  var offset = 0, vel = 0, AUTO = 0.00025, dragging = false, lastX = 0, moved = false;
+  var light = 0, lightTo = 0;
+  function overVideo(e){ return !!e.target.closest('.hero-video'); }
+  function setMouse(e){
+    var r = cv.getBoundingClientRect();
+    var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+    lightTo = inside && !overVideo(e) ? 1 : 0;
+    uni.uMouse.value.set((e.clientX - r.left) * dpr, (r.bottom - e.clientY) * dpr);
+  }
+  window.addEventListener('pointermove', function(e){
+    setMouse(e);
+    if (!dragging) return;
+    var dx = e.clientX - lastX; lastX = e.clientX;
+    var step = -dx / cw * COPIES * 0.9;
+    offset += step; vel = step;
+    if (Math.abs(dx) > 2 && !moved) { moved = true; if (hint) hint.classList.add('done'); }
+  }, { passive: true });
+  strip.addEventListener('pointerdown', function(e){
+    if (overVideo(e) || e.button !== 0) return;
+    dragging = true; lastX = e.clientX; vel = 0;
+    strip.classList.add('grabbing');
+    e.preventDefault();
+  });
+  window.addEventListener('pointerup', function(){ if (dragging) { dragging = false; strip.classList.remove('grabbing'); } });
+  strip.addEventListener('pointerleave', function(){ if (!dragging) lightTo = 0; });
 
+  var running = false, visible = true;
   function frame(){
     if (!visible) { running = false; return; }
-    var y = window.scrollY;
-    vel += ((y - lastY) - vel) * .15; lastY = y;
-    drift += 0.00035 + vel * 0.00012;
-    tex.offset.x = drift;
-    mx += (tx - mx) * .05;
-    group.rotation.y = mx * 0.12;
-    group.rotation.z = Math.max(-.06, Math.min(.06, vel * -0.002));
+    if (!dragging) { offset += vel + AUTO; vel *= 0.95; }
+    tex.offset.x = offset;
+    light += (lightTo - light) * 0.12;
+    uni.uLight.value = light;
     renderer.render(scene, camera);
     requestAnimationFrame(frame);
   }
