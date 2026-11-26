@@ -114,6 +114,7 @@ a:hover{color:var(--accent)}
 .types{border-block:1px solid var(--rule)}
 .slats{height:clamp(96px,10vw,150px);border-bottom:1px solid var(--rule)}
 .slats canvas{display:block;width:100%;height:100%;touch-action:pan-y}
+.slats-top{border-top:1px solid var(--rule)}
 .types ul{list-style:none;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 28px;padding-block:20px;font-size:clamp(19px,1.9vw,26px);line-height:1.2}
 .types li{display:flex;align-items:baseline;gap:12px}
 .types li::before{content:"";flex:none;width:8px;height:8px;background:var(--accent);transform:translateY(-.15em)}
@@ -318,7 +319,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 
   <div class="types"><ul class="wrap serif" aria-label="What we make"><li>Onboarding</li><li>Safety</li><li>How-to</li><li>Why work here</li><li>Job-post shorts</li><li>Welcome videos</li><li>Launch spots</li><li>Social</li></ul></div>
 
-  <div class="slats" aria-hidden="true"><canvas id="slats"></canvas></div>
+  <div class="slats" aria-hidden="true"><canvas></canvas></div>
 
   <!-- [01] SELECTED WORK -->
   <section id="work" class="wrap section">
@@ -479,8 +480,10 @@ html.player-lock,html.player-lock body{overflow:hidden}
     </div>
   </section>
 
+  <div class="slats slats-top" aria-hidden="true"><canvas></canvas></div>
+
   <!-- CONTACT -->
-  <section id="contact" class="contact rule-t">
+  <section id="contact" class="contact">
     <div class="wrap section split" style="align-items:start">
       <div class="side">
         <h2 class="disp">Book a free <span class="accent" style="white-space:nowrap">30-minute</span> call.</h2>
@@ -1144,9 +1147,8 @@ html.player-lock,html.player-lock body{overflow:hidden}
 <script>
 // Diagonal slat strip: thin accent-colored lines that bend away from the pointer like they have
 // weight, then spring back with a little wobble. Static lines for reduced-motion visitors.
-(function(){
-  var cv = document.getElementById('slats');
-  if (!cv || !cv.getContext) return;
+document.querySelectorAll('.slats canvas').forEach(function(cv){
+  if (!cv.getContext) return;
   var g = cv.getContext('2d');
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var COLOR = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2D5B7A';
@@ -1225,7 +1227,7 @@ html.player-lock,html.player-lock body{overflow:hidden}
 
   var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(build, 120); });
   build();
-})();
+});
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1702a712174a467187e7e639318c934b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
