@@ -112,6 +112,8 @@ a:hover{color:var(--accent)}
 .deck p{margin:0;font-size:clamp(19px,1.6vw,22px);line-height:1.45;max-width:24em;color:var(--muted)}
 .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
 .types{border-block:1px solid var(--rule)}
+.slats{height:clamp(96px,10vw,150px);border-bottom:1px solid var(--rule)}
+.slats canvas{display:block;width:100%;height:100%;touch-action:pan-y}
 .types ul{list-style:none;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 28px;padding-block:20px;font-size:clamp(19px,1.9vw,26px);line-height:1.2}
 .types li{display:flex;align-items:baseline;gap:12px}
 .types li::before{content:"";flex:none;width:8px;height:8px;background:var(--accent);transform:translateY(-.15em)}
@@ -315,6 +317,8 @@ html.player-lock,html.player-lock body{overflow:hidden}
   </section>
 
   <div class="types"><ul class="wrap serif" aria-label="What we make"><li>Onboarding</li><li>Safety</li><li>How-to</li><li>Why work here</li><li>Job-post shorts</li><li>Welcome videos</li><li>Launch spots</li><li>Social</li></ul></div>
+
+  <div class="slats" aria-hidden="true"><canvas id="slats"></canvas></div>
 
   <!-- [01] SELECTED WORK -->
   <section id="work" class="wrap section">
@@ -1135,6 +1139,92 @@ html.player-lock,html.player-lock body{overflow:hidden}
   function start(){ if (!running) { running = true; requestAnimationFrame(frame); } }
   new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if (visible) start(); }, { rootMargin: '100px' }).observe(strip);
   start();
+})();
+</script>
+<script>
+// Diagonal slat strip: thin accent-colored lines that bend away from the pointer like they have
+// weight, then spring back with a little wobble. Static lines for reduced-motion visitors.
+(function(){
+  var cv = document.getElementById('slats');
+  if (!cv || !cv.getContext) return;
+  var g = cv.getContext('2d');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var COLOR = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2D5B7A';
+  var SPACING = 16, STEP = 8, RADIUS = 120, PUSH = 46, K = 0.06, DAMP = 0.86;
+  var w = 0, h = 0, dpr = 1, lines = [], mouse = { x: -9999, y: -9999, on: false }, awake = false;
+
+  function build(){
+    var r = cv.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (w < 700) { SPACING = 13; RADIUS = 90; PUSH = 34; } else { SPACING = 16; RADIUS = 120; PUSH = 46; }
+    lines = [];
+    // 45-degree lines running from bottom-left to top-right, spaced evenly across the strip.
+    var gapX = SPACING * Math.SQRT2;
+    for (var x0 = -h; x0 < w + gapX; x0 += gapX) {
+      var pts = [];
+      var n = Math.ceil(h * Math.SQRT2 / STEP);
+      for (var i = 0; i <= n; i++) {
+        var t = i / n;
+        pts.push({ bx: x0 + t * h, by: h - t * h, dx: 0, dy: 0, vx: 0, vy: 0 });
+      }
+      lines.push(pts);
+    }
+    draw();
+  }
+
+  function draw(){
+    g.clearRect(0, 0, w, h);
+    g.strokeStyle = COLOR; g.lineWidth = 2; g.lineCap = 'round'; g.lineJoin = 'round';
+    g.beginPath();
+    for (var l = 0; l < lines.length; l++) {
+      var p = lines[l];
+      g.moveTo(p[0].bx + p[0].dx, p[0].by + p[0].dy);
+      for (var i = 1; i < p.length; i++) g.lineTo(p[i].bx + p[i].dx, p[i].by + p[i].dy);
+    }
+    g.stroke();
+  }
+
+  function tick(){
+    var moving = false;
+    for (var l = 0; l < lines.length; l++) {
+      var p = lines[l];
+      for (var i = 0; i < p.length; i++) {
+        var q = p[i], tx = 0, ty = 0;
+        if (mouse.on) {
+          var ex = q.bx - mouse.x, ey = q.by - mouse.y, d = Math.sqrt(ex * ex + ey * ey);
+          if (d < RADIUS && d > 0.01) {
+            var f = 1 - d / RADIUS; f = f * f * (3 - 2 * f);
+            tx = ex / d * PUSH * f; ty = ey / d * PUSH * f;
+          }
+        }
+        q.vx = (q.vx + (tx - q.dx) * K) * DAMP;
+        q.vy = (q.vy + (ty - q.dy) * K) * DAMP;
+        q.dx += q.vx; q.dy += q.vy;
+        if (Math.abs(q.vx) > 0.02 || Math.abs(q.vy) > 0.02 || Math.abs(q.dx - tx) > 0.05 || Math.abs(q.dy - ty) > 0.05) moving = true;
+      }
+    }
+    draw();
+    if (moving || mouse.on) requestAnimationFrame(tick); else awake = false;
+  }
+  function wake(){ if (!awake && !still) { awake = true; requestAnimationFrame(tick); } }
+
+  function point(e){
+    var r = cv.getBoundingClientRect();
+    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    mouse.on = mouse.x > -RADIUS && mouse.x < w + RADIUS && mouse.y > -RADIUS && mouse.y < h + RADIUS;
+    if (mouse.on) wake();
+  }
+  cv.addEventListener('pointermove', point, { passive: true });
+  cv.addEventListener('pointerdown', point, { passive: true });
+  cv.addEventListener('pointerleave', function(){ mouse.on = false; wake(); });
+  cv.addEventListener('pointercancel', function(){ mouse.on = false; wake(); });
+  window.addEventListener('pointerup', function(e){ if (e.pointerType !== 'mouse') { mouse.on = false; wake(); } });
+
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(build, 120); });
+  build();
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1702a712174a467187e7e639318c934b"}'></script><!-- End Cloudflare Web Analytics -->
