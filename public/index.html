@@ -111,10 +111,9 @@ a:hover{color:var(--accent)}
 .statement .deck{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:22px}
 .deck p{margin:0;font-size:clamp(19px,1.6vw,22px);line-height:1.45;max-width:24em;color:var(--muted)}
 .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
-.types{border-block:1px solid var(--rule)}
-.slats{height:clamp(96px,10vw,150px);border-bottom:1px solid var(--rule)}
-.slats canvas{display:block;width:100%;height:100%;touch-action:pan-y}
-.slats-top{border-top:1px solid var(--rule)}
+.types{border-top:1px solid var(--rule)}
+.slats{height:clamp(96px,10vw,150px)}
+.slats canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:pointer}
 .types ul{list-style:none;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 28px;padding-block:20px;font-size:clamp(19px,1.9vw,26px);line-height:1.2}
 .types li{display:flex;align-items:baseline;gap:12px}
 .types li::before{content:"";flex:none;width:8px;height:8px;background:var(--accent);transform:translateY(-.15em)}
@@ -1145,15 +1144,29 @@ html.player-lock,html.player-lock body{overflow:hidden}
 })();
 </script>
 <script>
-// Diagonal slat strip: thin accent-colored lines that bend away from the pointer like they have
-// weight, then spring back with a little wobble. Static lines for reduced-motion visitors.
+// Slat strips: thin accent-colored lines that ripple away from the pointer and spring back.
+// Click (or tap) to morph the lines into the next pattern, sweeping out from the click point.
 document.querySelectorAll('.slats canvas').forEach(function(cv){
   if (!cv.getContext) return;
   var g = cv.getContext('2d');
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var COLOR = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2D5B7A';
-  var SPACING = 16, STEP = 8, RADIUS = 120, PUSH = 46, K = 0.06, DAMP = 0.86;
-  var w = 0, h = 0, dpr = 1, lines = [], mouse = { x: -9999, y: -9999, on: false }, awake = false;
+  var PATTERNS = ['diag', 'zigzag', 'back', 'wave', 'vert'];
+  var pat = 0;
+  var GAP, STEP = 8, RADIUS, PUSH, K = 0.05, DAMP = 0.88, DUR = 650;
+  var w = 0, h = 0, dpr = 1, L = 0, N = 0, lines = [], mouse = { x: -9999, y: -9999, on: false }, awake = false, morph = null;
+
+  function tri(v){ v = v - Math.floor(v); return Math.abs(v - .5) * 4 - 1; }
+  function base(p, u, t){
+    var y = h - t * h, xs = -GAP + u * (w + 2 * GAP);
+    switch (p) {
+      case 'diag':   return [-h - GAP + u * (w + h + 2 * GAP) + t * h, y];
+      case 'back':   return [-h - GAP + u * (w + h + 2 * GAP) + t * h, t * h];
+      case 'zigzag': return [xs + GAP * .45 * tri(t * 3), y];
+      case 'wave':   return [xs + GAP * .45 * Math.sin(t * Math.PI * 2.4 + u * 14), y];
+      default:       return [xs, y];
+    }
+  }
 
   function build(){
     var r = cv.getBoundingClientRect();
@@ -1161,16 +1174,16 @@ document.querySelectorAll('.slats canvas').forEach(function(cv){
     w = r.width; h = r.height;
     cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    if (w < 700) { SPACING = 13; RADIUS = 90; PUSH = 34; } else { SPACING = 16; RADIUS = 120; PUSH = 46; }
-    lines = [];
-    // 45-degree lines running from bottom-left to top-right, spaced evenly across the strip.
-    var gapX = SPACING * Math.SQRT2;
-    for (var x0 = -h; x0 < w + gapX; x0 += gapX) {
+    var small = w < 700;
+    GAP = (small ? 13 : 16) * Math.SQRT2; RADIUS = small ? 110 : 150; PUSH = small ? 20 : 28;
+    L = Math.ceil((w + h + 2 * GAP) / GAP) + 1;
+    N = Math.ceil(h * Math.SQRT2 / STEP);
+    lines = []; morph = null;
+    for (var l = 0; l < L; l++) {
       var pts = [];
-      var n = Math.ceil(h * Math.SQRT2 / STEP);
-      for (var i = 0; i <= n; i++) {
-        var t = i / n;
-        pts.push({ bx: x0 + t * h, by: h - t * h, dx: 0, dy: 0, vx: 0, vy: 0 });
+      for (var i = 0; i <= N; i++) {
+        var b = base(PATTERNS[pat], l / (L - 1), i / N);
+        pts.push({ bx: b[0], by: b[1], dx: 0, dy: 0, vx: 0, vy: 0 });
       }
       lines.push(pts);
     }
@@ -1189,18 +1202,28 @@ document.querySelectorAll('.slats canvas').forEach(function(cv){
     g.stroke();
   }
 
-  function tick(){
+  function ease(x){ return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+  function tick(now){
     var moving = false;
-    for (var l = 0; l < lines.length; l++) {
-      var p = lines[l];
-      for (var i = 0; i < p.length; i++) {
-        var q = p[i], tx = 0, ty = 0;
+    if (morph) {
+      var done = true;
+      for (var l = 0; l < L; l++) {
+        var k = (now - morph.start - morph.delay[l]) / DUR;
+        if (k < 1) done = false;
+        var e = ease(Math.max(0, Math.min(1, k)));
+        var p = lines[l], f = morph.from[l], to = morph.to[l];
+        for (var i = 0; i <= N; i++) { p[i].bx = f[i][0] + (to[i][0] - f[i][0]) * e; p[i].by = f[i][1] + (to[i][1] - f[i][1]) * e; }
+      }
+      if (done) morph = null; else moving = true;
+    }
+    for (var l2 = 0; l2 < lines.length; l2++) {
+      var q2 = lines[l2];
+      for (var j = 0; j < q2.length; j++) {
+        var q = q2[j], tx = 0, ty = 0;
         if (mouse.on) {
           var ex = q.bx - mouse.x, ey = q.by - mouse.y, d = Math.sqrt(ex * ex + ey * ey);
-          if (d < RADIUS && d > 0.01) {
-            var f = 1 - d / RADIUS; f = f * f * (3 - 2 * f);
-            tx = ex / d * PUSH * f; ty = ey / d * PUSH * f;
-          }
+          if (d < RADIUS && d > 0.01) { var s = 1 - d / RADIUS; s = s * s; tx = ex / d * PUSH * s; ty = ey / d * PUSH * s; }
         }
         q.vx = (q.vx + (tx - q.dx) * K) * DAMP;
         q.vy = (q.vy + (ty - q.dy) * K) * DAMP;
@@ -1219,8 +1242,29 @@ document.querySelectorAll('.slats canvas').forEach(function(cv){
     mouse.on = mouse.x > -RADIUS && mouse.x < w + RADIUS && mouse.y > -RADIUS && mouse.y < h + RADIUS;
     if (mouse.on) wake();
   }
+
+  function next(e){
+    var r = cv.getBoundingClientRect(), cx = e.clientX - r.left;
+    pat = (pat + 1) % PATTERNS.length;
+    var from = [], to = [], delay = [];
+    for (var l = 0; l < L; l++) {
+      var p = lines[l], f = [], t = [];
+      for (var i = 0; i <= N; i++) { f.push([p[i].bx, p[i].by]); t.push(base(PATTERNS[pat], l / (L - 1), i / N)); }
+      from.push(f); to.push(t);
+      var mid = (t[0][0] + t[N][0]) / 2;
+      delay.push(Math.min(700, Math.abs(mid - cx) * 0.55));
+    }
+    if (still) {
+      for (var a = 0; a < L; a++) for (var b = 0; b <= N; b++) { lines[a][b].bx = to[a][b][0]; lines[a][b].by = to[a][b][1]; }
+      draw(); return;
+    }
+    morph = { start: performance.now(), from: from, to: to, delay: delay };
+    awake = false; wake();
+  }
+
   cv.addEventListener('pointermove', point, { passive: true });
   cv.addEventListener('pointerdown', point, { passive: true });
+  cv.addEventListener('click', next);
   cv.addEventListener('pointerleave', function(){ mouse.on = false; wake(); });
   cv.addEventListener('pointercancel', function(){ mouse.on = false; wake(); });
   window.addEventListener('pointerup', function(e){ if (e.pointerType !== 'mouse') { mouse.on = false; wake(); } });
